@@ -8,8 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController {
+    
+    
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func addButton(_ sender: Any) {
+        tableView.isHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
