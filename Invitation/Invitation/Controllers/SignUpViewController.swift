@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 import FirebaseAuth
-import  FirebaseDatabase
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -104,7 +105,23 @@ class SignUpViewController: UIViewController {
                 let userDetails: [String:String] = ["FirstName":firstName, "LastName":lastName, "Username": username]
                 
                 
-                databaseReferance.child("users").child(user.user.uid).setValue(["userDetails": userDetails])
+                
+                
+            databaseReferance.child("users").child(user.user.uid).setValue(["userDetails": userDetails])
+                
+                
+                
+                
+            Auth.auth().currentUser?.sendEmailVerification(completion:nil)
+                self.showMessage(messageToDisplay: "We have sent you an email message. Please check your email and follow the link to verify")
+                
+            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                let  appDelegate = UIApplication.shared.delegate
+                appDelegate?.window??.rootViewController = signInPage
+                
+                
+                
+                
                 
             }
         }

@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        FirebaseApp.configure()
+       // FirebaseApp.configure()
+        
         
         
         
@@ -37,6 +38,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
         }
         
+        FirebaseApp.configure()
+        application.registerForRemoteNotifications()
+        
+        
+        
+        Auth.auth().addStateDidChangeListener{(auth,user) in
+            if user != nil && user!.isEmailVerified{
+                let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Login", bundle:nil)
+                let nextView: MainPageViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainPageViewController") as! MainPageViewController
+                self.window?.rootViewController = nextView
+            }
+        
+        }
         
         return true
     }

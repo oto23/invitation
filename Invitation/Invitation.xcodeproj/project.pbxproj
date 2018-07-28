@@ -17,6 +17,7 @@
 		524250D32107DC5D00EBA246 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524250D22107DC5D00EBA246 /* Login.storyboard */; };
 		524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250F92109A41600EBA246 /* SignUpViewController.swift */; };
 		524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FB2109BD6A00EBA246 /* SignInViewController.swift */; };
+		524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FD210A447700EBA246 /* MainPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		524250D22107DC5D00EBA246 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		524250F92109A41600EBA246 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		524250FB2109BD6A00EBA246 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		524250FD210A447700EBA246 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		524250FF210BDA2E00EBA246 /* Invitation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invitation.entitlements; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +72,7 @@
 		524250B22107B57F00EBA246 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
+				524250FF210BDA2E00EBA246 /* Invitation.entitlements */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
@@ -84,6 +88,7 @@
 				524250B52107B57F00EBA246 /* ViewController.swift */,
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
+				524250FD210A447700EBA246 /* MainPageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -159,6 +164,11 @@
 				TargetAttributes = {
 					524250AF2107B57F00EBA246 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -204,10 +214,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Invitation/Pods-Invitation-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -248,6 +260,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -262,6 +275,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -277,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
@@ -425,7 +440,9 @@
 			baseConfigurationReference = 1BD94CBEB27FC681653FAA22 /* Pods-Invitation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Invitation/Invitation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4266XVUC5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,7 +460,9 @@
 			baseConfigurationReference = BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Invitation/Invitation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4266XVUC5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
