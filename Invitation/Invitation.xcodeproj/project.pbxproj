@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		257E0DA3210BCFA3001D60C0 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DA2210BCFA3001D60C0 /* CheckListViewController.swift */; };
+		257E0DA5210C1E7B001D60C0 /* RecievingRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257E0DA4210C1E7B001D60C0 /* RecievingRequest.storyboard */; };
 		524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B32107B57F00EBA246 /* AppDelegate.swift */; };
 		524250B62107B57F00EBA246 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B52107B57F00EBA246 /* ViewController.swift */; };
 		524250B92107B57F00EBA246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524250B72107B57F00EBA246 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		257E0DA2210BCFA3001D60C0 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
+		257E0DA4210C1E7B001D60C0 /* RecievingRequest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecievingRequest.storyboard; sourceTree = "<group>"; };
 		524250B02107B57F00EBA246 /* Invitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524250B32107B57F00EBA246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524250B52107B57F00EBA246 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,9 +61,11 @@
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
 				524250B52107B57F00EBA246 /* ViewController.swift */,
 				524250B72107B57F00EBA246 /* Main.storyboard */,
+				257E0DA4210C1E7B001D60C0 /* RecievingRequest.storyboard */,
 				524250BA2107B58000EBA246 /* Assets.xcassets */,
 				524250BC2107B58000EBA246 /* LaunchScreen.storyboard */,
 				524250BF2107B58000EBA246 /* Info.plist */,
+				257E0DA2210BCFA3001D60C0 /* CheckListViewController.swift */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 				524250BE2107B58000EBA246 /* LaunchScreen.storyboard in Resources */,
 				524250BB2107B58000EBA246 /* Assets.xcassets in Resources */,
 				524250B92107B57F00EBA246 /* Main.storyboard in Resources */,
+				257E0DA5210C1E7B001D60C0 /* RecievingRequest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
+				257E0DA3210BCFA3001D60C0 /* CheckListViewController.swift in Sources */,
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
