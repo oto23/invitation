@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FBSDKLoginKit
+import FBSDKCoreKit
+import Firebase
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -59,8 +64,57 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func logoutButton(_ sender: Any)
+    {
+        do{
+            
+            Analytics.logEvent("signout", parameters: nil)
+            for userInfo in (Auth.auth().currentUser?.providerData)!
+            {
+                if userInfo.providerID == "facebook.com"
+                {
+                    FBSDKLoginManager().logOut()
+                    break
+                }
+            }
+            
+            
+            
+            try Auth.auth().signOut()
+            
+            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            let  appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = signInPage
+            
+            
+            
+            
+        }catch{
+            self.showMessage(messageToDisplay: "Could not sign out at this time")
+            
+        }
+    }
     
-    
-    
+    public func showMessage(messageToDisplay: String)
+    {
+        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        { (action: UIAlertAction!) in
+            
+            print("OK button tapped")
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController,animated: true, completion: nil)
+    }
 }
+            
+            
+
+        
+        
+
+    
+    
+    
+
 

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Friends-->
         <scene sceneID="PGx-R6-Dht">
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="0Z2-Zp-nWJ" customClass="ViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,22 +43,22 @@
                                 <color key="sectionIndexBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" editingAccessoryType="checkmark" textLabel="ymh-ch-cll" detailTextLabel="cEv-WG-3JS" rowHeight="148" style="IBUITableViewCellStyleValue1" id="Lq8-kB-z3Q">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="148"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" editingAccessoryType="checkmark" textLabel="ymh-ch-cll" detailTextLabel="cEv-WG-3JS" rowHeight="143" style="IBUITableViewCellStyleValue1" id="Lq8-kB-z3Q">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lq8-kB-z3Q" id="vh8-Hz-1AV">
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="147.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="142.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ymh-ch-cll">
-                                                    <rect key="frame" x="15" y="64" width="45" height="20.5"/>
+                                                    <rect key="frame" x="15" y="61" width="45" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="LastName" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cEv-WG-3JS">
-                                                    <rect key="frame" x="258.5" y="64" width="77.5" height="20.5"/>
+                                                    <rect key="frame" x="258.5" y="61" width="77.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.27450980392156865" green="0.7803921568627451" blue="0.023529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -76,6 +76,21 @@
                                     <outlet property="delegate" destination="0Z2-Zp-nWJ" id="TXf-dQ-Al7"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-Xg-9gf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="hHH-Gl-IU6">
+                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="DdZ-0z-Fpx">
+                                            <color key="tintColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="logoutButton:" destination="0Z2-Zp-nWJ" id="gc0-QU-HK6"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -89,18 +104,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C2A-7T-1jJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UYn-C8-A4K">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="DdZ-0z-Fpx">
-                            <color key="tintColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Friends" id="UYn-C8-A4K"/>
                     <connections>
                         <outlet property="friendsTableView" destination="33O-aC-X7e" id="fFd-qj-O82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFb-os-PLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="-192"/>
+            <point key="canvasLocation" x="501.60000000000002" y="-192.05397301349328"/>
         </scene>
         <!--See who's coming-->
         <scene sceneID="Lah-vu-hYh">

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0ABB98B4C374CD2240ACA624 /* Pods_Invitation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */; };
+		257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */; };
 		524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B32107B57F00EBA246 /* AppDelegate.swift */; };
 		524250B62107B57F00EBA246 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B52107B57F00EBA246 /* ViewController.swift */; };
 		524250B92107B57F00EBA246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524250B72107B57F00EBA246 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		1BD94CBEB27FC681653FAA22 /* Pods-Invitation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.debug.xcconfig"; sourceTree = "<group>"; };
 		207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Invitation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
 		524250B02107B57F00EBA246 /* Invitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524250B32107B57F00EBA246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524250B52107B57F00EBA246 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
 				524250FD210A447700EBA246 /* MainPageViewController.swift */,
+				257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */,
 				52425100210D677E00EBA246 /* PasswordResetViewController.swift */,
 			);
 			path = Controllers;
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
