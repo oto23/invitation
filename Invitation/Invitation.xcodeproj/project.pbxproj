@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		0ABB98B4C374CD2240ACA624 /* Pods_Invitation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */; };
-
-
 		524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B32107B57F00EBA246 /* AppDelegate.swift */; };
 		524250B62107B57F00EBA246 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B52107B57F00EBA246 /* ViewController.swift */; };
 		524250B92107B57F00EBA246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524250B72107B57F00EBA246 /* Main.storyboard */; };
@@ -25,11 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
 		1BD94CBEB27FC681653FAA22 /* Pods-Invitation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.debug.xcconfig"; sourceTree = "<group>"; };
 		207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Invitation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-
-
 		524250B02107B57F00EBA246 /* Invitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524250B32107B57F00EBA246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524250B52107B57F00EBA246 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				524250B72107B57F00EBA246 /* Main.storyboard */,
-
 				524250BC2107B58000EBA246 /* LaunchScreen.storyboard */,
 				524250D22107DC5D00EBA246 /* Login.storyboard */,
 			);
@@ -117,9 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				524250BF2107B58000EBA246 /* Info.plist */,
-
 				524250C72107D8B600EBA246 /* GoogleService-Info.plist */,
-
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -210,10 +201,8 @@
 				524250BE2107B58000EBA246 /* LaunchScreen.storyboard in Resources */,
 				524250BB2107B58000EBA246 /* Assets.xcassets in Resources */,
 				524250B92107B57F00EBA246 /* Main.storyboard in Resources */,
-
 				524250D32107DC5D00EBA246 /* Login.storyboard in Resources */,
 				524250C82107D8B600EBA246 /* GoogleService-Info.plist in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,9 +298,7 @@
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
-
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
- 
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
