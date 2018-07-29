@@ -81,8 +81,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             
             try Auth.auth().signOut()
-            
-            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let signInPage = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
             let  appDelegate = UIApplication.shared.delegate
             appDelegate?.window??.rootViewController = signInPage
             
