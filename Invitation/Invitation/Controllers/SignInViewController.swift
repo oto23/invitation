@@ -73,9 +73,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
 //                }
 //
                 
-                
-                let mainPage = self.storyboard?.instantiateViewController(withIdentifier:"MainPageViewController") as! MainPageViewController
-                self.present(mainPage, animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let displayFriendList = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
+                self.present(displayFriendList, animated: true, completion: nil)
 //
             }
         }
@@ -154,12 +154,12 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 FBSDKLoginManager().logOut()
                 return
             }
-            
-            let mainPage = self.storyboard?.instantiateViewController(withIdentifier:"MainPageViewController") as! MainPageViewController
-            self.present(mainPage, animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let displayFriendlist = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
+            self.present(displayFriendlist, animated: true, completion: nil)
             
             let appDelegate = UIApplication.shared.delegate
-            appDelegate?.window??.rootViewController = mainPage
+            appDelegate?.window??.rootViewController = displayFriendlist
             
             
         }

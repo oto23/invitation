@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="PGx-R6-Dht">
             <objects>
-                <viewController id="0Z2-Zp-nWJ" customClass="ViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="0Z2-Zp-nWJ" customClass="ViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ECV-Ek-tUn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C2A-7T-1jJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UYn-C8-A4K"/>
+                    <navigationItem key="navigationItem" id="UYn-C8-A4K">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="DdZ-0z-Fpx">
+                            <color key="tintColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="friendsTableView" destination="33O-aC-X7e" id="fFd-qj-O82"/>
                     </connections>

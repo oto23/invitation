@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Auth.auth().addStateDidChangeListener{(auth,user) in
             if user != nil && user!.isEmailVerified{
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Login", bundle:nil)
-                let nextView: MainPageViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainPageViewController") as! MainPageViewController
+                let nextView: ViewController = mainStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 self.window?.rootViewController = nextView
             }
         
