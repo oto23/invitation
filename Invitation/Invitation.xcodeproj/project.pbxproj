@@ -18,6 +18,7 @@
 		524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250F92109A41600EBA246 /* SignUpViewController.swift */; };
 		524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FB2109BD6A00EBA246 /* SignInViewController.swift */; };
 		524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FD210A447700EBA246 /* MainPageViewController.swift */; };
+		52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52425100210D677E00EBA246 /* PasswordResetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		524250FB2109BD6A00EBA246 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		524250FD210A447700EBA246 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		524250FF210BDA2E00EBA246 /* Invitation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invitation.entitlements; sourceTree = "<group>"; };
+		52425100210D677E00EBA246 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
 				524250FD210A447700EBA246 /* MainPageViewController.swift */,
+				52425100210D677E00EBA246 /* PasswordResetViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
+				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,

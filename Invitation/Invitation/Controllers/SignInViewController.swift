@@ -58,8 +58,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.showMessage(messageToDisplay: error.localizedDescription)
                 return
             }
-            if Auth.auth().currentUser != nil{
-                if (Auth.auth().currentUser?.isEmailVerified)!
+            if user?.user != nil{
+                if (user?.user.isEmailVerified)!
                 {
                     self.needToVerifyEmail()
                     return

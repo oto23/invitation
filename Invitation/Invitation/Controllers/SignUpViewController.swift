@@ -86,10 +86,11 @@ class SignUpViewController: UIViewController {
                 return
         }
         
-        if password != repeatPassword
-        {
-            self.showMessage(messageToDisplay: "Passwords don't match")
-        }
+            if password != repeatPassword
+            {
+                self.showMessage(messageToDisplay: "Passwords don't match")
+                return
+            }
         
         
         Auth.auth().createUser(withEmail:userEmail, password: password) { (user, error) in
@@ -112,12 +113,12 @@ class SignUpViewController: UIViewController {
                 
                 
                 
-            Auth.auth().currentUser?.sendEmailVerification(completion:nil)
+            user.user.sendEmailVerification(completion:nil)
                 self.showMessage(messageToDisplay: "We have sent you an email message. Please check your email and follow the link to verify")
                 
-            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-                let  appDelegate = UIApplication.shared.delegate
-                appDelegate?.window??.rootViewController = signInPage
+                let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                    let  appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = signInPage
                 
                 
                 

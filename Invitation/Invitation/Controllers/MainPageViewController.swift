@@ -8,6 +8,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import FBSDKLoginKit
+import FBSDKCoreKit
+import Firebase
+
 class MainPageViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -23,6 +28,19 @@ class MainPageViewController: UIViewController {
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
         do {
+            
+            Analytics.logEvent("signout", parameters: nil)
+            for userInfo in (Auth.auth().currentUser?.providerData)!
+            {
+                if userInfo.providerID == "facebook.com"
+                {
+                    FBSDKLoginManager().logOut()
+                    break
+                }
+            }
+            
+            
+            
          try Auth.auth().signOut()
             
             let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
