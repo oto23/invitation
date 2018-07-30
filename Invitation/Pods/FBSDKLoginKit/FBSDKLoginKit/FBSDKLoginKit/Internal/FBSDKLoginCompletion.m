@@ -153,7 +153,7 @@ static void FBSDKLoginRequestMeAndPermissions(FBSDKLoginCompletionParameters *pa
   if (_parameters.accessTokenString && !_parameters.userID) {
     void(^handlerCopy)(FBSDKLoginCompletionParameters *) = [handler copy];
     FBSDKLoginRequestMeAndPermissions(_parameters, ^{
-      handlerCopy(_parameters);
+      handlerCopy(self->_parameters);
     });
     return;
   }

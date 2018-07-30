@@ -149,7 +149,7 @@ static NSMutableDictionary *gInstancesDictionary;
       NSMutableDictionary *accountData = [NSMutableDictionary dictionaryWithCapacity:2];
       accountData[kAccountsDictionaryPermissionsKey] = [NSSet setWithSet:permissions];
       accountData[kAccountsDictionaryTokenKey] = result[@"access_token"];
-      _accounts[result[@"id"]] = accountData;
+      self->_accounts[result[@"id"]] = accountData;
 
       if (handler) {
         FBSDKAccessToken *token = [self tokenDataForTokenString:accountData[kAccountsDictionaryTokenKey]

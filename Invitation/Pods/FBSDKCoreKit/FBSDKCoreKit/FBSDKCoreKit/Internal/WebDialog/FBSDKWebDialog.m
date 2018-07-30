@@ -126,7 +126,7 @@ static FBSDKWebDialog *g_currentDialog = nil;
 {
   if (_deferVisibility) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-      if (_dialogView) {
+      if (self->_dialogView) {
         [self _showWebView];
       }
     });
