@@ -21,6 +21,9 @@
 		524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FB2109BD6A00EBA246 /* SignInViewController.swift */; };
 		524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FD210A447700EBA246 /* MainPageViewController.swift */; };
 		52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52425100210D677E00EBA246 /* PasswordResetViewController.swift */; };
+		52A7BFE52110C9AA0059597B /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFE42110C9AA0059597B /* UsersTableViewController.swift */; };
+		52A7BFE72110CA790059597B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A7BFE62110CA790059597B /* Users.storyboard */; };
+		52A7BFE92110CD940059597B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFE82110CD940059597B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +58,9 @@
 		524250FD210A447700EBA246 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		524250FF210BDA2E00EBA246 /* Invitation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invitation.entitlements; sourceTree = "<group>"; };
 		52425100210D677E00EBA246 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		52A7BFE42110C9AA0059597B /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
+		52A7BFE62110CA790059597B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		52A7BFE82110CD940059597B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +99,7 @@
 			children = (
 				524250FF210BDA2E00EBA246 /* Invitation.entitlements */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
+				52A7BFE82110CD940059597B /* User.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
 				524250C92107D92400EBA246 /* Controllers */,
@@ -104,6 +111,7 @@
 		524250C92107D92400EBA246 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52A7BFE42110C9AA0059597B /* UsersTableViewController.swift */,
 				524250B52107B57F00EBA246 /* ViewController.swift */,
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
@@ -121,6 +129,7 @@
 				257E0DA8210DC457001D60C0 /* RecieveInvitation.storyboard */,
 				524250BC2107B58000EBA246 /* LaunchScreen.storyboard */,
 				524250D22107DC5D00EBA246 /* Login.storyboard */,
+				52A7BFE62110CA790059597B /* Users.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -218,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A7BFE72110CA790059597B /* Users.storyboard in Resources */,
 				524250BE2107B58000EBA246 /* LaunchScreen.storyboard in Resources */,
 				257E0DA9210DC457001D60C0 /* RecieveInvitation.storyboard in Resources */,
 				524250BB2107B58000EBA246 /* Assets.xcassets in Resources */,
@@ -307,8 +317,10 @@
 			files = (
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
+				52A7BFE52110C9AA0059597B /* UsersTableViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
+				52A7BFE92110CD940059597B /* User.swift in Sources */,
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
