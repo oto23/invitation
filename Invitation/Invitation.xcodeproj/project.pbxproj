@@ -25,6 +25,7 @@
 		52A7BFE92110CD940059597B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFE82110CD940059597B /* User.swift */; };
 		52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFEA2112F9500059597B /* UsersTableViewController.swift */; };
 		52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFEE2113E6C40059597B /* FriendsService.swift */; };
+		52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFA21146CE70059597B /* FindFriendsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +64,7 @@
 		52A7BFE82110CD940059597B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52A7BFEA2112F9500059597B /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		52A7BFEE2113E6C40059597B /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
+		52A7BFFA21146CE70059597B /* FindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				524250FF210BDA2E00EBA246 /* Invitation.entitlements */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
 				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
+				52A7BFFA21146CE70059597B /* FindFriendsCell.swift */,
 				52A7BFE82110CD940059597B /* User.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
@@ -328,6 +331,7 @@
 				52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
+				52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

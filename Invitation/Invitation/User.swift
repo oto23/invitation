@@ -14,6 +14,7 @@ struct User {
     var firstName: String?
     var lastName: String?
     var username: String?
+    var isFollowed = false
     private static var _current: User?
     
     static var current: User {

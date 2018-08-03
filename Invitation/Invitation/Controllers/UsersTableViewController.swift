@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class UsersTableViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class UsersTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var UsersTable: UITableView!
     let userCell = "UserCell"
@@ -18,8 +18,9 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UISearc
     @IBOutlet weak var searchBar: UISearchBar!
     var ref = Database.database().reference().child("users")
     
-    var userList: [String] = []
+    var userList: [User] = []
     var currentUserList = [String]()
+    var userList1: [String] = []
     
     
     override func viewDidLoad() {
@@ -42,7 +43,8 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UISearc
                     return assertionFailure("Failed to create user using snapshot")
                 }
                 print("Username: \(user.username)")
-                self.userList.append((user.username)!)
+                self.userList.append(user)
+                self.userList1.append(user.username!)
             }
             
             DispatchQueue.main.async {
@@ -53,7 +55,8 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UISearc
         
         setUpSearchBar()
         
-        
+        UsersTable.delegate = self
+        UsersTable.dataSource = self
         
     }
     
@@ -63,20 +66,23 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UISearc
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == UsersTable{
-            return currentUserList.count
-        } else {
-            return userList.count
+            return userList1.count
         }
-    }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: userCell, for: indexPath)
-        if tableView == UsersTable{
-            cell.textLabel?.text = currentUserList[indexPath.row]
-        } else {
-            cell.textLabel?.text = userList[indexPath.row]
-        }
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell", for: indexPath) as! FindFriendsCell
+        cell.delegate = self as? FindFriendsCellDelegate
+        if tableView == UsersTable{
+        
+            cell.textLabel?.text = userList1[indexPath.row]
+        }
+        let user = userList[indexPath.row]
+        
+        //        cell.usernameLabel.text = user.username
+        cell.requestButton.isSelected = user.isFollowed
         
         
         return cell
@@ -85,7 +91,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UISearc
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        currentUserList = userList.filter({ (array:String) -> Bool in
+        currentUserList = userList1.filter({ (array:String) -> Bool in
             if array.contains(searchBar.text!){
                 print(searchBar.text)
                 return true
@@ -98,31 +104,30 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UISearc
         }
     
 
-func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
     
 }
+
+    func didTapFollowButton(_ followButton: UIButton, on cell: FindFriendsCell) {
+        guard let indexPath = UsersTable.indexPath(for: cell) else { return }
+        
+        followButton.isUserInteractionEnabled = false
+        var followee = userList[indexPath.row]
+        
+        FriendsService.setIsFollowing(!followee.isFollowed, fromCurrentUserTo: followee) { (success) in
+            defer {
+                followButton.isUserInteractionEnabled = true
+            }
+            
+            guard success else { return }
+            
+            followee.isFollowed = !followee.isFollowed
+            self.UsersTable.reloadRows(at: [indexPath], with: .none)
+        }
+    }
 }
 
 
-//    func fetchUsers(){
-//        refHandle = ref.child("Users").observe(.childAdded, with: { (snapshot) in
-//            guard let dictionary = snapshot.value as? [String: AnyObject] else{return}
-//                print(dictionary)
-//                let user = User()
-//                user.setValuesForKeys(dictionary)
-//                self.userList.append(user)
-//
-//                DispatchQueue.main.async(execute: {
-//
-//
-//                    self.tableView.reloadData()
-//                } )
-//
-//
-//
-//
-//        })
-//    }
 
 
-//}
+
