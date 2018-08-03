@@ -28,6 +28,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginWithFbButton: FBSDKLoginButton!
    
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -147,7 +148,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        Auth.auth().signIn(with: credential){ (user, error)  in
+        Auth.auth().signInAndRetrieveData(with: credential){ (user, error)  in
+            
+            
             if let error = error {
                 print("Could not sign in with Facebook because of: \(error.localizedDescription)")
                 self.showMessage(messageToDisplay: error.localizedDescription)

@@ -133,7 +133,7 @@
       UIAlertAction *option = [UIAlertAction actionWithTitle:title
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                       [_recoveryAttempter attemptRecoveryFromError:self->_error
+                                                       [self->_recoveryAttempter attemptRecoveryFromError:self->_error
                                                                                         optionIndex:i
                                                                                            delegate:self
                                                                                  didRecoverSelector:@selector(didPresentErrorWithRecovery:contextInfo:)
@@ -170,7 +170,7 @@
     UIAlertAction *OKAction = [UIAlertAction actionWithTitle:localizedOK
                                                        style:UIAlertActionStyleCancel
                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                       [_recoveryAttempter attemptRecoveryFromError:self->_error
+                                                       [self->_recoveryAttempter attemptRecoveryFromError:self->_error
                                                                                         optionIndex:0
                                                                                            delegate:self
                                                                                  didRecoverSelector:@selector(didPresentErrorWithRecovery:contextInfo:)

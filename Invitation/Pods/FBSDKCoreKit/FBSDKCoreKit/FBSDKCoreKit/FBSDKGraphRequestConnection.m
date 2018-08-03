@@ -754,7 +754,7 @@ NSURLSessionDataDelegate
     [metadata invokeCompletionHandlerForConnection:self withResults:body error:error];
 
     if (--self->_expectingResults == 0) {
-      if (canNotifyDelegate && [_delegate respondsToSelector:@selector(requestConnectionDidFinishLoading:)]) {
+      if (canNotifyDelegate && [self->_delegate respondsToSelector:@selector(requestConnectionDidFinishLoading:)]) {
         [self->_delegate requestConnectionDidFinishLoading:self];
       }
     }

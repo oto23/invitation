@@ -341,15 +341,15 @@ static const CGFloat kPaddingBetweenLogoTitle = 8.0;
   BOOL accessTokenIsValid = [FBSDKAccessToken currentAccessTokenIsActive];
   self.selected = accessTokenIsValid;
   if (accessTokenIsValid) {
-    if (![[FBSDKAccessToken currentAccessToken].userID isEqualToString:_userID]) {
+    if (![[FBSDKAccessToken currentAccessToken].userID isEqualToString:self->_userID]) {
       FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me?fields=id,name"
                                                                      parameters:nil
                                                                           flags:FBSDKGraphRequestFlagDisableErrorRecovery];
       [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         NSString *userID = [FBSDKTypeUtility stringValue:result[@"id"]];
         if (!error && [[FBSDKAccessToken currentAccessToken].userID isEqualToString:userID]) {
-          _userName = [FBSDKTypeUtility stringValue:result[@"name"]];
-          _userID = userID;
+          self->_userName = [FBSDKTypeUtility stringValue:result[@"name"]];
+          self->_userID = userID;
         }
       }];
     }
