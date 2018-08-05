@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class UsersTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class UsersTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FindFriendsCellDelegate {
     
     @IBOutlet weak var UsersTable: UITableView!
     let userCell = "UserCell"
@@ -53,11 +53,11 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
             
         }
         
-        setUpSearchBar()
+        
         
         UsersTable.delegate = self
         UsersTable.dataSource = self
-        
+        setUpSearchBar()
     }
     
     private func setUpSearchBar(){
@@ -74,15 +74,15 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell", for: indexPath) as! FindFriendsCell
-        cell.delegate = self as? FindFriendsCellDelegate
+        cell.delegate = self 
         if tableView == UsersTable{
-        
             cell.textLabel?.text = userList1[indexPath.row]
         }
         let user = userList[indexPath.row]
         
         //        cell.usernameLabel.text = user.username
         cell.requestButton.isSelected = user.isFollowed
+        
         
         
         return cell

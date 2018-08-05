@@ -9,20 +9,15 @@
 import UIKit
 import Firebase
 
-struct User {
+class User: Codable {
     var uid: String?
     var firstName: String?
     var lastName: String?
     var username: String?
     var isFollowed = false
-    private static var _current: User?
     
-    static var current: User {
-        guard let currentUser = _current else {
-            fatalError("Error: current user doesn't exist")
-        }
-        return currentUser
-    }
+    
+
     
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
@@ -41,4 +36,31 @@ struct User {
         self.uid = uid
         self.username = username
     }
+    struct Constants {
+        struct UserDefaults {
+        static let currentUser = "currentUser"
+        }
+        
+    }
+    private static var _current: User?
+    static var current: User {
+        guard let currentUser = _current else {
+            fatalError("Error: current user doesn't exist")
+        }
+        return currentUser
+    }
+    
+    class func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
+        if writeToUserDefaults {
+            if let data = try? JSONEncoder().encode(user) {
+                UserDefaults.standard.set(data, forKey: Constants.UserDefaults.currentUser)
+            }
+        }
+        
+        _current = user
+    }
+        
+
+
 }
+

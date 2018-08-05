@@ -10,19 +10,30 @@ protocol FindFriendsCellDelegate: class {
     func didTapFollowButton(_ requesButton: UIButton, on cell: FindFriendsCell)
 }
 class FindFriendsCell: UITableViewCell {
-    weak var delegate: FindFriendsCellDelegate?
+    
     
     
     @IBOutlet weak var requestButton: UIButton!
     
-    @IBOutlet weak var usernameLabel: UILabel!
     
+    weak var delegate: FindFriendsCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        requestButton.setTitle("Send request", for: .normal)
-        requestButton.setTitle("Sent", for: .selected)
+        requestButton.layer.borderColor = UIColor.lightGray.cgColor
+        requestButton.layer.borderWidth = 1
+        requestButton.layer.cornerRadius = 6
+        requestButton.clipsToBounds = true
+        
+        
+        
     }
     @IBAction func requestButtonTapped(_ sender: UIButton) {
+        
+        requestButton.setTitle("Send request", for: .normal)
+        requestButton.setTitle("Sent", for: .selected)
         delegate?.didTapFollowButton(sender, on: self)
+        
+        
+        print("tapped")
     }
 }
