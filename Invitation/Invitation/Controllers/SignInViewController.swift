@@ -74,8 +74,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
 //
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let displayFriendList = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
-                self.present(displayFriendList, animated: true, completion: nil)
+                let displayFriendlist = storyboard.instantiateInitialViewController()
+                self.present(displayFriendlist!, animated: true, completion: nil)
 //
             }
         }
@@ -155,8 +155,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let displayFriendlist = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
-            self.present(displayFriendlist, animated: true, completion: nil)
+            let displayFriendlist = storyboard.instantiateInitialViewController()
+            self.present(displayFriendlist!, animated: true, completion: nil)
             
             let appDelegate = UIApplication.shared.delegate
             appDelegate?.window??.rootViewController = displayFriendlist
