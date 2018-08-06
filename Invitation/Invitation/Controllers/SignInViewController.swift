@@ -159,11 +159,6 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let displayFriendlist = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
             self.present(displayFriendlist, animated: true, completion: nil)
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> parent of 66af1ef... some changes???
             let appDelegate = UIApplication.shared.delegate
             appDelegate?.window??.rootViewController = displayFriendlist
 
