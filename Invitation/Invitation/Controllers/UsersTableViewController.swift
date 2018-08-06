@@ -66,9 +66,12 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == UsersTable{
+            return currentUserList.count
+        }else{
             return userList1.count
         }
-    
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,6 +79,9 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell", for: indexPath) as! FindFriendsCell
         cell.delegate = self 
         if tableView == UsersTable{
+            cell.textLabel?.text = currentUserList[indexPath.row]
+            
+        }else{
             cell.textLabel?.text = userList1[indexPath.row]
         }
         let user = userList[indexPath.row]
@@ -91,11 +97,12 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        currentUserList = userList1.filter({ (array:String) -> Bool in
+        currentUserList = userList1.filter({ (array: String) -> Bool in
             if array.contains(searchBar.text!){
                 print(searchBar.text)
                 return true
             } else {
+                print(currentUserList)
                 return false
             }
         })
