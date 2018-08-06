@@ -16,12 +16,8 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
-    @IBOutlet weak var search: UISearchBar!
     
     @IBAction func inviteButton(_ sender: Any) {
-        
-        
     }
     
     let listOfFriends = ["Sam", "Niko", "Oto"]

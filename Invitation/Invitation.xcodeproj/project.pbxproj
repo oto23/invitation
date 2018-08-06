@@ -10,11 +10,6 @@
 		0ABB98B4C374CD2240ACA624 /* Pods_Invitation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */; };
 		257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */; };
 		257E0DA9210DC457001D60C0 /* RecieveInvitation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257E0DA8210DC457001D60C0 /* RecieveInvitation.storyboard */; };
-		257E0DAB2110D4AA001D60C0 /* RecievingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DAA2110D4AA001D60C0 /* RecievingRequest.swift */; };
-		257E0DAD2113EEB2001D60C0 /* MapLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */; };
-		257E0DAF2113F0B0001D60C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */; };
-		257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DB02113F1B1001D60C0 /* MapViewController.swift */; };
-		257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DB22114C884001D60C0 /* NavigationView.swift */; };
 		524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B32107B57F00EBA246 /* AppDelegate.swift */; };
 		524250B62107B57F00EBA246 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B52107B57F00EBA246 /* ViewController.swift */; };
 		524250B92107B57F00EBA246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524250B72107B57F00EBA246 /* Main.storyboard */; };
@@ -33,11 +28,6 @@
 		207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Invitation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
 		257E0DA8210DC457001D60C0 /* RecieveInvitation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecieveInvitation.storyboard; sourceTree = "<group>"; };
-		257E0DAA2110D4AA001D60C0 /* RecievingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievingRequest.swift; sourceTree = "<group>"; };
-		257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapLocation.storyboard; sourceTree = "<group>"; };
-		257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		257E0DB02113F1B1001D60C0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		257E0DB22114C884001D60C0 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		524250B02107B57F00EBA246 /* Invitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524250B32107B57F00EBA246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524250B52107B57F00EBA246 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				257E0DAF2113F0B0001D60C0 /* CoreLocation.framework in Frameworks */,
 				0ABB98B4C374CD2240ACA624 /* Pods_Invitation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,7 +60,6 @@
 		524250A72107B57F00EBA246 = {
 			isa = PBXGroup;
 			children = (
-				524250FF210BDA2E00EBA246 /* Invitation.entitlements */,
 				524250B22107B57F00EBA246 /* Invitation */,
 				524250B12107B57F00EBA246 /* Products */,
 				641C3B8EA239F25F255A3E33 /* Pods */,
@@ -90,6 +78,7 @@
 		524250B22107B57F00EBA246 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
+				524250FF210BDA2E00EBA246 /* Invitation.entitlements */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
@@ -105,9 +94,6 @@
 				524250B52107B57F00EBA246 /* ViewController.swift */,
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
-				257E0DAA2110D4AA001D60C0 /* RecievingRequest.swift */,
-				257E0DB22114C884001D60C0 /* NavigationView.swift */,
-				257E0DB02113F1B1001D60C0 /* MapViewController.swift */,
 				524250FD210A447700EBA246 /* MainPageViewController.swift */,
 				257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */,
 				52425100210D677E00EBA246 /* PasswordResetViewController.swift */,
@@ -121,7 +107,6 @@
 				524250B72107B57F00EBA246 /* Main.storyboard */,
 				257E0DA8210DC457001D60C0 /* RecieveInvitation.storyboard */,
 				524250BC2107B58000EBA246 /* LaunchScreen.storyboard */,
-				257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */,
 				524250D22107DC5D00EBA246 /* Login.storyboard */,
 			);
 			path = Storyboards;
@@ -139,7 +124,6 @@
 		5E0136176ECF94A46459EC55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */,
 				207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */,
 			);
 			name = Frameworks;
@@ -190,9 +174,6 @@
 					524250AF2107B57F00EBA246 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -225,7 +206,6 @@
 			files = (
 				524250BE2107B58000EBA246 /* LaunchScreen.storyboard in Resources */,
 				257E0DA9210DC457001D60C0 /* RecieveInvitation.storyboard in Resources */,
-				257E0DAD2113EEB2001D60C0 /* MapLocation.storyboard in Resources */,
 				524250BB2107B58000EBA246 /* Assets.xcassets in Resources */,
 				524250B92107B57F00EBA246 /* Main.storyboard in Resources */,
 				524250D32107DC5D00EBA246 /* Login.storyboard in Resources */,
@@ -323,13 +303,10 @@
 			files = (
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
-				257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
-				257E0DAB2110D4AA001D60C0 /* RecievingRequest.swift in Sources */,
-				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +452,7 @@
 			baseConfigurationReference = 1BD94CBEB27FC681653FAA22 /* Pods-Invitation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Invitation/Invitation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4266XVUC5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
@@ -482,7 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nick.Invitation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Invitation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -494,6 +472,7 @@
 			baseConfigurationReference = BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Invitation/Invitation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4266XVUC5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
@@ -501,7 +480,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nick.Invitation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Invitation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
