@@ -346,11 +346,7 @@
 			files = (
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
-<<<<<<< HEAD
-				257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */,
-=======
-				52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */,
->>>>>>> origin
+				52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */,\
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				52A7BFE92110CD940059597B /* User.swift in Sources */,
