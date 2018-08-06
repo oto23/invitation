@@ -12,7 +12,6 @@ import FirebaseDatabase
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
-import FirebaseUI
 
 
 
@@ -29,7 +28,6 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginWithFbButton: FBSDKLoginButton!
    
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,41 +52,17 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         
-        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (result, error) in
+        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.showMessage(messageToDisplay: error.localizedDescription)
                 return
             }
-            
-            guard let user = result?.user else {
-                fatalError("no user")
-            }
-            
-            
-            if user.isEmailVerified
-            {
-                self.needToVerifyEmail()
-                return
-            }
-            
-            //               self.storeTokens()
-            //                if !(user?.isEmailVerified)!
-            //                {
-            //                    self.needToVerifyEmail()
-            //                    return
-            //                }
-            //
-            UserService.show(forUID: user.uid) { (user) in
-                if let user = user {
-                    // handle existing user
-                    User.setCurrent(user, writeToUserDefaults: true)
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let displayFriendList = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
-                    self.present(displayFriendList, animated: true, completion: nil)
-                } else {
-                    //no user found
+            if user?.user != nil{
+                if (user?.user.isEmailVerified)!
+                {
+                    self.needToVerifyEmail()
+                    return
                 }
                 
 //               self.storeTokens()
@@ -173,9 +147,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        Auth.auth().signInAndRetrieveData(with: credential){ (result, error)  in
-            
-            
+        Auth.auth().signIn(with: credential){ (user, error)  in
             if let error = error {
                 print("Could not sign in with Facebook because of: \(error.localizedDescription)")
                 self.showMessage(messageToDisplay: error.localizedDescription)
@@ -185,30 +157,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let displayFriendlist = storyboard.instantiateInitialViewController()
             self.present(displayFriendlist!, animated: true, completion: nil)
-
             
-            guard let user = result?.user else {
-                fatalError("no user")
-            }
-            
-            
-            UserService.show(forUID: user.uid) { (user) in
-                if let user = user {
-                    // handle existing user
-                    User.setCurrent(user, writeToUserDefaults: true)
-                    
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let displayFriendlist = storyboard.instantiateViewController(withIdentifier:"ViewController") as! ViewController
-                    self.present(displayFriendlist, animated: true, completion: nil)
-                    
-                    let appDelegate = UIApplication.shared.delegate
-                    appDelegate?.window??.rootViewController = displayFriendlist
-                } else {
-                    //handle new user by sending them to add a username
-                    
-                }
-            }
+            let appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = displayFriendlist
             
             
         }
@@ -224,22 +175,4 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 }
 
-extension SignInViewController: FUIAuthDelegate {
-    private func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-        if let error = error {
-            assertionFailure("Error signing in: \(error.localizedDescription)")
-            return
-        }
-        
-        guard let user = user
-            else { return }
-        
-        UserService.show(forUID: user.uid!) { (user) in
-            if let user = user {
-                // handle existing user
-                User.setCurrent(user, writeToUserDefaults: true)
 
-            }
-        }
-    }
-}

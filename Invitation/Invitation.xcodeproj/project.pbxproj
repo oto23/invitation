@@ -26,26 +26,7 @@
 		524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FB2109BD6A00EBA246 /* SignInViewController.swift */; };
 		524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250FD210A447700EBA246 /* MainPageViewController.swift */; };
 		52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52425100210D677E00EBA246 /* PasswordResetViewController.swift */; };
-		52A7BFE72110CA790059597B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A7BFE62110CA790059597B /* Users.storyboard */; };
-		52A7BFE92110CD940059597B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFE82110CD940059597B /* User.swift */; };
-		52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFEA2112F9500059597B /* UsersTableViewController.swift */; };
-		52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFEE2113E6C40059597B /* FriendsService.swift */; };
-		52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFA21146CE70059597B /* FindFriendsCell.swift */; };
-		52A7BFFF2117EA660059597B /* UserSerrvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFE2117EA660059597B /* UserSerrvice.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		52425150210F050A00EBA246 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1BD94CBEB27FC681653FAA22 /* Pods-Invitation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,12 +52,6 @@
 		524250FD210A447700EBA246 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		524250FF210BDA2E00EBA246 /* Invitation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invitation.entitlements; sourceTree = "<group>"; };
 		52425100210D677E00EBA246 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
-		52A7BFE62110CA790059597B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
-		52A7BFE82110CD940059597B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		52A7BFEA2112F9500059597B /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
-		52A7BFEE2113E6C40059597B /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
-		52A7BFFA21146CE70059597B /* FindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
-		52A7BFFE2117EA660059597B /* UserSerrvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSerrvice.swift; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,10 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
-				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
-				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
-				52A7BFFA21146CE70059597B /* FindFriendsCell.swift */,
-				52A7BFE82110CD940059597B /* User.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
 				524250C92107D92400EBA246 /* Controllers */,
@@ -140,7 +111,6 @@
 				524250FD210A447700EBA246 /* MainPageViewController.swift */,
 				257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */,
 				52425100210D677E00EBA246 /* PasswordResetViewController.swift */,
-				52A7BFEA2112F9500059597B /* UsersTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,7 +123,6 @@
 				524250BC2107B58000EBA246 /* LaunchScreen.storyboard */,
 				257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */,
 				524250D22107DC5D00EBA246 /* Login.storyboard */,
-				52A7BFE62110CA790059597B /* Users.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -196,9 +165,8 @@
 				524250AC2107B57F00EBA246 /* Sources */,
 				524250AD2107B57F00EBA246 /* Frameworks */,
 				524250AE2107B57F00EBA246 /* Resources */,
-				52425150210F050A00EBA246 /* Embed Frameworks */,
-				7816E09F238D26CAEA709DD9 /* [CP] Embed Pods Frameworks */,
-				2FB5ED5360EBAF3742CF1E0E /* [CP] Copy Pods Resources */,
+				E95D1FFA3A144EC4EB9C28BB /* [CP] Embed Pods Frameworks */,
+				317AD1DC7B1F3414203FF5AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,7 +223,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A7BFE72110CA790059597B /* Users.storyboard in Resources */,
 				524250BE2107B58000EBA246 /* LaunchScreen.storyboard in Resources */,
 				257E0DA9210DC457001D60C0 /* RecieveInvitation.storyboard in Resources */,
 				257E0DAD2113EEB2001D60C0 /* MapLocation.storyboard in Resources */,
@@ -269,7 +236,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2FB5ED5360EBAF3742CF1E0E /* [CP] Copy Pods Resources */ = {
+		317AD1DC7B1F3414203FF5AB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,36 +254,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Invitation/Pods-Invitation-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7816E09F238D26CAEA709DD9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Invitation/Pods-Invitation-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Invitation/Pods-Invitation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8A82C5BE04FC5BA4A186835C /* [CP] Check Pods Manifest.lock */ = {
@@ -337,6 +274,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E95D1FFA3A144EC4EB9C28BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Invitation/Pods-Invitation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Invitation/Pods-Invitation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,22 +323,14 @@
 			files = (
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250FE210A447700EBA246 /* MainPageViewController.swift in Sources */,
-<<<<<<< HEAD
 				257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */,
-=======
-				52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */,
->>>>>>> origin
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
-				52A7BFE92110CD940059597B /* User.swift in Sources */,
 				524250B62107B57F00EBA246 /* ViewController.swift in Sources */,
-				52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
 				257E0DAB2110D4AA001D60C0 /* RecievingRequest.swift in Sources */,
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
-				52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */,
-				52A7BFFF2117EA660059597B /* UserSerrvice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4266XVUC5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,7 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4266XVUC5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
