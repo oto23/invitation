@@ -50,6 +50,15 @@
                                     <action selector="loginButtonTapped:" destination="B8o-ww-EAt" eventType="touchUpInside" id="Mrf-SF-xlR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7M-GZ-vo7">
+                                <rect key="frame" x="131" y="365" width="115" height="30"/>
+                                <state key="normal" title="Forgot Password">
+                                    <color key="titleColor" red="0.1960784314" green="0.73725490199999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="u56-ak-zV0" kind="presentation" id="uFC-bd-sSm"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-rh-2cJ">
                                 <rect key="frame" x="159" y="617" width="57" height="30"/>
                                 <state key="normal" title="Register">
@@ -145,6 +154,9 @@
                                 <state key="normal" title="Reset password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetPasswordTapped:" destination="u56-ak-zV0" eventType="touchUpInside" id="1EO-oP-ym3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylL-Wv-C58">
                                 <rect key="frame" x="232" y="125" width="127" height="30"/>
@@ -156,6 +168,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="u56-ak-zV0" eventType="touchUpInside" id="v8K-6t-KIk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -172,6 +187,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PAa-US-1Fe"/>
                     </view>
+                    <connections>
+                        <outlet property="emailAdressTextField" destination="SRH-gw-aKW" id="HFx-xO-QEZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="le3-wg-V4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,7 +198,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="Rhk-tY-QRW">
             <objects>
-                <viewController id="J60-wp-Zmd" customClass="SignUpViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="J60-wp-Zmd" customClass="SignUpViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RSe-Yg-tUQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
