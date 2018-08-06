@@ -43,24 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         
-        let refOfInvites = Database.database().reference().child("invites")
-        refOfInvites.observe(.value) { (snapshot) in
-            guard let invitedFriends = snapshot.children.allObjects as? [DataSnapshot] else {
-                fatalError("snapshot was not a dictionary")
-            }
-            
-//            //check if my uid is in the snapshot
-//            for aFriend in invitedFriends {
-////                if git
-//            }
-        }
-        
-        
         
         Auth.auth().addStateDidChangeListener{(auth,user) in
             if user != nil && user!.isEmailVerified{
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Login", bundle:nil)
-                let nextView: SignInViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                let nextView: ViewController = mainStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 self.window?.rootViewController = nextView
             }
         

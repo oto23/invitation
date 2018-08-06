@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-import FirebaseAuth.FIRUser
 
 class SignUpViewController: UIViewController {
     
@@ -95,8 +94,6 @@ class SignUpViewController: UIViewController {
         
         
         Auth.auth().createUser(withEmail:userEmail, password: password) { (user, error) in
-            
-           
             if let error = error
             {
                 print(error.localizedDescription)
@@ -104,7 +101,6 @@ class SignUpViewController: UIViewController {
                 return
             }
             if let user = user {
-                
                 var databaseReferance: DatabaseReference!
                 databaseReferance = Database.database().reference()
                 let userDetails: [String:String] = ["FirstName":firstName, "LastName":lastName, "Username": username]

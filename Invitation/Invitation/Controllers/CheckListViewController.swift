@@ -11,24 +11,6 @@ import UIKit
 
 class CheckListViewController: UITableViewController {
     
-    @IBAction func check(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Users", bundle: nil)
-        let userLists = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
-        self.present(userLists, animated: true, completion: nil)
-        
-        
-        
-    }
-    
-    @IBAction func displayButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
-        let mapView = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
-        self.present(mapView, animated: true, completion: nil)
-        
-        
-        }
-        
-        
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +28,8 @@ class CheckListViewController: UITableViewController {
         
         return cell
     }
+    
+    
     
     
 }

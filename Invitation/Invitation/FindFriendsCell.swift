@@ -24,13 +24,13 @@ class FindFriendsCell: UITableViewCell {
         requestButton.layer.cornerRadius = 6
         requestButton.clipsToBounds = true
         
-        requestButton.setTitle("Send request", for: .normal)
-        requestButton.setTitle("Sent", for: .selected)
+        
         
     }
     @IBAction func requestButtonTapped(_ sender: UIButton) {
         
-      
+        requestButton.setTitle("Send request", for: .normal)
+        requestButton.setTitle("Sent", for: .selected)
         delegate?.didTapFollowButton(sender, on: self)
         
         
