@@ -28,6 +28,7 @@
 		52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFEE2113E6C40059597B /* FriendsService.swift */; };
 		52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFA21146CE70059597B /* FindFriendsCell.swift */; };
 		52A7BFFF2117EA660059597B /* UserSerrvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFE2117EA660059597B /* UserSerrvice.swift */; };
+		52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7C001211955660059597B /* Storyboard + Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		52A7BFEE2113E6C40059597B /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
 		52A7BFFA21146CE70059597B /* FindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
 		52A7BFFE2117EA660059597B /* UserSerrvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSerrvice.swift; sourceTree = "<group>"; };
+		52A7C001211955660059597B /* Storyboard + Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Utility.swift"; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 		524250B22107B57F00EBA246 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
+				52A7C0002119553E0059597B /* Extensions */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
 				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
 				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
@@ -153,6 +156,14 @@
 				524250C72107D8B600EBA246 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		52A7C0002119553E0059597B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52A7C001211955660059597B /* Storyboard + Utility.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5E0136176ECF94A46459EC55 /* Frameworks */ = {
@@ -334,6 +345,7 @@
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */,
 				524250B62107B57F00EBA246 /* NewViewController.swift in Sources */,
+				52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */,
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
