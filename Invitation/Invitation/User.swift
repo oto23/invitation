@@ -9,7 +9,16 @@
 import UIKit
 import Firebase
 
-class User: Codable {
+class User: Codable, Hashable {
+    
+    var hashValue: Int {
+        return uid!.hashValue
+    }
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.uid! == rhs.uid!
+    }
+    
     var uid: String?
     var firstName: String?
     var lastName: String?

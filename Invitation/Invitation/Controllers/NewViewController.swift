@@ -30,10 +30,10 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         
     }
-    var listOfFollowers = [String]()
-    var listOfFollowees = [String]()
+    var listOfFollowers = [User]()
+    var listOfFollowees = [User]()
     
-    var listOfFriendsString = [String]()
+    var listOfFriends = [User]()
     var ref: DatabaseReference!
     var ref2: DatabaseReference!
     var reciever = [String]()
@@ -49,14 +49,16 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchFollowers()
-        fetchFollowees()
+        fetchFollowers { success in
+            self.fetchFollowees { success in
+                self.findFriends()
+            }
+        }
 
-        findFriends()
         
-        print("followers: \(listOfFollowers)")
-        print("followees: \(listOfFollowees)")
-        print("friends\(listOfFriendsString)")
+        print("followers: \(self.listOfFollowers)")
+        print("followees: \(self.listOfFollowees)")
+        print("friends: \(self.listOfFriends)")
         
 //            for snap in snapshot.children {
 //
@@ -112,7 +114,7 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
         friendsTableView.allowsMultipleSelection = true
     }
     
-    func fetchFollowees() {
+    func fetchFollowees(completion: @escaping (Bool) -> ()) {
         guard let currentUID = User.current.uid else {return}
         print(currentUID)
         
@@ -134,7 +136,9 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 let userRef = Database.database().reference().child("users").child(userId)
                 userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    let user = User(snapshot: snapshot)
+                    guard let user = User(snapshot: snapshot) else {
+                        fatalError("failed to create a user from the snapshot")
+                    }
                     //                    guard let dict = snapshot.value as? [String: Any],
                     //                          let userDetailsDict = dict["userDetails"] as? [String: Any],
                     //                          let username = userDetailsDict["Username"] as? String else {
@@ -143,10 +147,11 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     
                     // Append username in listOfFollowees array
                     //                    self.listOfFollowees.append(username)
-                    guard let username = user?.username else { return }
+//                    guard let username = user?.username else { return }
                     
-                    self.listOfFollowees.append(username)
+                    self.listOfFollowees.append(user)
                     
+                    completion(true)
                     
                     print("Followees: \(self.listOfFollowees)")
                     
@@ -157,7 +162,7 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
     }
     
-    func fetchFollowers() {
+    func fetchFollowers(completion: @escaping (Bool) -> ()) {
         guard let currentUID = User.current.uid else {return}
         ref2 = Database.database().reference().child("followers").child(currentUID)
         ref2.observeSingleEvent(of: .value) { (snapshot) in
@@ -175,13 +180,18 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 let userRef = Database.database().reference().child("users").child(userId)
                 userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    let user = User(snapshot: snapshot)
+                    guard let user = User(snapshot: snapshot) else {
+                        fatalError("failed to create a user from the snapshot")
+                    }
                     
-                    guard let username = user?.username else { return }
+//                    guard let username = user else { return }
                     
-                    self.listOfFollowers.append(username)
+                    self.listOfFollowers.append(user)
                     
+                    
+                    completion(true)
                     print("Followers: \(self.listOfFollowers)")
+                    
                     
                 })
                 
@@ -191,18 +201,22 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func findFriends() {
-        for user in self.listOfFollowees{
-//            print("this is user:\(user)")
-            for user1 in self.listOfFollowers{
-//                print("this is user:\(user1)")
-                if user == user1{
-                    self.listOfFriendsString.append(user1)
-                    print("friends")
-                    print(listOfFriendsString)
-                    
-                }
-            }
-        }
+        let followersSet = Set<User>(self.listOfFollowers)
+        let followingSet = Set<User>(self.listOfFollowees)
+        self.listOfFriends = Array<User>(followersSet.intersection(followingSet))
+        
+//        for user in listOfFollowees{
+////            print("this is user:\(user)")
+//            for user1 in listOfFollowers{
+////                print("this is user:\(user1)")
+//                if user == user1{
+//                    listOfFriends.append(user1)
+//                    print("friends")
+//                    print(listOfFriends)
+//
+//                }
+//            }
+//        }
         self.friendsTableView.reloadData()
     }
     
@@ -210,14 +224,17 @@ class NewViewController: UIViewController, UITableViewDataSource, UITableViewDel
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
 //        print(listOfFriendsString)
-        return (listOfFriendsString.count)
+        return listOfFriends.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
-        cell.textLabel?.text = listOfFriendsString[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)// as! UITableViewCell
+        
+        let user = listOfFriends[indexPath.row]
+        cell.textLabel?.text = user.username
         cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
         cell.backgroundColor = UIColor.darkGray
+        
         return (cell)
         
     }
