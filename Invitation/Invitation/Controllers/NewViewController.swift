@@ -16,14 +16,29 @@ import Firebase
 
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
+    //COPY ME
+    lazy var inviteListener = InviteListener(delegate: self)
     
-    
+//    continue
+//
+//    unowned
+//
+//    private
+//
+//    public
+//
+//    open
+//
+//    final
+//
+//    static
     
     @IBOutlet weak var search: UISearchBar!
     
     @IBAction func inviteButton(_ sender: Any) {
         
+        //create a post from the information, like invited friends and location
+//        PostService.create(name: <#T##String#>, long: <#T##Double#>, lat: <#T##Double#>, invitedUsers: <#T##[User]#>, completion: <#T##(Bool) -> ()#>)
         
     }
     
@@ -46,6 +61,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    var menuVc : MenuViewController!
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        print(listOfFriends[indexPath.row])
         
@@ -62,14 +79,24 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        _ = inviteListener
+        
+         menuVc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
+        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
+        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
+        
+        self.view.addGestureRecognizer(rightSwipe)
+        self.view.addGestureRecognizer(leftSwipe)
         
         friendsTableView.allowsMultipleSelection = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    
     
     @IBAction func logoutButton(_ sender: Any)
     {
@@ -113,8 +140,90 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         alertController.addAction(OKAction)
         self.present(alertController,animated: true, completion: nil)
     }
-}
+    
+    @objc func respondToGesture(gesture: UISwipeGestureRecognizer)
+    {
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.right:
+            print("Right Swipe")
+            openMenu()
             
+        case UISwipeGestureRecognizerDirection.left:
+            print("Left Swipe")
+            swipeClose()
+            
+        default:
+            break
+        }
+    }
+    
+    
+    @IBAction func menuAction(_ sender: Any) {
+        
+        if AppDelegate.menuBool {
+            openMenu ()
+        } else {
+             closeMenu ()
+        }
+        
+        
+    }
+    
+    func swipeClose() {
+        
+        if AppDelegate.menuBool {
+           // openMenu ()
+        } else {
+            closeMenu ()
+        }
+    }
+    
+    
+    func openMenu () {
+        
+        UIView.animate(withDuration: 0.3) { ()->Void in
+            
+            self.menuVc.view.frame = CGRect(x: 0, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+            self.menuVc.view.backgroundColor = UIColor.black
+            self.addChildViewController(self.menuVc)
+            self.view.addSubview(self.menuVc.view)
+            AppDelegate.menuBool = false
+        }
+        
+        
+    }
+    
+    func closeMenu ()
+    
+    {
+        UIView.animate(withDuration: 0.3, animations: { ()->Void in
+            self.menuVc.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        }) { (finished) in
+        
+        self.menuVc.view.removeFromSuperview()
+        }
+        
+        AppDelegate.menuBool = true
+    }
+    
+    
+}
+
+//copy the inviteListener var and this extension
+extension NewViewController: InviteListenerDelegate {
+    func inviteListner(_ listener: InviteListener, userDidRecieveInviteFor post: Post) {
+        let joinStoryboard = UIStoryboard(name: "MapLocation", bundle: nil)
+        guard
+            let viewController = joinStoryboard.instantiateInitialViewController(),
+            let mapViewController = viewController as? MapViewController
+            else {
+                fatalError("storybaord not set up correctly with view controlle classes")
+        }
+        
+        mapViewController.post = post
+        self.present(mapViewController, animated: true)
+    }
+}
             
 
         
