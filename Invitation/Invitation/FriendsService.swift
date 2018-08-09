@@ -14,9 +14,10 @@ import FirebaseDatabase
 struct FriendsService {
     private static func followUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         // 1
-        let currentUID = User.current.uid
-        let followData = ["followers/\(user.uid)/\(currentUID)" : true,
-                          "following/\(currentUID)/\(user.uid)" : true]
+        guard let currentUID = User.current.uid else {return}
+        guard let otherUserID = user.uid else {return}
+        let followData = ["followers/\(otherUserID)/\(currentUID)" : true,
+                          "following/\(currentUID)/\(otherUserID)" : true]
         
         // 2
         let ref = Database.database().reference()

@@ -21,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
+
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
        // FirebaseApp.configure()
         configureInitialRootViewController(for: window)
         
@@ -44,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         application.registerForRemoteNotifications()
-        
         
         let refOfInvites = Database.database().reference().child("invites")
         refOfInvites.observe(.value) { (snapshot) in
