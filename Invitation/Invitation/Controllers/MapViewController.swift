@@ -15,6 +15,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
 {
     @IBOutlet weak var map: MKMapView!
     
+    var post: Post!
+    
     let manager = CLLocationManager()
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -39,13 +41,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //update the UI based off of the infomation from the post var
     }
     
     
-    
-    
-    
-    
-    
+}
+
+
+
+
+
+
+
+
 

@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0ABB98B4C374CD2240ACA624 /* Pods_Invitation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */; };
+		2508FD65211A561D0065FEFE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD64211A561D0065FEFE /* MenuViewController.swift */; };
+		2508FD67211A56440065FEFE /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD66211A56440065FEFE /* MenuTableViewCell.swift */; };
+		2508FD6D211C13790065FEFE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD6C211C13790065FEFE /* Post.swift */; };
+		2508FD6F211C149F0065FEFE /* InviteListner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD6E211C149F0065FEFE /* InviteListner.swift */; };
+		2508FD71211C18730065FEFE /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD70211C18730065FEFE /* PostService.swift */; };
 		257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */; };
 		257E0DAD2113EEB2001D60C0 /* MapLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */; };
 		257E0DAF2113F0B0001D60C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */; };
 		257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DB02113F1B1001D60C0 /* MapViewController.swift */; };
-		257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DB22114C884001D60C0 /* NavigationView.swift */; };
 		25DB8BEB211917F300F89CE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DB8BEA211917F300F89CE6 /* Main.storyboard */; };
 		524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B32107B57F00EBA246 /* AppDelegate.swift */; };
 		524250B62107B57F00EBA246 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524250B52107B57F00EBA246 /* NewViewController.swift */; };
@@ -48,11 +52,15 @@
 /* Begin PBXFileReference section */
 		1BD94CBEB27FC681653FAA22 /* Pods-Invitation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.debug.xcconfig"; sourceTree = "<group>"; };
 		207B3F1C89A3D0D22E35AEAF /* Pods_Invitation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Invitation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2508FD64211A561D0065FEFE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		2508FD66211A56440065FEFE /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		2508FD6C211C13790065FEFE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		2508FD6E211C149F0065FEFE /* InviteListner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteListner.swift; sourceTree = "<group>"; };
+		2508FD70211C18730065FEFE /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
 		257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapLocation.storyboard; sourceTree = "<group>"; };
 		257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		257E0DB02113F1B1001D60C0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		257E0DB22114C884001D60C0 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		25DB8BEA211917F300F89CE6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		524250B02107B57F00EBA246 /* Invitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524250B32107B57F00EBA246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,10 +126,13 @@
 				52A7C003211B20B90059597B /* InvitationService.swift */,
 				52A7BFFA21146CE70059597B /* FindFriendsCell.swift */,
 				52A7BFE82110CD940059597B /* User.swift */,
+				2508FD6C211C13790065FEFE /* Post.swift */,
+				2508FD70211C18730065FEFE /* PostService.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
 				524250C92107D92400EBA246 /* Controllers */,
 				524250BA2107B58000EBA246 /* Assets.xcassets */,
+				2508FD6E211C149F0065FEFE /* InviteListner.swift */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
@@ -130,13 +141,14 @@
 			isa = PBXGroup;
 			children = (
 				524250B52107B57F00EBA246 /* NewViewController.swift */,
-				257E0DB22114C884001D60C0 /* NavigationView.swift */,
 				257E0DB02113F1B1001D60C0 /* MapViewController.swift */,
 				257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */,
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
 				52425100210D677E00EBA246 /* PasswordResetViewController.swift */,
 				52A7BFEA2112F9500059597B /* UsersTableViewController.swift */,
+				2508FD64211A561D0065FEFE /* MenuViewController.swift */,
+				2508FD66211A56440065FEFE /* MenuTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -346,20 +358,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
-				257E0DB32114C884001D60C0 /* NavigationView.swift in Sources */,
 				524250B62107B57F00EBA246 /* NewViewController.swift in Sources */,
 				52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */,
+				2508FD65211A561D0065FEFE /* MenuViewController.swift in Sources */,
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				52A7BFEB2112F9500059597B /* UsersTableViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
-				52A7C004211B20B90059597B /* InvitationService.swift in Sources */,
+				2508FD71211C18730065FEFE /* PostService.swift in Sources */,
+				2508FD6F211C149F0065FEFE /* InviteListner.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				52A7BFE92110CD940059597B /* User.swift in Sources */,
 				52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
+				2508FD6D211C13790065FEFE /* Post.swift in Sources */,
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
 				52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */,
 				52A7BFFF2117EA660059597B /* UserSerrvice.swift in Sources */,
+				2508FD67211A56440065FEFE /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

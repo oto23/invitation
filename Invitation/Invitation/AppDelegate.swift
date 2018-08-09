@@ -19,74 +19,95 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+
        // FirebaseApp.configure()
         configureInitialRootViewController(for: window)
-        
-        
-        
-        
-        
-//        let storyboard = UIStoryboard(name: "Login", bundle: .main)
-//
-//
-//        if let initialViewController = storyboard.instantiateInitialViewController() {
-//
-//            window?.rootViewController = initialViewController
-//
-//            window?.makeKeyAndVisible()
-//        }
-        
-        
-        
-        
+
+
+
+
+
+        //        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        //
+        //
+        //        if let initialViewController = storyboard.instantiateInitialViewController() {
+        //
+        //            window?.rootViewController = initialViewController
+        //
+        //            window?.makeKeyAndVisible()
+        //        }
+
+
+
+
         application.registerForRemoteNotifications()
-        
+        //- posts
+        //- users
+        //- invites
+        //-- <user.uid that was invited>
+        //--- <entire post>
+
         let refOfInvites = Database.database().reference().child("invites")
         refOfInvites.observe(.value) { (snapshot) in
             guard let invitedFriends = snapshot.children.allObjects as? [DataSnapshot] else {
                 fatalError("snapshot was not a dictionary")
             }
-            
-//            //check if my uid is in the snapshot
-//            for aFriend in invitedFriends {
-////                if git
-//            }
+
+
+            // might crash
+            let currentUserUID = User.current.uid!
+            //check if my uid is in the snapshot
+
+            var inviteFound: Post? = nil
+            for anInvite in invitedFriends {
+                if currentUserUID == anInvite.key {
+                    guard let postFromSnapshot = Post(snapshot: anInvite) else {
+                        fatalError("failed to create post from snapshot")
+                    }
+
+                    inviteFound = postFromSnapshot
+                    break
+                }
+            }
+
+            if inviteFound != nil {
+                NotificationCenter.default.post(name: .UserDidRecieveInvite, object: inviteFound!)
+            }
         }
-        
-        
-        
+
+
+
         Auth.auth().addStateDidChangeListener{(auth,user) in
             if user != nil && user!.isEmailVerified{
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Login", bundle:nil)
                 let nextView: SignInViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
                 self.window?.rootViewController = nextView
             }
-        
-        }
-        
 
-       return true
-        
-        
+        }
+
+
+        return true
+
+
 
     }
-    
+
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         // Add any custom logic here.
         return handled
     }
-    
 
-    
-    
-    
+
+
+
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -118,7 +139,7 @@ extension AppDelegate {
     func configureInitialRootViewController(for window: UIWindow?) {
         let defaults = UserDefaults.standard
         let initialViewController: UIViewController
-        
+
         if let _ = Auth.auth().currentUser,
             let userData = defaults.object(forKey: User.Constants.UserDefaults.currentUser) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
@@ -127,8 +148,16 @@ extension AppDelegate {
         } else {
             initialViewController = UIStoryboard.initialViewController(for: .login)
         }
-        
+
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     }
+
+
+    static var menuBool = true
+
+
+
+
+
 }
