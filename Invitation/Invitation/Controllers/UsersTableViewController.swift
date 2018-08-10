@@ -77,7 +77,9 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell", for: indexPath) as! FindFriendsCell
-        cell.delegate = self 
+        cell.delegate = self
+        cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
+        cell.backgroundColor = UIColor.darkGray
         if tableView == UsersTable{
             cell.textLabel?.text = currentUserList[indexPath.row]
             
@@ -85,6 +87,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
             cell.textLabel?.text = userList1[indexPath.row]
         }
         let user = userList[indexPath.row]
+       
         
         //        cell.usernameLabel.text = user.username
         cell.requestButton.isSelected = user.isFollowed
@@ -114,7 +117,13 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
     
 }
-
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let displayFriendList = storyboard.instantiateViewController(withIdentifier:"NewViewController") as! NewViewController
+        self.present(displayFriendList, animated: true, completion: nil)
+        
+    }
+    
     func didTapFollowButton(_ followButton: UIButton, on cell: FindFriendsCell) {
         guard let indexPath = UsersTable.indexPath(for: cell) else { return }
         

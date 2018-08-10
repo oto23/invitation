@@ -52,7 +52,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             let initVC = storyboard1.instantiateInitialViewController()
             self.present(initVC!, animated: true)
             
-        case 1:break
+        case 1:
+            let storyboard1 = UIStoryboard(name: "Login", bundle: nil)
+            let initVC = storyboard1.instantiateViewController(withIdentifier: "MainPageViewController") as! MainPageViewController
+            self.present(initVC, animated: true)
+            
+            
             
         default:
             break
