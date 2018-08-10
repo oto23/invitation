@@ -85,8 +85,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     User.setCurrent(user, writeToUserDefaults: true)
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let displayFriendList = storyboard.instantiateViewController(withIdentifier:"NewViewController") as! NewViewController
-                    self.present(displayFriendList, animated: true, completion: nil)
+                    let displayFriendList = storyboard.instantiateInitialViewController()
+                    self.present(displayFriendList!, animated: true, completion: nil)
                 } else {
                     //no user found
                 }
@@ -182,11 +182,12 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let displayFriendlist = storyboard.instantiateViewController(withIdentifier:"NewViewController") as! NewViewController
+                    let displayFriendlist = storyboard.instantiateInitialViewController() as! UINavigationController
                     self.present(displayFriendlist, animated: true, completion: nil)
-                    
+
                     let appDelegate = UIApplication.shared.delegate
                     appDelegate?.window??.rootViewController = displayFriendlist
+//                    self.performSegue(withIdentifier: "toMainStoryboard", sender: self)
                 } else {
                     //handle new user by sending them to add a username
                     
