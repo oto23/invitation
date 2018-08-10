@@ -10,10 +10,10 @@ import Foundation
 import FirebaseDatabase
 
 struct Post {
-//    var key: String
+//   var key: String
 //    var author: User
-//    var location
-//
+////    var location :
+
     init?(snapshot: DataSnapshot) {
         
     }

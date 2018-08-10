@@ -11,6 +11,11 @@ import Firebase
 
 class User: Codable, Hashable {
     
+    
+  static var currentIfLoggedIn: User? {
+        return _current
+    }
+    
     var hashValue: Int {
         return uid!.hashValue
     }

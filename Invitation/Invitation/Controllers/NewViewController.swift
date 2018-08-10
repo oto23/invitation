@@ -44,7 +44,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
 
         //create a post from the information, like invited friends and location
-//        PostService.create(name: <#T##String#>, long: <#T##Double#>, lat: <#T##Double#>, invitedUsers: <#T##[User]#>, completion: <#T##(Bool) -> ()#>)
+  //  PostService.create(name: <#T##String#>, long: <#T##Double#>, lat: <#T##Double#>, invitedUsers: <#T##[User]#>, completion: <#T##(Bool) -> ()#>)
 
 
     }

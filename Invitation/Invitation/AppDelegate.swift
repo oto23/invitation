@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
             // might crash
-            let currentUserUID = User.current.uid!
+            if let currentUserUID = User.currentIfLoggedIn?.uid!{
             //check if my uid is in the snapshot
 
             var inviteFound: Post? = nil
@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             if inviteFound != nil {
                 NotificationCenter.default.post(name: .UserDidRecieveInvite, object: inviteFound!)
+            }
             }
         }
 
