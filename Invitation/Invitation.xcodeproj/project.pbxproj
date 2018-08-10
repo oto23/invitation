@@ -13,6 +13,9 @@
 		2508FD6D211C13790065FEFE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD6C211C13790065FEFE /* Post.swift */; };
 		2508FD6F211C149F0065FEFE /* InviteListner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD6E211C149F0065FEFE /* InviteListner.swift */; };
 		2508FD71211C18730065FEFE /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508FD70211C18730065FEFE /* PostService.swift */; };
+		252D75EB211E44E500FC05E4 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252D75E9211E44E500FC05E4 /* MainPageViewController.swift */; };
+		252D75EC211E44E500FC05E4 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252D75EA211E44E500FC05E4 /* UsernameViewController.swift */; };
+		252D75EE211E46CE00FC05E4 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252D75ED211E46CE00FC05E4 /* UsersTableViewController.swift */; };
 		257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */; };
 		257E0DAD2113EEB2001D60C0 /* MapLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */; };
 		257E0DAF2113F0B0001D60C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */; };
@@ -55,6 +58,9 @@
 		2508FD6C211C13790065FEFE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2508FD6E211C149F0065FEFE /* InviteListner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteListner.swift; sourceTree = "<group>"; };
 		2508FD70211C18730065FEFE /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		252D75E9211E44E500FC05E4 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		252D75EA211E44E500FC05E4 /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
+		252D75ED211E46CE00FC05E4 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListViewController.swift; sourceTree = "<group>"; };
 		257E0DAC2113EEB2001D60C0 /* MapLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapLocation.storyboard; sourceTree = "<group>"; };
 		257E0DAE2113F0B0001D60C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -78,9 +84,6 @@
 		52A7BFFE2117EA660059597B /* UserSerrvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSerrvice.swift; sourceTree = "<group>"; };
 		52A7C001211955660059597B /* Storyboard + Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Utility.swift"; sourceTree = "<group>"; };
 		52A7C003211B20B90059597B /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
-		52A7C005211C85570059597B /* UsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
-		52A7C00B211D1D8F0059597B /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
-		52A7C00D211DA88A0059597B /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,14 +146,14 @@
 				524250B52107B57F00EBA246 /* NewViewController.swift */,
 				257E0DB02113F1B1001D60C0 /* MapViewController.swift */,
 				257E0DA6210D88A5001D60C0 /* CheckListViewController.swift */,
+				252D75ED211E46CE00FC05E4 /* UsersTableViewController.swift */,
 				524250F92109A41600EBA246 /* SignUpViewController.swift */,
 				524250FB2109BD6A00EBA246 /* SignInViewController.swift */,
 				52425100210D677E00EBA246 /* PasswordResetViewController.swift */,
-				52A7C00B211D1D8F0059597B /* UsersTableViewController.swift */,
 				2508FD64211A561D0065FEFE /* MenuViewController.swift */,
+				252D75E9211E44E500FC05E4 /* MainPageViewController.swift */,
+				252D75EA211E44E500FC05E4 /* UsernameViewController.swift */,
 				2508FD66211A56440065FEFE /* MenuTableViewCell.swift */,
-				52A7C005211C85570059597B /* UsernameViewController.swift */,
-				52A7C00D211DA88A0059597B /* MainPageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -359,7 +362,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A7C00E211DA88A0059597B /* MainPageViewController.swift in Sources */,
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250B62107B57F00EBA246 /* NewViewController.swift in Sources */,
 				52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */,
@@ -367,10 +369,9 @@
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				2508FD71211C18730065FEFE /* PostService.swift in Sources */,
-				52A7C00C211D1D900059597B /* UsersTableViewController.swift in Sources */,
 				2508FD6F211C149F0065FEFE /* InviteListner.swift in Sources */,
-				52A7C006211C85570059597B /* UsernameViewController.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
+				252D75EC211E44E500FC05E4 /* UsernameViewController.swift in Sources */,
 				52A7BFE92110CD940059597B /* User.swift in Sources */,
 				52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
@@ -378,6 +379,8 @@
 				524250B42107B57F00EBA246 /* AppDelegate.swift in Sources */,
 				52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */,
 				52A7BFFF2117EA660059597B /* UserSerrvice.swift in Sources */,
+				252D75EB211E44E500FC05E4 /* MainPageViewController.swift in Sources */,
+				252D75EE211E46CE00FC05E4 /* UsersTableViewController.swift in Sources */,
 				2508FD67211A56440065FEFE /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,7 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4266XVUC5Z;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -525,7 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4266XVUC5Z;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

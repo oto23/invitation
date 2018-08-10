@@ -118,9 +118,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     
 }
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let displayFriendList = storyboard.instantiateViewController(withIdentifier:"NewViewController") as! NewViewController
-        self.present(displayFriendList, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     

@@ -20,9 +20,7 @@ class MainPageViewController: UIViewController {
     @IBOutlet weak var LastNameLabel: UILabel!
     @IBAction func BackButton(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let displayFriendList = storyboard.instantiateViewController(withIdentifier:"NewViewController") as! NewViewController
-        self.present(displayFriendList, animated: true, completion: nil)
-        
+       self.dismiss(animated: true, completion: nil)
         
     }
     
