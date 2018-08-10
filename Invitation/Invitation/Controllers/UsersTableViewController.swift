@@ -117,7 +117,13 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
     
 }
-
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let displayFriendList = storyboard.instantiateViewController(withIdentifier:"NewViewController") as! NewViewController
+        self.present(displayFriendList, animated: true, completion: nil)
+        
+    }
+    
     func didTapFollowButton(_ followButton: UIButton, on cell: FindFriendsCell) {
         guard let indexPath = UsersTable.indexPath(for: cell) else { return }
         

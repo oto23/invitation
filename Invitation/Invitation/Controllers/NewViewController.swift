@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
+import MapKit
 
 
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
