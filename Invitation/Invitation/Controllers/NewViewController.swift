@@ -14,7 +14,7 @@ import FBSDKCoreKit
 import Firebase
 
 
-class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     //COPY ME
     lazy var inviteListener = InviteListener(delegate: self)
@@ -37,10 +37,10 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBAction func inviteButton(_ sender: Any) {
 
-
-        let storyboard = UIStoryboard(name: "Users", bundle: Bundle.main)
-        let mapView = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
-        self.present(mapView, animated: true, completion: nil)
+//
+//        let storyboard = UIStoryboard(name: "Users", bundle: Bundle.main)
+//        let mapView = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
+//        self.present(mapView, animated: true, completion: nil)
 
 
         //create a post from the information, like invited friends and location
@@ -50,11 +50,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     var listOfFollowers = [User]()
     var listOfFollowees = [User]()
-
     var listOfFriends = [User]()
+    var listOfFriendsString = [String]()
+    
+    var selectedArray = [String]()
+    var tempList = [String]()
     var ref: DatabaseReference!
     var ref2: DatabaseReference!
-    var reciever = [String]()
+    
 
 
 
@@ -80,7 +83,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.view.addGestureRecognizer(rightSwipe)
         self.view.addGestureRecognizer(leftSwipe)
         
-        friendsTableView.allowsMultipleSelection = true
+//        friendsTableView.allowsMultipleSelection = true
 
         fetchFollowers { success in
             self.fetchFollowees { success in
@@ -89,53 +92,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
 
 
-        print("followers: \(self.listOfFollowers)")
-        print("followees: \(self.listOfFollowees)")
-        print("friends: \(self.listOfFriends)")
 
-//            for snap in snapshot.children {
-//
-//                let snap = snap as! DataSnapshot
-////                guard let user = User(snapshot: snap) else {
-////                    return assertionFailure("Failed to create user using snapshot")
-////                }
-//                let userId = snap.key
-//                let newRef = Database.database().reference().child("users").child(userId)
-//                newRef.observeSingleEvent(of: .value , with: { (userSnapshot) in
-//                    guard let user = User(snapshot: userSnapshot) else {return}
-////                    print(user.username)
-//                    self.listOfFollowees.append(user.username!)
-//                    print("folowees")
-//                    print(self.listOfFollowees)
-//                })
-//
-//
-////                self.listOfFriendsString.append(user.username!)
-//            }
 
-//            ref2 = Database.database().reference().child("followers")
-//            ref2.observeSingleEvent(of: .value) { (snapshot) in
-//                for snap in snapshot.children {
-//                    let snap = snap as! DataSnapshot
-//                    //                guard let user = User(snapshot: snap) else {
-//                    //                    return assertionFailure("Failed to create user using snapshot")
-//                    //                }
-//                    let userId = snap.key
-//                    let newRef = Database.database().reference().child("users").child(userId)
-//                    newRef.observeSingleEvent(of: .value , with: { (userSnapshot) in
-//                        guard let user = User(snapshot: userSnapshot) else {return}
-////                        print(user.username)
-//
-//                        self.listOfFollowers.append(user.username!)
-//                        print("followers")
-//                        print(self.listOfFollowers)
-//                    })
-//                }
-////                DispatchQueue.main.async {
-////                    self.findFriends()
-////
-////                }
-//            }
 
 
 
@@ -145,6 +103,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         friendsTableView.dataSource = self
 //        setUpSearchBar()
         friendsTableView.allowsMultipleSelection = true
+        setUpSearchBar()
+        
+    }
+    
+    private func setUpSearchBar(){
+        search.delegate = self
+        
+        
     }
 
     func fetchFollowees(completion: @escaping (Bool) -> ()) {
@@ -237,6 +203,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let followersSet = Set<User>(self.listOfFollowers)
         let followingSet = Set<User>(self.listOfFollowees)
         self.listOfFriends = Array<User>(followersSet.intersection(followingSet))
+        
 
 //        for user in listOfFollowees{
 ////            print("this is user:\(user)")
@@ -256,34 +223,72 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-//        print(listOfFriendsString)
-        return listOfFriends.count
+        if tableView == friendsTableView{
+            return listOfFriends.count
+        }else{
+            return tempList.count
+        }
+        
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)// as! UITableViewCell
-
-        let user = listOfFriends[indexPath.row]
-        cell.textLabel?.text = user.username
+        
+       let user = listOfFriends[indexPath.row]
+//        let user2 = tempList[indexPath.row]
+        listOfFriendsString.append(user.username!)
+        if tableView == friendsTableView{
+            cell.textLabel?.text = listOfFriendsString[indexPath.row]
+        }else{
+            cell.textLabel?.text = tempList[indexPath.row]
+        }
         cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
         cell.backgroundColor = UIColor.darkGray
 
         return (cell)
 
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let currentCell = tableView.cellForRow(at: indexPath!)
+        selectedArray.append((currentCell?.textLabel?.text)!)
+        print(currentCell?.textLabel!.text)
+        
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        tempList = listOfFriendsString.filter({ (item: String) -> Bool in
+            
+            
+            if item.contains(searchBar.text!.lowercased()){
+                print(searchBar.text)
+                return true
+            } else {
+                
+                return false
+            }
+        })
+
+        
+    friendsTableView.reloadData()
+    }
+    
+
 
     var menuVc : MenuViewController!
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(listOfFriends[indexPath.row])
-
-        // 1. preparing the data to send
-//        reciever.append(listOfFriends[indexPath.row])
-
-        // 2. change the ui of the cell
-        let cell = self.friendsTableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+////        print(listOfFriends[indexPath.row])
+//
+//        // 1. preparing the data to send
+////        reciever.append(listOfFriends[indexPath.row])
+//
+//        // 2. change the ui of the cell
+//        let cell = self.friendsTableView.cellForRow(at: indexPath)
+//        cell?.accessoryType = .checkmark
+//    }
 
 
     
@@ -326,6 +331,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let CheckListViewController = segue.destination as? CheckListViewController{
+            CheckListViewController.listOfSelectedFriends = selectedArray
+            
+        }
+    }
 
     public func showMessage(messageToDisplay: String)
     {
@@ -345,7 +358,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         case UISwipeGestureRecognizerDirection.right:
             print("Right Swipe")
             openMenu()
-
+ 
         case UISwipeGestureRecognizerDirection.left:
             print("Left Swipe")
             swipeClose()

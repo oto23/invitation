@@ -170,10 +170,25 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
+            
+            
+            
             guard let user = result?.user else {
                 fatalError("no user")
+                
             }
+            var userDetails: [String:String] = [:]
+            if let userFullName = user.displayName{
+                let userNameDetails = userFullName.components(separatedBy: .whitespaces)
+                if userNameDetails.count >= 2{
+                    userDetails["firstName"] = userNameDetails[0]
+                    userDetails["lastName"] = userNameDetails[1]
+                }
+            }
+            var databaseReference: DatabaseReference!
+            databaseReference = Database.database().reference()
             
+            databaseReference.child("users").child(user.uid).setValue(["userDetails": userDetails])
             
             UserService.show(forUID: user.uid) { (user) in
                 if let user = user {
@@ -188,8 +203,12 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let appDelegate = UIApplication.shared.delegate
                     appDelegate?.window??.rootViewController = displayFriendlist
                 } else {
-                    //handle new user by sending them to add a username
-                    
+                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                    let chooseUsername = storyboard.instantiateViewController(withIdentifier:"UsernameViewController") as! UsernameViewController
+                    self.present(chooseUsername, animated: true, completion: nil)
+
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = chooseUsername
                 }
             }
             
