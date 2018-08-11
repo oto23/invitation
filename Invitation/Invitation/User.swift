@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class User: Codable, Hashable {
     
@@ -56,6 +57,7 @@ class User: Codable, Hashable {
         }
         
     }
+
     private static var _current: User?
     static var current: User {
         guard let currentUser = _current else {

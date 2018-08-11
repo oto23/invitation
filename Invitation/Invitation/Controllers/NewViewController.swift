@@ -19,6 +19,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     //COPY ME
     lazy var inviteListener = InviteListener(delegate: self)
+    
+    var locManager = CLLocationManager()
+    var currentLocation: CLLocation?
 
 //    continue
 //
@@ -37,17 +40,37 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var search: UISearchBar!
 
     @IBAction func inviteButton(_ sender: Any) {
+        guard let location = currentLocation else {
+            return print("location not found, check permissions from the user")
+        }
+        
+        let long = location.coordinate.longitude
+        let lat = location.coordinate.latitude
+        
 
 //
 //        let storyboard = UIStoryboard(name: "Users", bundle: Bundle.main)
 //        let mapView = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
 //        self.present(mapView, animated: true, completion: nil)
 
+        var selectedFriends: [User] = []
+        
+        if let indexPathsForSelectedFriends = friendsTableView.indexPathsForSelectedRows {
+            
+            for anIndexPath in indexPathsForSelectedFriends {
+                let friend = listOfFriends[anIndexPath.row]
+                selectedFriends.append(friend)
+            }
+        }
 
         //create a post from the information, like invited friends and location
-  //  PostService.create(name: <#T##String#>, long: <#T##Double#>, lat: <#T##Double#>, invitedUsers: <#T##[User]#>, completion: <#T##(Bool) -> ()#>)
-
-
+        PostService.create(name: User.current.username!, long:long , lat: lat, invitedUsers: selectedFriends) { (success) in
+            if success {
+                self.performSegue(withIdentifier: "toChecklist", sender: selectedFriends)
+            } else {
+                //TODO: Use UIAlertController to send an alert to the user that something went wrong
+            }
+        }
     }
     var listOfFollowers = [User]()
     var listOfFollowees = [User]()
@@ -73,6 +96,13 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         //begin listening for invites
         _ = inviteListener
+        
+        locManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            currentLocation = locManager.location
+        }
         
         menuVc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         
@@ -318,18 +348,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let CheckListViewController = segue.destination as? CheckListViewController{
-            
-            
-            if let indexPathsForSelectedFriends = friendsTableView.indexPathsForSelectedRows {
-                var selectedFriends: [User] = []
-                for anIndexPath in indexPathsForSelectedFriends {
-                    let friend = listOfFriends[anIndexPath.row]
-                    selectedFriends.append(friend)
-                }
-                
-                CheckListViewController.listOfSelectedFriends = selectedFriends
+        if let CheckListViewController = segue.destination as? CheckListViewController {
+            guard let invitedFriends = sender as? [User] else {
+                fatalError("sender is not an array of users")
             }
+            CheckListViewController.listOfSelectedFriends = invitedFriends
             
         }
     }
@@ -419,13 +442,15 @@ extension NewViewController: InviteListenerDelegate {
     func inviteListner(_ listener: InviteListener, userDidRecieveInviteFor post: Post) {
         let joinStoryboard = UIStoryboard(name: "MapLocation", bundle: nil)
         guard
-            let viewController = joinStoryboard.instantiateInitialViewController(),
+            let initialVc = joinStoryboard.instantiateInitialViewController(),
+            let navController = initialVc as? UINavigationController,
+            let viewController = navController.topViewController,
             let mapViewController = viewController as? MapViewController
             else {
                 fatalError("storybaord not set up correctly with view controlle classes")
         }
 
         mapViewController.post = post
-        self.present(mapViewController, animated: true)
+        self.present(navController, animated: true)
     }
 }

@@ -12,7 +12,18 @@ import UIKit
 class CheckListViewController: UITableViewController {
     
     
-    var listOfSelectedFriends = [User]()
+    var listOfSelectedFriends = [User]() {
+        didSet {
+            
+            listOfFriendStatus = listOfSelectedFriends.reduce([String: Int]()) { (dict, aUser) -> [String: Int] in
+                var dictCopy = dict
+                dictCopy[aUser.uid!] = 0
+                
+                return dictCopy
+            }
+        }
+    }
+    var listOfFriendStatus: [String: Int] = [:]
     
     @IBAction func displayButton(_ sender: Any) {
 //        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
@@ -34,6 +45,15 @@ class CheckListViewController: UITableViewController {
         let user = listOfSelectedFriends[indexPath.row]
         cell.textLabel?.text = user.username
         
+        if let userStats = listOfFriendStatus[user.uid!] {
+            if userStats == 0 {
+                
+            } else if userStats == 1 {
+                
+            } else if userStats == 2 {
+                
+            }
+        }
         
 //        let label = cell.viewWithTag(1000) as! UILabel
 //        label.text = "Name and last name"

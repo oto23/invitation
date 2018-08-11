@@ -31,7 +31,6 @@
                                 </state>
                                 <connections>
                                     <action selector="inviteButton:" destination="0Z2-Zp-nWJ" eventType="touchUpInside" id="Ctw-oN-ggo"/>
-                                    <segue destination="atx-LG-EC1" kind="show" identifier="toChecklist" id="0L1-jn-Fvz"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="33O-aC-X7e">
@@ -99,6 +98,7 @@
                         <outlet property="friendsTableView" destination="33O-aC-X7e" id="psW-mR-T46"/>
                         <outlet property="search" destination="Xya-VB-eSt" id="bTC-B9-ivC"/>
                         <outlet property="searchDisplayController" destination="Z88-ig-I61" id="tgi-Fl-ZNf"/>
+                        <segue destination="atx-LG-EC1" kind="show" identifier="toChecklist" id="Ohp-qG-Mgj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFb-os-PLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
