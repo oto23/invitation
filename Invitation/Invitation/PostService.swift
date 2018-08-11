@@ -82,6 +82,7 @@ struct PostService {
             completion(true)
         }
     }
+}
 
     static func invitationAccepted(friend: User, completion: @escaping (Bool) -> ()){
 

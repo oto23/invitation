@@ -255,7 +255,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }else{
             return tempList.count
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> parent of 53bcab0... before merge
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
