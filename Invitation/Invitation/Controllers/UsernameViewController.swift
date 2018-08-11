@@ -49,7 +49,7 @@ class UsernameViewController: UIViewController {
             !username.isEmpty else { return }
         
         // 2
-        let userAttrs = ["username": username]
+        let userAttrs = ["Username": username]
         
         // 3
         let ref = Database.database().reference().child("users").child(firUser.uid).child("userDetails")

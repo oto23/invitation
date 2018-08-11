@@ -296,42 +296,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
         // Do any additional setup after loading the view, typically from a nib.
 
-
-    
-
-
-
-
-    @IBAction func logoutButton(_ sender: Any)
-    {
-        do{
-
-            Analytics.logEvent("signout", parameters: nil)
-            for userInfo in (Auth.auth().currentUser?.providerData)!
-            {
-                if userInfo.providerID == "facebook.com"
-                {
-                    FBSDKLoginManager().logOut()
-                    break
-                }
-            }
-
-
-
-            try Auth.auth().signOut()
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let signInPage = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-            let  appDelegate = UIApplication.shared.delegate
-            appDelegate?.window??.rootViewController = signInPage
-
-
-
-
-        }catch{
-            self.showMessage(messageToDisplay: "Could not sign out at this time")
-
-        }
-    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

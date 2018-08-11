@@ -45,6 +45,9 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
                 print("Username: \(user.username)")
                 self.userList.append(user)
                 self.userList1.append(user.username!)
+                FriendsService.isUserFollowed(user) { isFollowed in
+                    user.isFollowed = isFollowed
+                }
             }
             
             DispatchQueue.main.async {
@@ -82,7 +85,6 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         cell.backgroundColor = UIColor.darkGray
         if tableView == UsersTable{
             cell.textLabel?.text = currentUserList[indexPath.row]
-            
         }else{
             cell.textLabel?.text = userList1[indexPath.row]
         }
@@ -101,7 +103,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         currentUserList = userList1.filter({ (array: String) -> Bool in
-            if array.contains(searchBar.text!){
+            if array.contains(searchBar.text!.lowercased()){
                 print(searchBar.text)
                 return true
             } else {

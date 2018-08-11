@@ -14,8 +14,10 @@ import FirebaseDatabase
 struct FriendsService {
     private static func followUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
         // 1
-        guard let currentUID = User.current.uid else {return}
-        guard let otherUserID = user.uid else {return}
+        guard let currentUID = User.current.uid, let otherUserID = user.uid else {
+            success(false)
+            return
+        }
         let followData = ["followers/\(otherUserID)/\(currentUID)" : true,
                           "following/\(currentUID)/\(otherUserID)" : true]
         
@@ -31,11 +33,14 @@ struct FriendsService {
         }
     }
     private static func unfollowUser(_ user: User, forCurrentUserWithSuccess success: @escaping (Bool) -> Void) {
-        let currentUID = User.current.uid
+        guard let currentUID = User.current.uid, let otherUserID = user.uid else {
+            success(false)
+            return
+        }
         // Use NSNull() object instead of nil because updateChildValues expects type [Hashable : Any]
         // http://stackoverflow.com/questions/38462074/using-updatechildvalues-to-delete-from-firebase
-        let followData = ["followers/\(user.uid)/\(currentUID)" : NSNull(),
-                          "following/\(currentUID)/\(user.uid)" : NSNull()]
+        let followData = ["followers/\(otherUserID)/\(currentUID)" : NSNull(),
+                          "following/\(currentUID)/\(otherUserID)" : NSNull()]
         
         let ref = Database.database().reference()
         ref.updateChildValues(followData) { (error, ref) in
@@ -55,7 +60,7 @@ struct FriendsService {
 }
 
     static func isUserFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
-        let currentUID = User.current.uid
+        guard let currentUID = User.current.uid else { return }
         let ref = Database.database().reference().child("followers").child(user.uid!)
         
         ref.queryEqual(toValue: nil, childKey: currentUID).observeSingleEvent(of: .value, with: { (snapshot) in

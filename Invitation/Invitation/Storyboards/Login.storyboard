@@ -377,13 +377,13 @@
                                 <items>
                                     <navigationItem title="Info" id="EZe-pf-Qcl">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="fzM-Af-Gge">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="BackButton:" destination="ul8-mp-T96" id="0mV-H9-uKX"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Logout" id="uD2-Dc-UaJ">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="LogoutButton:" destination="ul8-mp-T96" id="oQO-3D-q5x"/>
                                             </connections>

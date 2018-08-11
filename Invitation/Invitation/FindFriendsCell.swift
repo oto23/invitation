@@ -26,7 +26,6 @@ class FindFriendsCell: UITableViewCell {
         
         requestButton.setTitle("Send request", for: .normal)
         requestButton.setTitle("Sent", for: .selected)
-        
     }
     @IBAction func requestButtonTapped(_ sender: UIButton) {
         

@@ -15,6 +15,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
 {
     @IBOutlet weak var map: MKMapView!
     
+    
+    @IBAction func goBack(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
     var post: Post!
     
     let manager = CLLocationManager()

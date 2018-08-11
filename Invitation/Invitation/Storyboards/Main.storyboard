@@ -94,12 +94,6 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="DdZ-0z-Fpx">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="logoutButton:" destination="0Z2-Zp-nWJ" id="gc0-QU-HK6"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="friendsTableView" destination="33O-aC-X7e" id="psW-mR-T46"/>
@@ -197,7 +191,7 @@
             <objects>
                 <tableViewController id="atx-LG-EC1" customClass="CheckListViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="erJ-vQ-3Qc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
