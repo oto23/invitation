@@ -97,7 +97,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="friendsTableView" destination="33O-aC-X7e" id="psW-mR-T46"/>
-                        <outlet property="inviteButtonOutlet" destination="jPm-p9-Ugf" id="KuD-wu-EIc"/>
                         <outlet property="search" destination="Xya-VB-eSt" id="bTC-B9-ivC"/>
                         <outlet property="searchDisplayController" destination="Z88-ig-I61" id="tgi-Fl-ZNf"/>
                     </connections>

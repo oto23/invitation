@@ -1,114 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qeR-b0-lCl">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
-    <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-    </dependencies>
-    <scenes>
-        <!--Wanna Join?-->
-        <scene sceneID="R6r-al-hid">
-            <objects>
-                <viewController storyboardIdentifier="MapViewController" id="E4y-12-ucK" customClass="MapViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dwY-3T-DoL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGN-NT-l4e">
-                                <rect key="frame" x="165" y="558" width="45" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="nV9-eE-iDa"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="joinbutton"/>
-                                <connections>
-                                    <action selector="JoinButton:" destination="E4y-12-ucK" eventType="touchUpInside" id="XHB-zI-MKZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBu-43-eB8">
-                                <rect key="frame" x="147" y="617" width="80" height="30"/>
-                                <state key="normal" title="cancel">
-                                    <color key="titleColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButton:" destination="E4y-12-ucK" eventType="touchUpInside" id="M8S-PX-AZV"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZc-ko-9Uq">
-                                <rect key="frame" x="16" y="79" width="60" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="q2u-rP-gWh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8gx-uQ-2jy">
-                                <rect key="frame" x="16" y="127" width="343" height="423"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="EGN-NT-l4e" firstAttribute="top" secondItem="8gx-uQ-2jy" secondAttribute="bottom" constant="8" id="6dw-F1-iLS"/>
-                            <constraint firstItem="MBu-43-eB8" firstAttribute="top" secondItem="EGN-NT-l4e" secondAttribute="bottom" constant="8" symbolic="YES" id="C5K-Sd-SPY"/>
-                            <constraint firstItem="8gx-uQ-2jy" firstAttribute="leading" secondItem="qJj-n9-JIm" secondAttribute="leading" constant="16" id="EYd-Cz-Kkk"/>
-                            <constraint firstItem="EGN-NT-l4e" firstAttribute="top" secondItem="8gx-uQ-2jy" secondAttribute="bottom" constant="8" id="Gf6-sx-veK"/>
-                            <constraint firstAttribute="bottom" secondItem="EGN-NT-l4e" secondAttribute="bottom" constant="58" id="Hq6-kR-xCS"/>
-                            <constraint firstItem="qJj-n9-JIm" firstAttribute="trailing" secondItem="8gx-uQ-2jy" secondAttribute="trailing" constant="16" id="ObJ-y8-8LY"/>
-                            <constraint firstItem="EGN-NT-l4e" firstAttribute="top" secondItem="8gx-uQ-2jy" secondAttribute="bottom" constant="8" symbolic="YES" id="TV9-kO-q5I"/>
-                            <constraint firstItem="hZc-ko-9Uq" firstAttribute="leading" secondItem="8gx-uQ-2jy" secondAttribute="leading" id="XAB-Fd-pqP"/>
-                            <constraint firstItem="EGN-NT-l4e" firstAttribute="centerX" secondItem="8gx-uQ-2jy" secondAttribute="centerX" id="f80-gl-nxh"/>
-                            <constraint firstItem="EGN-NT-l4e" firstAttribute="leading" secondItem="qJj-n9-JIm" secondAttribute="leading" constant="165" id="fwz-4r-nBV"/>
-                            <constraint firstItem="8gx-uQ-2jy" firstAttribute="top" secondItem="hZc-ko-9Uq" secondAttribute="bottom" constant="8" id="lLa-vl-s6B"/>
-                            <constraint firstItem="EGN-NT-l4e" firstAttribute="centerX" secondItem="MBu-43-eB8" secondAttribute="centerX" id="ygF-36-Jif"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qJj-n9-JIm"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Wanna Join?" id="QEU-eH-Boy">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="Cu4-Te-6Dg">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="goBack:" destination="E4y-12-ucK" id="xGk-CL-muj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="NameLabel" destination="hZc-ko-9Uq" id="02r-bN-nYJ"/>
-                        <outlet property="cancelButtonOutlet" destination="MBu-43-eB8" id="38I-BU-EEj"/>
-                        <outlet property="joinButtonOutlet" destination="EGN-NT-l4e" id="OFm-Cx-qEf"/>
-                        <outlet property="map" destination="8gx-uQ-2jy" id="cDC-wX-Sli"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GNW-wf-99Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1031.2" y="111.99400299850076"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jcy-TW-DnB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qeR-b0-lCl" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ubZ-8p-206">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="E4y-12-ucK" kind="relationship" relationship="rootViewController" id="w19-TE-0M3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5WD-hd-243" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="92" y="111.99400299850076"/>
-        </scene>
-    </scenes>
-    <resources>
-        <image name="joinbutton" width="207" height="205"/>
-    </resources>
+<device id="retina4_7" orientation="portrait">
+<adaptation id="fullscreen"/>
+</device>
+<dependencies>
+<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+<capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+<capability name="Safe area layout guides" minToolsVersion="9.0"/>
+<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+</dependencies>
+<scenes>
+<!--Wanna Join?-->
+<scene sceneID="R6r-al-hid">
+<objects>
+<viewController storyboardIdentifier="MapViewController" id="E4y-12-ucK" customClass="MapViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
+<view key="view" contentMode="scaleToFill" id="dwY-3T-DoL">
+<rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGN-NT-l4e">
+<rect key="frame" x="165" y="558" width="45" height="51"/>
+<constraints>
+<constraint firstAttribute="height" constant="51" id="nV9-eE-iDa"/>
+</constraints>
+<state key="normal" title="Button" image="joinbutton"/>
+</button>
+<button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBu-43-eB8">
+<rect key="frame" x="147" y="617" width="80" height="30"/>
+<state key="normal" title="cancel">
+<color key="titleColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+</state>
+</button>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZc-ko-9Uq">
+<rect key="frame" x="16" y="79" width="60" height="40"/>
+<constraints>
+<constraint firstAttribute="width" constant="60" id="q2u-rP-gWh"/>
+</constraints>
+<fontDescription key="fontDescription" type="system" pointSize="17"/>
+<color key="textColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+<nil key="highlightedColor"/>
+</label>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZj-md-bce">
+<rect key="frame" x="300" y="79" width="59" height="40"/>
+<constraints>
+<constraint firstAttribute="width" constant="59" id="m62-9K-lAw"/>
+</constraints>
+<fontDescription key="fontDescription" type="system" pointSize="17"/>
+<color key="textColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+<nil key="highlightedColor"/>
+</label>
+<mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8gx-uQ-2jy">
+<rect key="frame" x="16" y="127" width="343" height="423"/>
+</mapView>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thI-BR-f6N">
+<rect key="frame" x="179" y="79" width="17" height="37"/>
+<constraints>
+<constraint firstAttribute="height" constant="37" id="waV-T4-ztd"/>
+</constraints>
+<fontDescription key="fontDescription" type="system" pointSize="17"/>
+<color key="textColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+<nil key="highlightedColor"/>
+</label>
+</subviews>
+<color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<constraints>
+<constraint firstItem="8gx-uQ-2jy" firstAttribute="top" secondItem="thI-BR-f6N" secondAttribute="bottom" constant="11" id="6XI-8Y-KRa"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="top" secondItem="8gx-uQ-2jy" secondAttribute="bottom" constant="8" id="6dw-F1-iLS"/>
+<constraint firstItem="MBu-43-eB8" firstAttribute="top" secondItem="EGN-NT-l4e" secondAttribute="bottom" constant="8" symbolic="YES" id="C5K-Sd-SPY"/>
+<constraint firstItem="8gx-uQ-2jy" firstAttribute="leading" secondItem="qJj-n9-JIm" secondAttribute="leading" constant="16" id="EYd-Cz-Kkk"/>
+<constraint firstItem="thI-BR-f6N" firstAttribute="firstBaseline" secondItem="CZj-md-bce" secondAttribute="firstBaseline" id="FXh-QW-5CO"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="top" secondItem="8gx-uQ-2jy" secondAttribute="bottom" constant="8" id="Gf6-sx-veK"/>
+<constraint firstAttribute="bottom" secondItem="EGN-NT-l4e" secondAttribute="bottom" constant="58" id="Hq6-kR-xCS"/>
+<constraint firstItem="qJj-n9-JIm" firstAttribute="trailing" secondItem="8gx-uQ-2jy" secondAttribute="trailing" constant="16" id="ObJ-y8-8LY"/>
+<constraint firstItem="thI-BR-f6N" firstAttribute="top" secondItem="qJj-n9-JIm" secondAttribute="top" constant="15" id="PT9-5M-yHk"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="top" secondItem="8gx-uQ-2jy" secondAttribute="bottom" constant="8" symbolic="YES" id="TV9-kO-q5I"/>
+<constraint firstItem="CZj-md-bce" firstAttribute="trailing" secondItem="8gx-uQ-2jy" secondAttribute="trailing" id="V2s-es-ukb"/>
+<constraint firstItem="hZc-ko-9Uq" firstAttribute="leading" secondItem="8gx-uQ-2jy" secondAttribute="leading" id="XAB-Fd-pqP"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="centerX" secondItem="8gx-uQ-2jy" secondAttribute="centerX" id="f80-gl-nxh"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="leading" secondItem="qJj-n9-JIm" secondAttribute="leading" constant="165" id="fwz-4r-nBV"/>
+<constraint firstItem="8gx-uQ-2jy" firstAttribute="top" secondItem="hZc-ko-9Uq" secondAttribute="bottom" constant="8" id="lLa-vl-s6B"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="centerX" secondItem="thI-BR-f6N" secondAttribute="centerX" id="uUh-tH-J6V"/>
+<constraint firstItem="hZc-ko-9Uq" firstAttribute="baseline" secondItem="CZj-md-bce" secondAttribute="baseline" id="v2w-m0-pKt"/>
+<constraint firstItem="thI-BR-f6N" firstAttribute="firstBaseline" secondItem="hZc-ko-9Uq" secondAttribute="firstBaseline" id="x6B-Hb-nb2"/>
+<constraint firstItem="EGN-NT-l4e" firstAttribute="centerX" secondItem="MBu-43-eB8" secondAttribute="centerX" id="ygF-36-Jif"/>
+</constraints>
+<viewLayoutGuide key="safeArea" id="qJj-n9-JIm"/>
+</view>
+<navigationItem key="navigationItem" title="Wanna Join?" id="QEU-eH-Boy">
+<barButtonItem key="leftBarButtonItem" title="back" id="Cu4-Te-6Dg">
+<color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<connections>
+<action selector="goBack:" destination="E4y-12-ucK" id="xGk-CL-muj"/>
+</connections>
+</barButtonItem>
+</navigationItem>
+<connections>
+<outlet property="map" destination="8gx-uQ-2jy" id="cDC-wX-Sli"/>
+</connections>
+</viewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="GNW-wf-99Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="1031.2" y="111.99400299850076"/>
+</scene>
+<!--Navigation Controller-->
+<scene sceneID="jcy-TW-DnB">
+<objects>
+<navigationController automaticallyAdjustsScrollViewInsets="NO" id="qeR-b0-lCl" sceneMemberID="viewController">
+<toolbarItems/>
+<navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ubZ-8p-206">
+<rect key="frame" x="0.0" y="20" width="375" height="44"/>
+<autoresizingMask key="autoresizingMask"/>
+<color key="barTintColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+<textAttributes key="titleTextAttributes">
+<color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+</textAttributes>
+</navigationBar>
+<nil name="viewControllers"/>
+<connections>
+<segue destination="E4y-12-ucK" kind="relationship" relationship="rootViewController" id="w19-TE-0M3"/>
+</connections>
+</navigationController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="5WD-hd-243" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="92" y="111.99400299850076"/>
+</scene>
+</scenes>
+<resources>
+<image name="joinbutton" width="207" height="205"/>
+</resources>
 </document>
+
