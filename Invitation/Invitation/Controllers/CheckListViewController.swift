@@ -12,7 +12,7 @@ import UIKit
 class CheckListViewController: UITableViewController {
     
     
-    var listOfSelectedFriends = [String]()
+    var listOfSelectedFriends = [User]()
     
     @IBAction func displayButton(_ sender: Any) {
 //        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
@@ -32,7 +32,7 @@ class CheckListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath)
         let user = listOfSelectedFriends[indexPath.row]
-        cell.textLabel?.text = user
+        cell.textLabel?.text = user.username
         
         
 //        let label = cell.viewWithTag(1000) as! UILabel
@@ -42,6 +42,10 @@ class CheckListViewController: UITableViewController {
 //        secondlabel.text = "request sent"
 //
         return cell
+    }
+    
+    override func viewDidLoad() {
+        
     }
     
     

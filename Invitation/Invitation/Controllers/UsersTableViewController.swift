@@ -19,8 +19,8 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     var ref = Database.database().reference().child("users")
     
     var userList: [User] = []
-    var currentUserList = [String]()
-    var userList1: [String] = []
+    var currentUserList = [User]()
+//    var userList1: [String] = []
     
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 print("Username: \(user.username)")
                 self.userList.append(user)
-                self.userList1.append(user.username!)
+//                self.userList1.append(user.username!)
                 FriendsService.isUserFollowed(user) { isFollowed in
                     user.isFollowed = isFollowed
                 }
@@ -69,11 +69,12 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == UsersTable{
-            return currentUserList.count
-        }else{
-            return userList1.count
-        }
+        return currentUserList.count
+//        if tableView == UsersTable{
+//            return currentUserList.count
+//        }else{
+//            return userList1.count
+//        }
     }
     
     
@@ -83,12 +84,14 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         cell.delegate = self
         cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
         cell.backgroundColor = UIColor.darkGray
-        if tableView == UsersTable{
-            cell.textLabel?.text = currentUserList[indexPath.row]
-        }else{
-            cell.textLabel?.text = userList1[indexPath.row]
-        }
-        let user = userList[indexPath.row]
+        let user = currentUserList[indexPath.row]
+        cell.textLabel?.text = user.username
+//        if tableView == UsersTable{
+//            cell.textLabel?.text = currentUserList[indexPath.row]
+//        }else{
+//            cell.textLabel?.text = userList1[indexPath.row]
+//        }
+//        let user = userList[indexPath.row]
        
         
         //        cell.usernameLabel.text = user.username
@@ -102,15 +105,32 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        currentUserList = userList1.filter({ (array: String) -> Bool in
-            if array.contains(searchBar.text!.lowercased()){
-                print(searchBar.text)
-                return true
-            } else {
-                print(currentUserList)
-                return false
-            }
-        })
+        
+        
+        if searchBar.text!.isEmpty {
+            currentUserList = []
+        } else {
+            currentUserList = userList.filter({ aUser -> Bool in
+                
+                let searchingText = searchBar.text!.lowercased()
+                
+                guard let username = aUser.username else {
+                    return false
+                }
+                
+                return username.lowercased().hasPrefix(searchingText)
+                //
+                //
+                //
+                //            if array.contains(searchBar.text!.lowercased()){
+                //                print(searchBar.text)
+                //                return true
+                //            } else {
+                //                print(currentUserList)
+                //                return false
+                //            }
+            })
+        }
         
         UsersTable.reloadData()
         }
@@ -128,7 +148,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         guard let indexPath = UsersTable.indexPath(for: cell) else { return }
         
         followButton.isUserInteractionEnabled = false
-        var followee = userList[indexPath.row]
+        var followee = currentUserList[indexPath.row]
         
         FriendsService.setIsFollowing(!followee.isFollowed, fromCurrentUserTo: followee) { (success) in
             defer {

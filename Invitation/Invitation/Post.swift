@@ -10,11 +10,13 @@ import Foundation
 import FirebaseDatabase
 
 struct Post {
-//   var key: String
-//    var author: User
-////    var location :
-
+    var key: String
+    var author: User
+    var long: Double
+    var lat: Double
+    
     init?(snapshot: DataSnapshot) {
-        
+        fatalError("not implmeneted, yet")
     }
 }
+

@@ -71,6 +71,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //begin listening for invites
         _ = inviteListener
         
         menuVc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -85,12 +86,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.view.addGestureRecognizer(leftSwipe)
         
 //        friendsTableView.allowsMultipleSelection = true
-
-        fetchFollowers { success in
-            self.fetchFollowees { success in
-                self.findFriends()
-            }
-        }
 
 
 
@@ -108,6 +103,23 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        fetchFollowers { success in
+//            self.fetchFollowees { success in
+//                self.findFriends()
+//            }
+//        }
+        
+        fetchFollowees { success in
+            self.fetchFollowers { success in
+                self.findFriends()
+            }
+        }
+        
+    }
+    
     private func setUpSearchBar(){
         search.delegate = self
         
@@ -121,11 +133,13 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         ref = Database.database().reference().child("following").child(currentUID)
         ref.observeSingleEvent(of: .value) { (snapshot) in
 
-            guard let snapshots = snapshot.children.allObjects as? [DataSnapshot] else {
+            guard let snapshotsOfUserIFollow = snapshot.children.allObjects as? [DataSnapshot] else {
                 return assertionFailure("Failed to get following")
             }
+            
+            let dg = DispatchGroup()
 
-            for snap in snapshots {
+            for snap in snapshotsOfUserIFollow {
                 //                guard let user = User(snapshot: snap) else {
                 //                    return assertionFailure("Failed to create user")
                 //                }
@@ -133,6 +147,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 let userId = snap.key
                 print(userId)
 
+                dg.enter()
                 let userRef = Database.database().reference().child("users").child(userId)
                 userRef.observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -150,14 +165,18 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //                    guard let username = user?.username else { return }
 
                     self.listOfFollowees.append(user)
-
-                    completion(true)
+                    
+                    dg.leave()
 
                     print("Followees: \(self.listOfFollowees)")
 
                 })
 
             }
+            
+            dg.notify(queue: DispatchQueue.main, execute: {
+                completion(true)
+            })
         }
 
     }
@@ -300,7 +319,17 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let CheckListViewController = segue.destination as? CheckListViewController{
-            CheckListViewController.listOfSelectedFriends = selectedArray
+            
+            
+            if let indexPathsForSelectedFriends = friendsTableView.indexPathsForSelectedRows {
+                var selectedFriends: [User] = []
+                for anIndexPath in indexPathsForSelectedFriends {
+                    let friend = listOfFriends[anIndexPath.row]
+                    selectedFriends.append(friend)
+                }
+                
+                CheckListViewController.listOfSelectedFriends = selectedFriends
+            }
             
         }
     }
