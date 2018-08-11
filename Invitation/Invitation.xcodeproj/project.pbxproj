@@ -124,13 +124,11 @@
 			children = (
 				52A7C0002119553E0059597B /* Extensions */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
-				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
-				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
+				529DB6DB211EDC350066B677 /* Services */,
 				52A7C003211B20B90059597B /* InvitationService.swift */,
 				52A7BFFA21146CE70059597B /* FindFriendsCell.swift */,
 				52A7BFE82110CD940059597B /* User.swift */,
 				2508FD6C211C13790065FEFE /* Post.swift */,
-				2508FD70211C18730065FEFE /* PostService.swift */,
 				2508FD6E211C149F0065FEFE /* InviteListner.swift */,
 				524250CB2107D95900EBA246 /* Supporting files */,
 				524250CA2107D93100EBA246 /* Storyboards */,
@@ -176,6 +174,16 @@
 				524250C72107D8B600EBA246 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		529DB6DB211EDC350066B677 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2508FD70211C18730065FEFE /* PostService.swift */,
+				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
+				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		52A7C0002119553E0059597B /* Extensions */ = {

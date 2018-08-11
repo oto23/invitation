@@ -85,6 +85,10 @@ struct PostService {
             completion(true)
         }
     }
+    
+    static func isInvited(){
+        
+    }
 }
 
 
