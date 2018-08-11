@@ -44,8 +44,6 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow location to invite friends</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow location to invite friends</string>
 	<key>UIBackgroundModes</key>

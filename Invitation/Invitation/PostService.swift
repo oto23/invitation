@@ -7,9 +7,6 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseDatabase
-import MapKit
 
 struct PostService {
     static func create(name: String, long: Double, lat: Double, invitedUsers: [User], completion: @escaping (Bool) -> ()) {
