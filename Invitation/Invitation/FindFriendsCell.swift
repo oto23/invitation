@@ -25,11 +25,11 @@ class FindFriendsCell: UITableViewCell {
         requestButton.clipsToBounds = true
         
         requestButton.setTitle("Send request", for: .normal)
-        requestButton.setTitle("Sent", for: .selected)
+        requestButton.setTitle("Cancel", for: .selected)
     }
     @IBAction func requestButtonTapped(_ sender: UIButton) {
         
-      
+        
         delegate?.didTapFollowButton(sender, on: self)
         
         

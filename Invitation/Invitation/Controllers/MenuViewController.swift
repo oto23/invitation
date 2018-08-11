@@ -17,26 +17,26 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let titleArrAY = ["Search Friends", "Personal Info", "My Location", "Log out" ]
     
-  
     
-
+    
+    
     @IBOutlet weak var menuTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         menuTable.delegate = self
         menuTable.dataSource = self
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titleArrAY.count
     }
@@ -52,7 +52,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: 
+        case 0:
             let storyboard1 = UIStoryboard(name: "Users", bundle: nil)
             let initVC = storyboard1.instantiateInitialViewController()
             self.present(initVC!, animated: true)
@@ -68,7 +68,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.present(initVC!, animated: true)
             
         case 3 :
-           
+            
             
             do{
                 

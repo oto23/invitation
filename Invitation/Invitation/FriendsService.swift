@@ -57,8 +57,8 @@ struct FriendsService {
         } else {
             unfollowUser(followee, forCurrentUserWithSuccess: success)
         }
-}
-
+    }
+    
     static func isUserFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
         guard let currentUID = User.current.uid else { return }
         let ref = Database.database().reference().child("followers").child(user.uid!)
@@ -70,5 +70,5 @@ struct FriendsService {
                 completion(false)
             }
         })
-}
+    }
 }

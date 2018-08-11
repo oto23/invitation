@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
         
         
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,9 +77,9 @@ class SignUpViewController: UIViewController {
             else{
                 
                 
-            self.showMessage(messageToDisplay: "Password is required")
+                self.showMessage(messageToDisplay: "Password is required")
                 
-            return
+                return
         }
         guard let repeatPassword = repeatPasswordTextField.text, !repeatPassword.isEmpty
             else{
@@ -90,16 +90,16 @@ class SignUpViewController: UIViewController {
                 return
         }
         
-            if password != repeatPassword
-            {
-                self.showMessage(messageToDisplay: "Passwords don't match")
-                return
-            }
+        if password != repeatPassword
+        {
+            self.showMessage(messageToDisplay: "Passwords don't match")
+            return
+        }
         
         
         Auth.auth().createUser(withEmail:userEmail, password: password) { (user, error) in
             
-           
+            
             if let error = error
             {
                 print(error.localizedDescription)
@@ -115,17 +115,17 @@ class SignUpViewController: UIViewController {
                 
                 
                 
-            databaseReferance.child("users").child(user.user.uid).setValue(["userDetails": userDetails])
+                databaseReferance.child("users").child(user.user.uid).setValue(["userDetails": userDetails])
                 
                 
                 
                 
-            user.user.sendEmailVerification(completion:nil)
+                user.user.sendEmailVerification(completion:nil)
                 self.showMessage(messageToDisplay: "We have sent you an email message. Please check your email and follow the link to verify")
                 
                 let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-                    let  appDelegate = UIApplication.shared.delegate
-                    appDelegate?.window??.rootViewController = signInPage
+                let  appDelegate = UIApplication.shared.delegate
+                appDelegate?.window??.rootViewController = signInPage
                 
                 
                 
@@ -133,9 +133,9 @@ class SignUpViewController: UIViewController {
                 
             }
         }
-    
-    
-    
+        
+        
+        
     }
     
     

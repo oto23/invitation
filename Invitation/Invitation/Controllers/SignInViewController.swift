@@ -27,9 +27,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var loginWithFbButton: FBSDKLoginButton!
-   
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,9 +45,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         guard let userEmail = userEmailTextField.text, !userEmail.isEmpty else{
             self.showMessage(messageToDisplay: "Email is required")
             return
-          
+            
         }
-    
+        
         guard let userPassword = userPasswordTextField.text, !userPassword.isEmpty else{
             self.showMessage(messageToDisplay: "Password is required")
             return
@@ -93,7 +93,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
     }
-
+    
     public func needToVerifyEmail(){
         let alertController = UIAlertController(title: "Alert Title", message: "Email adress has not been verified", preferredStyle: .alert)
         
@@ -114,8 +114,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
                 
             })
-        
-    }
+            
+        }
         let closeAction = UIAlertAction(title: "Close", style: .cancel)
         { (action: UIAlertAction!) in
             
@@ -127,7 +127,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         alertController.addAction(closeAction)
         
         self.present(alertController,animated: true, completion: nil)
-    
+        
     }
     
     
@@ -150,8 +150,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if let error = error{
             print("Error took place\(error.localizedDescription)")
-             return
-        
+            return
+            
         }
         print("success")
         if FBSDKAccessToken.current() == nil{
@@ -181,9 +181,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let userFullName = user.displayName{
                 let userNameDetails = userFullName.components(separatedBy: .whitespaces)
                 if userNameDetails.count >= 2{
-                    userDetails["FirstName"] = userNameDetails[0]
-                    userDetails["LastName"] = userNameDetails[1]
-                    userDetails["Username"] = userNameDetails[0]
+                    userDetails["firstName"] = userNameDetails[0]
+                    userDetails["lastName"] = userNameDetails[1]
                 }
             }
             var databaseReference: DatabaseReference!
@@ -195,39 +194,37 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if let user = user {
                     // handle existing user
                     User.setCurrent(user, writeToUserDefaults: true)
-            
+                    
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let displayFriendlist = storyboard.instantiateInitialViewController() as! UINavigationController
                     self.present(displayFriendlist, animated: true, completion: nil)
-
+                    
                     let appDelegate = UIApplication.shared.delegate
                     appDelegate?.window??.rootViewController = displayFriendlist
-//                    self.performSegue(withIdentifier: "toMainStoryboard", sender: self)
+                    //                    self.performSegue(withIdentifier: "toMainStoryboard", sender: self)
                 } else {
+                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                    let chooseUsername = storyboard.instantiateViewController(withIdentifier:"UsernameViewController") as! UsernameViewController
+                    self.present(chooseUsername, animated: true, completion: nil)
                     
-                    print("errorrr!!!!!!!!!!!!!!")
-//                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//                    let chooseUsername = storyboard.instantiateViewController(withIdentifier:"UsernameViewController") as! UsernameViewController
-//                    self.present(chooseUsername, animated: true, completion: nil)
-//
-//                    let appDelegate = UIApplication.shared.delegate
-//                    appDelegate?.window??.rootViewController = chooseUsername
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = chooseUsername
                 }
             }
             
         }
+        
+        
+    }
     
-    
-}
-
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User signed out")
     }
-
-
     
-
+    
+    
+    
 }
 
 extension SignInViewController: FUIAuthDelegate {
@@ -244,8 +241,9 @@ extension SignInViewController: FUIAuthDelegate {
             if let user = user {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
-
+                
             }
         }
     }
 }
+

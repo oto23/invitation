@@ -20,7 +20,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     
     var userList: [User] = []
     var currentUserList = [User]()
-//    var userList1: [String] = []
+    //    var userList1: [String] = []
     
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
                 }
                 print("Username: \(user.username)")
                 self.userList.append(user)
-//                self.userList1.append(user.username!)
+                //                self.userList1.append(user.username!)
                 FriendsService.isUserFollowed(user) { isFollowed in
                     user.isFollowed = isFollowed
                 }
@@ -70,11 +70,11 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentUserList.count
-//        if tableView == UsersTable{
-//            return currentUserList.count
-//        }else{
-//            return userList1.count
-//        }
+        //        if tableView == UsersTable{
+        //            return currentUserList.count
+        //        }else{
+        //            return userList1.count
+        //        }
     }
     
     
@@ -86,13 +86,13 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         cell.backgroundColor = UIColor.darkGray
         let user = currentUserList[indexPath.row]
         cell.textLabel?.text = user.username
-//        if tableView == UsersTable{
-//            cell.textLabel?.text = currentUserList[indexPath.row]
-//        }else{
-//            cell.textLabel?.text = userList1[indexPath.row]
-//        }
-//        let user = userList[indexPath.row]
-       
+        //        if tableView == UsersTable{
+        //            cell.textLabel?.text = currentUserList[indexPath.row]
+        //        }else{
+        //            cell.textLabel?.text = userList1[indexPath.row]
+        //        }
+        //        let user = userList[indexPath.row]
+        
         
         //        cell.usernameLabel.text = user.username
         cell.requestButton.isSelected = user.isFollowed
@@ -133,12 +133,12 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         UsersTable.reloadData()
-        }
+    }
     
-
+    
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
-    
-}
+        
+    }
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
         

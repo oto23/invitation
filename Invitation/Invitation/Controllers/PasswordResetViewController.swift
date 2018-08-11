@@ -14,10 +14,10 @@ class PasswordResetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -25,7 +25,7 @@ class PasswordResetViewController: UIViewController {
     
     @IBAction func resetPasswordTapped(_ sender: Any) {
         guard let emailAdress = emailAdressTextField.text, !emailAdress.isEmpty else{return}
-            Auth.auth().sendPasswordReset(withEmail: emailAdress) { (error) in
+        Auth.auth().sendPasswordReset(withEmail: emailAdress) { (error) in
             if error != nil{
                 self.showMessage(messageToDisplay: (error?.localizedDescription)!)
                 return
@@ -37,7 +37,7 @@ class PasswordResetViewController: UIViewController {
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    
+        
     }
     
     
@@ -52,6 +52,6 @@ class PasswordResetViewController: UIViewController {
         alertController.addAction(OKAction)
         self.present(alertController,animated: true, completion: nil)
     }
-
+    
     
 }

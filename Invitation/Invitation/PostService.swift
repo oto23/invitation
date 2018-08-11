@@ -85,36 +85,6 @@ struct PostService {
             completion(true)
         }
     }
-
-
-    static func invitationAccepted(friend: User, completion: @escaping (Bool) -> ()){
-
-//        var post: Post!
-//        let ref = Database.database().reference().child("open_invites").child("invited_friends")
-//
-//        ref.setValue(1) { (error, _) in
-//
-//
-//            if let error = error {
-//                assertionFailure(error.localizedDescription)
-//            }
-
-            completion(true)
-//        }
-    }
-    static func invitationDenied(friend: User, completion: @escaping (Bool) -> ()){
-//        let ref = Database.database().reference().child("open_invites").child("friend_uid").childByAutoId()
-//
-//        ref.setValue(2) { (error, _) in
-//
-//
-//            if let error = error {
-//                assertionFailure(error.localizedDescription)
-//            }
-//
-            completion(true)
-//        }
-    }
-
 }
+
 

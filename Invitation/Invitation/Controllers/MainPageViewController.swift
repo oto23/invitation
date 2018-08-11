@@ -20,7 +20,7 @@ class MainPageViewController: UIViewController {
     @IBOutlet weak var LastNameLabel: UILabel!
     @IBAction func BackButton(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-       self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -59,7 +59,7 @@ class MainPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -81,13 +81,13 @@ class MainPageViewController: UIViewController {
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     public func showMessage(messageToDisplay: String)
     {
         let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
@@ -99,5 +99,5 @@ class MainPageViewController: UIViewController {
         alertController.addAction(OKAction)
         self.present(alertController,animated: true, completion: nil)
     }
-
+    
 }

@@ -36,6 +36,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     //    final
     //
     //    static
+    
     @IBOutlet weak var search: UISearchBar!
     
     @IBAction func inviteButton(_ sender: Any) {
@@ -51,6 +52,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //        let storyboard = UIStoryboard(name: "Users", bundle: Bundle.main)
         //        let mapView = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
         //        self.present(mapView, animated: true, completion: nil)
+        
         var selectedFriends: [User] = []
         
         if let indexPathsForSelectedFriends = friendsTableView.indexPathsForSelectedRows {
@@ -122,6 +124,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         
+        
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
         //        setUpSearchBar()
@@ -170,6 +173,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 //                guard let user = User(snapshot: snap) else {
                 //                    return assertionFailure("Failed to create user")
                 //                }
+                
                 let userId = snap.key
                 print(userId)
                 
@@ -185,9 +189,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     //                          let username = userDetailsDict["Username"] as? String else {
                     //                            return assertionFailure("Failed to get username")
                     //                    }
+                    
                     // Append username in listOfFollowees array
                     //                    self.listOfFollowees.append(username)
                     //                    guard let username = user?.username else { return }
+                    
                     self.listOfFollowees.append(user)
                     
                     dg.leave()
@@ -228,6 +234,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                     
                     //                    guard let username = user else { return }
+                    
                     self.listOfFollowers.append(user)
                     
                     
@@ -335,7 +342,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     
+    
     // Do any additional setup after loading the view, typically from a nib.
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -445,3 +454,4 @@ extension NewViewController: InviteListenerDelegate {
         self.present(navController, animated: true)
     }
 }
+

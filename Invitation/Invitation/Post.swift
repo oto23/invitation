@@ -53,3 +53,4 @@ struct Post {
         self.lat = lat
     }
 }
+
