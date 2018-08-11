@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseDatabase
+import Firebase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate
 {
@@ -22,17 +24,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
     }
     
+
+    @IBOutlet weak var joinButtonOutlet: UIButton!
     
+    @IBAction func JoinButton(_ sender: UIButton) {
+        
+        PostService.invitationAccepted(friend: User.current) { (success) in
+            if success{
+                self.joinButtonOutlet.isEnabled = false
+                
+            }
+        }
+        
+    }
     
+    @IBOutlet weak var cancelButtonOutlet: UIButton!
+    @IBAction func cancelButton(_ sender: UIButton) {
+        PostService.invitationDenied(friend: User.current) { (success) in
+            if success{
+                self.cancelButtonOutlet.isEnabled = false
+                
+            }
+        }
+    }
     
     var post: Post!
     
     let manager = CLLocationManager()
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
+//        let location = locations[0]
         let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(post.lat, post.long)
         
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map.setRegion(region, animated: true)
@@ -40,6 +63,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         self.map.showsUserLocation = true
         
     }
+
     
     override func viewDidLoad() {
         
@@ -48,10 +72,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        NameLabel.text = post.author.username
         
         
     }
     
+    @IBOutlet weak var NameLabel: UILabel!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

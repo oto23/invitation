@@ -39,6 +39,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var search: UISearchBar!
 
+    @IBOutlet weak var inviteButtonOutlet: UIButton!
+    
     @IBAction func inviteButton(_ sender: Any) {
         guard let location = currentLocation else {
             return print("location not found, check permissions from the user")
@@ -67,6 +69,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         PostService.create(name: User.current.username!, long:long , lat: lat, invitedUsers: selectedFriends) { (success) in
             if success {
                 self.performSegue(withIdentifier: "toChecklist", sender: selectedFriends)
+                self.inviteButtonOutlet.isEnabled = false
             } else {
                 //TODO: Use UIAlertController to send an alert to the user that something went wrong
             }
