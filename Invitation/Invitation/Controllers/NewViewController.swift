@@ -276,9 +276,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
+        if tableView == friendsTableView{
             return listOfFriends.count
-      
-        
+        }else{
+            return tempList.count
+        }
         
     }
 
@@ -287,9 +289,12 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
        let user = listOfFriends[indexPath.row]
 //        let user2 = tempList[indexPath.row]
-        
-        cell.textLabel?.text = user.username
-        
+        listOfFriendsString.append(user.username!)
+        if tableView == friendsTableView{
+            cell.textLabel?.text = listOfFriendsString[indexPath.row]
+        }else{
+            cell.textLabel?.text = tempList[indexPath.row]
+        }
         cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
         cell.backgroundColor = UIColor.darkGray
 
