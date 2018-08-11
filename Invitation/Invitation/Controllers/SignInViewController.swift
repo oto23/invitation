@@ -181,8 +181,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let userFullName = user.displayName{
                 let userNameDetails = userFullName.components(separatedBy: .whitespaces)
                 if userNameDetails.count >= 2{
-                    userDetails["firstName"] = userNameDetails[0]
-                    userDetails["lastName"] = userNameDetails[1]
+                    userDetails["FirstName"] = userNameDetails[0]
+                    userDetails["LastName"] = userNameDetails[1]
+                    userDetails["Username"] = userNameDetails[0]
                 }
             }
             var databaseReference: DatabaseReference!
