@@ -155,7 +155,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
     }
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        
+        self.search.endEditing(true)
+    }
     func fetchFollowees(completion: @escaping (Bool) -> ()) {
         guard let currentUID = User.current.uid else {return}
         print(currentUID)

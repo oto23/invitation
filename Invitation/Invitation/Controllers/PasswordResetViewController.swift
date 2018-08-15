@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class PasswordResetViewController: UIViewController {
+class PasswordResetViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailAdressTextField: UITextField!
     
     override func viewDidLoad() {
@@ -21,6 +21,15 @@ class PasswordResetViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailAdressTextField.resignFirstResponder()
+        
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { self.view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     @IBAction func resetPasswordTapped(_ sender: Any) {

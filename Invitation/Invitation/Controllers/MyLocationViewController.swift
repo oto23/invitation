@@ -5,18 +5,15 @@
 //  Created by Nika Talakhadze on 8/2/18.
 //  Copyright © 2018 None. All rights reserved.
 //
-
 import Foundation
 import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate
+class MyLocationViewController: UIViewController, CLLocationManagerDelegate
 {
     @IBOutlet weak var map: MKMapView!
     
-    
-    @IBOutlet weak var sendersNameLabel: UILabel!
     
     @IBAction func goBack(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -33,8 +30,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(post.lat, post.long)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.06, 0.06)
+        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         map.setRegion(region, animated: true)
@@ -50,7 +47,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        sendersNameLabel.text = post.author.username
         
         
     }
@@ -66,12 +62,3 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     
     
 }
-
-
-
-
-
-
-
-
-

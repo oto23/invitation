@@ -17,7 +17,7 @@ import FirebaseUI
 
 
 
-class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
+class SignInViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var userEmailTextField: UITextField!
@@ -33,12 +33,22 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         loginWithFbButton.delegate = self
         loginWithFbButton.readPermissions = ["email"]
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userEmailTextField.resignFirstResponder()
+        userPasswordTextField.resignFirstResponder()
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { self.view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -66,7 +76,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
             
-            if user.isEmailVerified
+            if user.isEmailVerified 
             {
                 self.needToVerifyEmail()
                 return

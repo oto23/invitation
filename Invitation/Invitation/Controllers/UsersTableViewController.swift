@@ -62,6 +62,11 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
         UsersTable.dataSource = self
         setUpSearchBar()
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        
+        self.searchBar.endEditing(true)
+    }
     
     private func setUpSearchBar(){
         searchBar.delegate = self

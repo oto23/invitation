@@ -63,7 +63,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.present(initVC, animated: true)
             
         case 2 :
-            let storyboard1 = UIStoryboard(name: "MapLocation", bundle: nil)
+            let storyboard1 = UIStoryboard(name: "myLocation", bundle: nil)
             let initVC = storyboard1.instantiateInitialViewController()
             self.present(initVC!, animated: true)
             
