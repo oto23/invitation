@@ -28,6 +28,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     
     
     var post: Post!
+    var user: User!
     
     let manager = CLLocationManager()
     
@@ -64,7 +65,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         //        map.addAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
     }
     
+    @IBAction func joinButtonTapped(_ sender: UIButton) {
+        
+        guard let uid = User.current.uid else {return}
+        PostService.remove(child: uid)
+        
+        
+        
+        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
+        let initVC = storyboard1.instantiateViewController(withIdentifier: "CheckListViewController") as! CheckListViewController
+        self.present(initVC, animated: true)
+    }
     
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        guard let uid = User.current.uid else {return}
+        PostService.remove(child: uid)
+        
+        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
+        let initVC = storyboard1.instantiateViewController(withIdentifier: "NewViewController") as! NewViewController     
+        self.present(initVC, animated: true)
+        
+    }
 }
 
 

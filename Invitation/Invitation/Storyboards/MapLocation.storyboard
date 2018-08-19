@@ -24,12 +24,18 @@
                                     <constraint firstAttribute="height" constant="51" id="nV9-eE-iDa"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="joinbutton"/>
+                                <connections>
+                                    <action selector="joinButtonTapped:" destination="E4y-12-ucK" eventType="touchUpInside" id="lNj-mo-P0a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBu-43-eB8">
                                 <rect key="frame" x="147" y="617" width="80" height="30"/>
                                 <state key="normal" title="cancel">
                                     <color key="titleColor" red="0.27616931900000002" green="0.78004045050000004" blue="0.022406859439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="E4y-12-ucK" eventType="touchUpInside" id="I6V-v5-4Sf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZc-ko-9Uq">
                                 <rect key="frame" x="16" y="79" width="60" height="40"/>
