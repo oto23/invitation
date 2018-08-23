@@ -31,6 +31,7 @@
 		529DB6DF211F773D0066B677 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529DB6DE211F773D0066B677 /* GoogleService-Info.plist */; };
 		529DB6E121232C360066B677 /* myLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529DB6E021232C360066B677 /* myLocation.storyboard */; };
 		529DB6E321232CBF0066B677 /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DB6E221232CBF0066B677 /* MyLocationViewController.swift */; };
+		529DB6E5212AB58C0066B677 /* InvitedFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DB6E4212AB58C0066B677 /* InvitedFriendsViewController.swift */; };
 		52A7BFE72110CA790059597B /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A7BFE62110CA790059597B /* Users.storyboard */; };
 		52A7BFE92110CD940059597B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFE82110CD940059597B /* User.swift */; };
 		52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFEE2113E6C40059597B /* FriendsService.swift */; };
@@ -81,6 +82,7 @@
 		529DB6DE211F773D0066B677 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		529DB6E021232C360066B677 /* myLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = myLocation.storyboard; sourceTree = "<group>"; };
 		529DB6E221232CBF0066B677 /* MyLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
+		529DB6E4212AB58C0066B677 /* InvitedFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedFriendsViewController.swift; sourceTree = "<group>"; };
 		52A7BFE62110CA790059597B /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		52A7BFE82110CD940059597B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52A7BFEE2113E6C40059597B /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				252D75EA211E44E500FC05E4 /* UsernameViewController.swift */,
 				2508FD66211A56440065FEFE /* MenuTableViewCell.swift */,
 				529DB6E221232CBF0066B677 /* MyLocationViewController.swift */,
+				529DB6E4212AB58C0066B677 /* InvitedFriendsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,
 				2508FD71211C18730065FEFE /* PostService.swift in Sources */,
+				529DB6E5212AB58C0066B677 /* InvitedFriendsViewController.swift in Sources */,
 				2508FD6F211C149F0065FEFE /* InviteListner.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				252D75EC211E44E500FC05E4 /* UsernameViewController.swift in Sources */,
@@ -515,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4266XVUC5Z;
+				DEVELOPMENT_TEAM = YJGZ765Q49;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -537,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4266XVUC5Z;
+				DEVELOPMENT_TEAM = YJGZ765Q49;
 				INFOPLIST_FILE = "$(SRCROOT)/Invitation/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

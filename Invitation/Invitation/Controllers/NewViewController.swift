@@ -81,7 +81,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var tempList = [String]()
     var ref: DatabaseReference!
     var ref2: DatabaseReference!
-    
+    var post: Post!
     
     
     
@@ -130,6 +130,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         //        setUpSearchBar()
         friendsTableView.allowsMultipleSelection = true
         setUpSearchBar()
+        
         
     }
     

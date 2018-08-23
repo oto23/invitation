@@ -15,6 +15,7 @@ struct Post {
     var long: Double
     var lat: Double
     
+    
     var dictValue: [String: Any] {
         let userDict = [
             "uid": author.uid!,

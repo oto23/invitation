@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseDatabase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate
 {
@@ -17,6 +18,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     
     
     @IBOutlet weak var sendersNameLabel: UILabel!
+    
+    @IBOutlet weak var keyLabel: UILabel!
+    
+    
     
     @IBAction func goBack(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -55,6 +60,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingLocation()
         sendersNameLabel.text = post.author.username
         
+    
+        
         
     }
     
@@ -74,9 +81,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
         
         
-        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
-        let initVC = storyboard1.instantiateViewController(withIdentifier: "CheckListViewController") as! CheckListViewController
-        self.present(initVC, animated: true)
+//        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
+//        let initVC = storyboard1.instantiateViewController(withIdentifier: "CheckListViewController") as! CheckListViewController
+//        self.present(initVC, animated: true)
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -89,6 +96,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
     }
 }
+
+
 
 
 

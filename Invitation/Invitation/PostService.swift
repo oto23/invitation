@@ -85,7 +85,11 @@ struct PostService {
             completion(true)
         }
     }
+    
+    
     static let ref = Database.database().reference()
+    
+    
     static func remove(child: String) {
         
         let ref = self.ref.child("invites").child(child)
@@ -95,6 +99,10 @@ struct PostService {
 //            print(error)
         }
     }
+    
+//    static func getInvitedFriends(){
+//         
+//    }
     
 }
 
