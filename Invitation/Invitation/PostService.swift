@@ -29,20 +29,16 @@ struct PostService {
         
         
         //create a Post object with the name, long and lat
-        let newPost = Post(key: ref.key, author: author, long: long, lat: lat)
+        var newPost = Post(key: ref.key, author: author, long: long, lat: lat)
         
+        //add invited friends uid to newPost
+        let inviteduserUids = invitedUsers.map { aUser -> String in
+            return aUser.uid!
+        }
+        newPost.invitedUserUids = inviteduserUids
         
         //get dictionary from post.dictValue
-        var postDict = newPost.dictValue
-        
-        let invitedUsersDict = invitedUsers.reduce([String: Int]()) { (dict, aUser) -> [String: Int] in
-            var dictCopy = dict
-            dictCopy[aUser.uid!] = 0
-            
-            return dictCopy
-        }
-        
-        postDict["invited_friends"] = invitedUsersDict
+        let postDict = newPost.dictValue
         
         //upload the post dictionary to the reference
         ref.setValue(postDict) { (error, _) in

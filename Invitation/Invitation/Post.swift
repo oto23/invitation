@@ -14,6 +14,7 @@ struct Post {
     var author: User
     var long: Double
     var lat: Double
+    var invitedUserUids: [String] = []
     
     
     var dictValue: [String: Any] {
@@ -22,11 +23,22 @@ struct Post {
             "username": author.username!
         ]
         
-        return [
+        var dictionaryValue: [String: Any] = [
             "author": userDict,
             "long": long,
-            "lat": lat
+            "lat": lat,
+            "uid": key
         ]
+        
+        //add invited friends, only if invitedUserUids.count > 0
+        if invitedUserUids.count > 0 {
+            let invitedUsersDict = invitedUserUids.reduce(into: [String: Bool]()) { (dict, aUid) in
+                dict[aUid] = true
+            }
+            dictionaryValue["invited_friends"] = invitedUsersDict
+        }
+        
+        return dictionaryValue
     }
     
     init(key: String, author: User, long: Double, lat: Double) {
@@ -43,15 +55,20 @@ struct Post {
             let author = dict["author"] as? [String: Any],
             let authorUID = author["uid"] as? String,
             let authorUsername = author["username"] as? String,
+            let uid = dict["uid"] as? String,
             let long = dict["long"] as? Double,
             let lat = dict["lat"] as? Double
             else { return nil }
         
         
-        self.key = snapshot.key
+        self.key = uid
         self.author = User(uid: authorUID, username: authorUsername)
         self.long = long
         self.lat = lat
+        
+        if let invitedUserDict = dict["invited_friends"] as? [String: Any] {
+            self.invitedUserUids = Array<String>(invitedUserDict.keys)
+        }
     }
 }
 
