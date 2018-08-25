@@ -78,7 +78,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
         guard let uid = User.current.uid else {return}
         PostService.remove(child: uid)
-        
+        print(post.key)
         
         
 //        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)

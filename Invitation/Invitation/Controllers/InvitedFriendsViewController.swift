@@ -45,8 +45,6 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
             self.getFriendsToDisplay()
         }
     }
-    
-    
     @IBOutlet weak var friendsCellView: UITableView!
     
     func getInvitedFriends(completion: @escaping (Bool) -> ()){
@@ -74,11 +72,6 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
                 let userRef = Database.database().reference().child("open_invites").child(inviteId).child("invited_friends")
                 userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     
-//                    guard let user = User(snapshot: snapshot) else {
-//                        fatalError("failed to create a user from the snapshot")
-//                    }
-//                    print("userrrr\(user)")
-                    
                     guard let snapOfInvitedFriends = snapshot.children.allObjects as? [DataSnapshot] else{
                         return assertionFailure("failed to get invited friends")
                     }
@@ -87,21 +80,19 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
 //                        print("this is snap\(snap)")
 //                        print("this is key\(snap.key), this is value\(snap.value)")
                         let userId = snap.key
-                        
+                        dg.leave()
                     
                    
 
                     
 //                    print("aaaaaaaaa\(snapOfInvitedFriends)")
-                    
+                        dg.enter()
                         let userRef = Database.database().reference().child("users").child(userId)
                         userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                             
                             guard let user = User(snapshot: snapshot) else {
                                 fatalError("failed to create a user from the snapshot")
                             }
-                            
-                            //                    guard let username = user else { return }
                             
                             self.invitedFriends.append(user)
                             dg.leave()
@@ -125,7 +116,7 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
     
     func getFriendsToDisplay(){
         for friend in invitedFriends{
-            print(friend.username)
+//            print(friend.username)
             if friend == User.current{
                 list2.append(friend)
             }
