@@ -34,7 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     
     var post: Post!
     var user: User!
-    
+    var invitedFriendsString = [String]()
     let manager = CLLocationManager()
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -59,7 +59,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         sendersNameLabel.text = post.author.username
-        
+        invitedFriendsString = post.invitedUserUids
+//        print("aaaaaaaaa\(invitedFriendsString)")
     
         
         
@@ -73,13 +74,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         //MKAnnotation
         //        map.addAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let InvitedFriendsViewController = segue.destination as? InvitedFriendsViewController{
+            InvitedFriendsViewController.list2 = invitedFriendsString
+        }
+    }
     @IBAction func joinButtonTapped(_ sender: UIButton) {
         
         guard let uid = User.current.uid else {return}
         PostService.remove(child: uid)
         print(post.key)
-        
         
 //        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
 //        let initVC = storyboard1.instantiateViewController(withIdentifier: "CheckListViewController") as! CheckListViewController

@@ -12,6 +12,8 @@ import FirebaseDatabase
 
 
 class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    
     
     
     
@@ -20,7 +22,7 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
     var user: User!
     var postservice: PostService!
     var invitedFriends = [User]()
-    var list2 = [User]()
+    var list2 = [String]()
     
     
  
@@ -28,112 +30,64 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        for uid in list2{
+            let ref = Database.database().reference().child("users").child(uid)
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                    guard let user = User(snapshot: snapshot) else {
+                        return assertionFailure("Failed to create user using snapshot")
+                    }
+                   
+                    self.invitedFriends.append(user)
+                    //                self.userList1.append(user.username!)
+                
+                
+                DispatchQueue.main.async {
+                    self.friendsCellView.reloadData()
+                }
+                
+            }
         
+        
+
+    }
+            
         friendsCellView.delegate = self
         friendsCellView.dataSource = self
-       
+//        print("list 222222\(list2)")
         
 
         // Do any additional setup after loading the view.
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        getInvitedFriends{ success in
-            self.getFriendsToDisplay()
-        }
-    }
+ 
     @IBOutlet weak var friendsCellView: UITableView!
     
-    func getInvitedFriends(completion: @escaping (Bool) -> ()){
-        let ref = Database.database().reference().child("open_invites")
-//        print(ref)
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            
-            guard let snapshotsOfInvites = snapshot.children.allObjects as? [DataSnapshot] else {
-                return assertionFailure("Failed to get following")
-            }
-            
-            let dg = DispatchGroup()
-            
-            for snap in snapshotsOfInvites{
-                //                guard let user = User(snapshot: snap) else {
-                //                    return assertionFailure("Failed to create user")
-                //                }
-                
-                let inviteId = snap.key
-        
-//                print(inviteId)
-                
-                dg.enter()
-                
-                let userRef = Database.database().reference().child("open_invites").child(inviteId).child("invited_friends")
-                userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                    
-                    guard let snapOfInvitedFriends = snapshot.children.allObjects as? [DataSnapshot] else{
-                        return assertionFailure("failed to get invited friends")
-                    }
-                    
-                    for snap in snapOfInvitedFriends{
-//                        print("this is snap\(snap)")
-//                        print("this is key\(snap.key), this is value\(snap.value)")
-                        let userId = snap.key
-                        dg.leave()
-                    
-                   
-
-                    
-//                    print("aaaaaaaaa\(snapOfInvitedFriends)")
-                        dg.enter()
-                        let userRef = Database.database().reference().child("users").child(userId)
-                        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                            
-                            guard let user = User(snapshot: snapshot) else {
-                                fatalError("failed to create a user from the snapshot")
-                            }
-                            
-                            self.invitedFriends.append(user)
-                            dg.leave()
-                           
-                            
-                            
-                        
-                        })
-                        
-                    }
-                    
-                })
-                
-                
-            }
-            dg.notify(queue: DispatchQueue.main, execute: {
-                completion(true)
-            })
-        }
-    }
+//    func getUsers(){
+//        for uid in list2{
+//            let userRef = Database.database().reference().child("users").child(uid)
+//            userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//                guard let user = User(snapshot: snapshot) else {
+//                    fatalError("failed to create a user from the snapshot")
+//                }
+//                self.invitedFriends.append(user)
+//
+//
+//            })
+//        }
+//    }
     
-    func getFriendsToDisplay(){
-        for friend in invitedFriends{
-//            print(friend.username)
-            if friend == User.current{
-                list2.append(friend)
-            }
-            
-        }
-    self.friendsCellView.reloadData()
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return invitedFriends.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let user = invitedFriends[indexPath.row]
         cell.textLabel?.text = user.username
+//        cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
+//        cell.backgroundColor = UIColor.darkGray
         return cell
-        
     }
-    
 }

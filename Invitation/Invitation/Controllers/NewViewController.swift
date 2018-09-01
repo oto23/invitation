@@ -189,15 +189,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     guard let user = User(snapshot: snapshot) else {
                         fatalError("failed to create a user from the snapshot")
                     }
-                    //                    guard let dict = snapshot.value as? [String: Any],
-                    //                          let userDetailsDict = dict["userDetails"] as? [String: Any],
-                    //                          let username = userDetailsDict["Username"] as? String else {
-                    //                            return assertionFailure("Failed to get username")
-                    //                    }
-                    
-                    // Append username in listOfFollowees array
-                    //                    self.listOfFollowees.append(username)
-                    //                    guard let username = user?.username else { return }
                     
                     self.listOfFollowees.append(user)
                     
