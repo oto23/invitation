@@ -131,18 +131,14 @@
 		524250B22107B57F00EBA246 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
-				52A7C0002119553E0059597B /* Extensions */,
 				524250B32107B57F00EBA246 /* AppDelegate.swift */,
-				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
-				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
-				52A7BFFA21146CE70059597B /* FindFriendsCell.swift */,
-				52A7BFE82110CD940059597B /* User.swift */,
-				2508FD6C211C13790065FEFE /* Post.swift */,
-				2508FD70211C18730065FEFE /* PostService.swift */,
-				2508FD6E211C149F0065FEFE /* InviteListner.swift */,
-				524250CB2107D95900EBA246 /* Supporting files */,
-				524250CA2107D93100EBA246 /* Storyboards */,
+				E97BC17121588DB0003D7EF7 /* Services */,
+				E97BC17221588DC7003D7EF7 /* Models */,
+				52A7C0002119553E0059597B /* Extensions */,
 				524250C92107D92400EBA246 /* Controllers */,
+				E97BC17321588DDD003D7EF7 /* Views */,
+				524250CA2107D93100EBA246 /* Storyboards */,
+				524250CB2107D95900EBA246 /* Supporting files */,
 				23DF4A9A2146EB290047503E /* Splash.png */,
 				524250BA2107B58000EBA246 /* Assets.xcassets */,
 				23DF4A9C2146EB820047503E /* LaunchScreen.storyboard */,
@@ -215,6 +211,34 @@
 				BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E97BC17121588DB0003D7EF7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
+				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
+				2508FD70211C18730065FEFE /* PostService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E97BC17221588DC7003D7EF7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52A7BFE82110CD940059597B /* User.swift */,
+				2508FD6C211C13790065FEFE /* Post.swift */,
+				2508FD6E211C149F0065FEFE /* InviteListner.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E97BC17321588DDD003D7EF7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52A7BFFA21146CE70059597B /* FindFriendsCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
