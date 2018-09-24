@@ -52,35 +52,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //-- <user.uid that was invited>
         //--- <entire post>
         
+        //Observe for open invites
         let refOfInvites = Database.database().reference().child("invites")
         refOfInvites.observe(.value) { (snapshot) in
             guard let invitedFriends = snapshot.children.allObjects as? [DataSnapshot] else {
                 fatalError("snapshot was not a dictionary")
             }
             
-            
             if let currentUserUID = User.currentIfLoggedIn?.uid!{
+                
                 //check if my uid is in the snapshot
-                
-                var inviteFound: Post? = nil
-                for anInvite in invitedFriends {
-                    if currentUserUID == anInvite.key {
-                        guard let postFromSnapshot = Post(snapshot: anInvite) else {
-                            fatalError("failed to create post from snapshot")
-                        }
-                        
-                        inviteFound = postFromSnapshot
-                        break
-                    }
+                guard let invitedPostSnapshot = invitedFriends.first(where: { $0.key == currentUserUID }) else {
+                    return
                 }
                 
-                if inviteFound != nil {
-                    NotificationCenter.default.post(name: .UserDidRecieveInvite, object: inviteFound!)
+                guard let postFromSnapshot = Post(snapshot: invitedPostSnapshot) else {
+                    fatalError("failed to create post from snapshot")
                 }
+                
+                NotificationCenter.default.post(name: .UserDidRecieveInvite, object: postFromSnapshot)
             }
         }
-        
-        
+        ////
         
         Auth.auth().addStateDidChangeListener{(auth,user) in
             if user != nil && user!.isEmailVerified{

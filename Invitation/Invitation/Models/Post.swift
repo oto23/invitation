@@ -16,6 +16,11 @@ struct Post {
     var lat: Double
     var invitedUserUids: [String] = []
     
+    enum InvitedUserStatus: Int {
+        case awaitingResponse
+        case acceptedInvite
+        case declinedInvite
+    }
     
     var dictValue: [String: Any] {
         let userDict = [
@@ -30,10 +35,10 @@ struct Post {
             "uid": key
         ]
         
-        //add invited friends, only if invitedUserUids.count > 0
+        //map invited users into [Uid: true]
         if invitedUserUids.count > 0 {
-            let invitedUsersDict = invitedUserUids.reduce(into: [String: Bool]()) { (dict, aUid) in
-                dict[aUid] = true
+            let invitedUsersDict = invitedUserUids.reduce(into: [String: Int]()) { (dict, aUid) in
+                dict[aUid] = InvitedUserStatus.awaitingResponse.rawValue
             }
             dictionaryValue["invited_friends"] = invitedUsersDict
         }
