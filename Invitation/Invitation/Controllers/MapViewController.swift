@@ -14,28 +14,23 @@ import FirebaseDatabase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate
 {
-    @IBOutlet weak var map: MKMapView!
     
-    
-    @IBOutlet weak var sendersNameLabel: UILabel!
-    
-    @IBOutlet weak var keyLabel: UILabel!
-    
-    
-    
-    @IBAction func goBack(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    
-    
+    // MARK: - VARS
     
     var post: Post!
     var user: User!
     var invitedFriendsString = [String]()
     let manager = CLLocationManager()
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - METHODS
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let InvitedFriendsViewController = segue.destination as? InvitedFriendsViewController{
+            InvitedFriendsViewController.list2 = invitedFriendsString
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
@@ -49,10 +44,41 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
     }
     
+    // MARK: - IBACTIONS
     
+    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var sendersNameLabel: UILabel!
+    @IBOutlet weak var keyLabel: UILabel!
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func joinButtonTapped(_ sender: UIButton) {
+        PostService.accept(post: self.post) { (isSuccessful) in
+            if isSuccessful {
+                self.performSegue(withIdentifier: "toInvitedFriends", sender: nil)
+            } else {
+                let alertError = UIAlertController(error: nil)
+                self.present(alertError, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        PostService.decline(post: self.post) { (isSuccessful) in
+            if isSuccessful {
+                self.presentingViewController?.dismiss(animated: true)
+            } else {
+                let alertError = UIAlertController(error: nil)
+                self.present(alertError, animated: true)
+            }
+        }
+    }
+    
+    // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,9 +87,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         sendersNameLabel.text = post.author.username
         invitedFriendsString = post.invitedUserUids
 //        print("aaaaaaaaa\(invitedFriendsString)")
-    
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,31 +96,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         
         //MKAnnotation
         //        map.addAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let InvitedFriendsViewController = segue.destination as? InvitedFriendsViewController{
-            InvitedFriendsViewController.list2 = invitedFriendsString
-        }
-    }
-    @IBAction func joinButtonTapped(_ sender: UIButton) {
-        
-        guard let uid = User.current.uid else {return}
-        PostService.remove(child: uid)
-        print(post.key)
-        
-//        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
-//        let initVC = storyboard1.instantiateViewController(withIdentifier: "CheckListViewController") as! CheckListViewController
-//        self.present(initVC, animated: true)
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        guard let uid = User.current.uid else {return}
-        PostService.remove(child: uid)
-        
-        let storyboard1 = UIStoryboard(name: "Main", bundle: nil)
-        let initVC = storyboard1.instantiateViewController(withIdentifier: "NewViewController") as! NewViewController     
-        self.present(initVC, animated: true)
-        
     }
 }
 

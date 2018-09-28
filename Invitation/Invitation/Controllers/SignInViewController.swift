@@ -76,12 +76,13 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFi
             }
             
             
-            if user.isEmailVerified 
-            {
-                self.needToVerifyEmail()
-                return
-            }
+//            if user.isEmailVerified
+//            {
+//                self.needToVerifyEmail()
+//                return
+//            }
             
+            //TODO: erick-uncomment
             //               self.storeTokens()
             //                if !(user?.isEmailVerified)!
             //                {

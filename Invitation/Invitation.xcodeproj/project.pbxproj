@@ -42,6 +42,7 @@
 		52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7C001211955660059597B /* Storyboard + Utility.swift */; };
 		E97BC176215896A9003D7EF7 /* StorageRefence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BC174215896A9003D7EF7 /* StorageRefence.swift */; };
 		E97BC177215896A9003D7EF7 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BC175215896A9003D7EF7 /* StorageService.swift */; };
+		E99730D1215DC6C600AB5EF0 /* UIAlertController+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99730D0215DC6C600AB5EF0 /* UIAlertController+Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,6 +99,7 @@
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
 		E97BC174215896A9003D7EF7 /* StorageRefence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageRefence.swift; sourceTree = "<group>"; };
 		E97BC175215896A9003D7EF7 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		E99730D0215DC6C600AB5EF0 /* UIAlertController+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Errors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				E97BC174215896A9003D7EF7 /* StorageRefence.swift */,
 				52A7C001211955660059597B /* Storyboard + Utility.swift */,
+				E99730D0215DC6C600AB5EF0 /* UIAlertController+Errors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				529DB6E321232CBF0066B677 /* MyLocationViewController.swift in Sources */,
 				E97BC176215896A9003D7EF7 /* StorageRefence.swift in Sources */,
 				52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */,
+				E99730D1215DC6C600AB5EF0 /* UIAlertController+Errors.swift in Sources */,
 				2508FD65211A561D0065FEFE /* MenuViewController.swift in Sources */,
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
 				52425101210D677E00EBA246 /* PasswordResetViewController.swift in Sources */,

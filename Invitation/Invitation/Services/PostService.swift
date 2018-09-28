@@ -29,7 +29,7 @@ struct PostService {
         
         
         //create a Post object with the name, long and lat
-        var newPost = Post(key: ref.key, author: author, long: long, lat: lat)
+        var newPost = Post(key: ref.key!, author: author, long: long, lat: lat)
         
         //add invited friends uid to newPost
         let inviteduserUids = invitedUsers.map { aUser -> String in
@@ -82,17 +82,64 @@ struct PostService {
         }
     }
     
+    static func accept(post: Post, completion: @escaping (Bool) -> Void) {
+        let currentUserUid = User.current.uid!
+        
+        let postRef = Database.database().reference()
+            .child("open_invites")
+                .child(post.key)
+                    .child("invited_friends")
+                        .child(currentUserUid)
+        postRef.setValue(Post.InvitedUserStatus.acceptedInvite.rawValue) { (error, _) in
+            if let err = error {
+                assertionFailure("there was an error accepting the invite: \(err.localizedDescription)")
+                
+                return completion(false)
+            }
+            
+            self.removeInvite(completion: { (isSuccessful) in
+                completion(isSuccessful)
+            })
+        }
+    }
+    
+    static func decline(post: Post, completion: @escaping (Bool) -> Void) {
+        let currentUserUid = User.current.uid!
+        
+        let postRef = Database.database().reference()
+            .child("open_invites")
+            .child(post.key)
+            .child("invited_friends")
+            .child(currentUserUid)
+        postRef.setValue(Post.InvitedUserStatus.declinedInvite.rawValue) { (error, _) in
+            if let err = error {
+                assertionFailure("there was an error declining the invite: \(err.localizedDescription)")
+                
+                return completion(false)
+            }
+            
+            self.removeInvite(completion: { (isSuccessful) in
+                completion(isSuccessful)
+            })
+        }
+    }
+    
     
     static let ref = Database.database().reference()
     
     
-    static func remove(child: String) {
+    private static func removeInvite(completion: @escaping (Bool) -> Void) {
+        let currentUserUid = User.current.uid!
         
-        let ref = self.ref.child("invites").child(child)
-        
+        let ref = self.ref.child("invites").child(currentUserUid)
         ref.removeValue { error, _ in
+            if let err = error {
+                assertionFailure("there was an error removing the invite: \(err.localizedDescription)")
+                
+                return completion(false)
+            }
             
-//            print(error)
+            completion(true)
         }
     }
     
