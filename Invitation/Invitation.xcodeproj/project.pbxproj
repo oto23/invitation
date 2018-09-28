@@ -40,6 +40,8 @@
 		52A7BFFB21146CE70059597B /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFA21146CE70059597B /* FindFriendsCell.swift */; };
 		52A7BFFF2117EA660059597B /* UserSerrvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7BFFE2117EA660059597B /* UserSerrvice.swift */; };
 		52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7C001211955660059597B /* Storyboard + Utility.swift */; };
+		E97BC176215896A9003D7EF7 /* StorageRefence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BC174215896A9003D7EF7 /* StorageRefence.swift */; };
+		E97BC177215896A9003D7EF7 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97BC175215896A9003D7EF7 /* StorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +96,8 @@
 		52A7BFFE2117EA660059597B /* UserSerrvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSerrvice.swift; sourceTree = "<group>"; };
 		52A7C001211955660059597B /* Storyboard + Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Utility.swift"; sourceTree = "<group>"; };
 		BAAA008C573F14FD0C917754 /* Pods-Invitation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invitation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Invitation/Pods-Invitation.release.xcconfig"; sourceTree = "<group>"; };
+		E97BC174215896A9003D7EF7 /* StorageRefence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageRefence.swift; sourceTree = "<group>"; };
+		E97BC175215896A9003D7EF7 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 		52A7C0002119553E0059597B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E97BC174215896A9003D7EF7 /* StorageRefence.swift */,
 				52A7C001211955660059597B /* Storyboard + Utility.swift */,
 			);
 			path = Extensions;
@@ -219,6 +224,7 @@
 				52A7BFFE2117EA660059597B /* UserSerrvice.swift */,
 				52A7BFEE2113E6C40059597B /* FriendsService.swift */,
 				2508FD70211C18730065FEFE /* PostService.swift */,
+				E97BC175215896A9003D7EF7 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -357,7 +363,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -367,7 +373,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -404,6 +410,7 @@
 				257E0DA7210D88A5001D60C0 /* CheckListViewController.swift in Sources */,
 				524250B62107B57F00EBA246 /* NewViewController.swift in Sources */,
 				529DB6E321232CBF0066B677 /* MyLocationViewController.swift in Sources */,
+				E97BC176215896A9003D7EF7 /* StorageRefence.swift in Sources */,
 				52A7C002211955660059597B /* Storyboard + Utility.swift in Sources */,
 				2508FD65211A561D0065FEFE /* MenuViewController.swift in Sources */,
 				257E0DB12113F1B1001D60C0 /* MapViewController.swift in Sources */,
@@ -413,6 +420,7 @@
 				2508FD6F211C149F0065FEFE /* InviteListner.swift in Sources */,
 				524250FC2109BD6A00EBA246 /* SignInViewController.swift in Sources */,
 				252D75EC211E44E500FC05E4 /* UsernameViewController.swift in Sources */,
+				E97BC177215896A9003D7EF7 /* StorageService.swift in Sources */,
 				52A7BFE92110CD940059597B /* User.swift in Sources */,
 				52A7BFEF2113E6C40059597B /* FriendsService.swift in Sources */,
 				524250FA2109A41600EBA246 /* SignUpViewController.swift in Sources */,
