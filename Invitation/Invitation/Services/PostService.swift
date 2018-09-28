@@ -12,6 +12,7 @@ import FirebaseDatabase
 import MapKit
 
 struct PostService {
+    
     static func create(name: String, long: Double, lat: Double, invitedUsers: [User], completion: @escaping (Bool) -> ()) {
         
         
@@ -79,6 +80,35 @@ struct PostService {
             }
             
             completion(true)
+        }
+    }
+    
+    private static var friendsStatusesRef: UInt?
+    
+    static func observeFriendStatuses(for post: Post, completion: @escaping ([Post.InvitedUserStatus]?) -> Void) {
+        let postRef = Database.database().reference()
+            .child("open_invites")
+                .child(post.key)
+                    .child("invited_friends")
+        self.friendsStatusesRef = postRef.observe(.value) { (snapshot) in
+            guard let userUids = snapshot.children.allObjects as? [DataSnapshot] else {
+                assertionFailure("there was an error fetching the friend statuses")
+                
+                return completion(nil)
+            }
+            
+            let userUidStatuses = userUids.map { $0.value as! Post.InvitedUserStatus }
+            completion(userUidStatuses)
+        }
+    }
+    
+    static func unobserveFriendsStatuses(for post: Post) {
+        if let ref = self.friendsStatusesRef {
+            let postRef = Database.database().reference()
+                .child("open_invites")
+                    .child(post.key)
+                        .child("invited_friends")
+            postRef.removeObserver(withHandle: ref)
         }
     }
     

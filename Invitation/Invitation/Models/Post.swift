@@ -17,7 +17,7 @@ struct Post {
     var invitedUserUids: [String] = []
     
     enum InvitedUserStatus: Int {
-        case awaitingResponse
+        case awaitingResponse = 0
         case acceptedInvite
         case declinedInvite
     }
