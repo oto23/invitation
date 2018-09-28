@@ -11,48 +11,33 @@ import UIKit
 
 class CheckListViewController: UITableViewController {
     
+    // MARK: - VARS
+    
+    var post: Post!
     
     var listOfSelectedFriends = [User]() {
         didSet {
-            
-            listOfFriendStatus = listOfSelectedFriends.reduce([String: Int]()) { (dict, aUser) -> [String: Int] in
-                var dictCopy = dict
-                dictCopy[aUser.uid!] = 0
-                
-                return dictCopy
-            }
+            listOfFriendStatus = listOfSelectedFriends.reduce(into: [String: Post.InvitedUserStatus](), { (dict, aUser) in
+                dict[aUser.uid!] = Post.InvitedUserStatus.awaitingResponse
+            })
         }
     }
-    var listOfFriendStatus: [String: Int] = [:]
     
-    @IBAction func displayButton(_ sender: Any) {
-        //        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
-        //        let mapView = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
-        //        self.present(mapView, animated: true, completion: nil)
-        //
-        print(listOfSelectedFriends)
-    }
+    var listOfFriendStatus: [String: Post.InvitedUserStatus] = [:]
     
-    
-    
+    // MARK: - RETURN VALUES
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfSelectedFriends.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let user = listOfSelectedFriends[indexPath.row]
         cell.textLabel?.text = user.username
         
         if let userStats = listOfFriendStatus[user.uid!] {
-            if userStats == 0 {
-                
-            } else if userStats == 1 {
-                
-            } else if userStats == 2 {
-                
-            }
+            cell.detailTextLabel?.text = userStats.title
         }
         
         //        let label = cell.viewWithTag(1000) as! UILabel
@@ -64,9 +49,30 @@ class CheckListViewController: UITableViewController {
         return cell
     }
     
-    override func viewDidLoad() {
-        
+    // MARK: - METHODS
+    
+    // MARK: - IBACTIONS
+    
+    @IBAction func displayButton(_ sender: Any) {
+        //        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
+        //        let mapView = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
+        //        self.present(mapView, animated: true, completion: nil)
+        //
+        print(listOfSelectedFriends)
     }
     
+    // MARK: - LIFE CYCLE
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        PostService.observeFriendStatuses(for: self.post) { (newStatuses) in
+            guard let newStatuses = newStatuses else {
+                return
+            }
+            
+            self.listOfFriendStatus = newStatuses
+            self.tableView.reloadData()
+        }
+    }
 }

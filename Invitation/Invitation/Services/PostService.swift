@@ -13,7 +13,7 @@ import MapKit
 
 struct PostService {
     
-    static func create(name: String, long: Double, lat: Double, invitedUsers: [User], completion: @escaping (Bool) -> ()) {
+    static func create(name: String, long: Double, lat: Double, invitedUsers: [User], completion: @escaping (Post?) -> ()) {
         
         
         let author = User.current
@@ -64,7 +64,7 @@ struct PostService {
             }
             
             dg.notify(queue: DispatchQueue.main, execute: {
-                completion(true)
+                completion(newPost)
             })
         }
     }
@@ -85,7 +85,7 @@ struct PostService {
     
     private static var friendsStatusesRef: UInt?
     
-    static func observeFriendStatuses(for post: Post, completion: @escaping ([Post.InvitedUserStatus]?) -> Void) {
+    static func observeFriendStatuses(for post: Post, completion: @escaping ([String: Post.InvitedUserStatus]?) -> Void) {
         let postRef = Database.database().reference()
             .child("open_invites")
                 .child(post.key)
@@ -97,7 +97,9 @@ struct PostService {
                 return completion(nil)
             }
             
-            let userUidStatuses = userUids.map { $0.value as! Post.InvitedUserStatus }
+            let userUidStatuses = userUids.reduce(into: [String: Post.InvitedUserStatus](), { (sum, aSnapshot) in
+                sum[aSnapshot.key] = Post.InvitedUserStatus(rawValue: aSnapshot.value as! Int)!
+            })
             completion(userUidStatuses)
         }
     }

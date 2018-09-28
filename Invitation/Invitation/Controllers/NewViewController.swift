@@ -17,12 +17,6 @@ import MapKit
 
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    //COPY ME
-    lazy var inviteListener = InviteListener(delegate: self)
-    
-    var locManager = CLLocationManager()
-    var currentLocation: CLLocation?
-    
     //    continue
     //
     //    unowned
@@ -37,41 +31,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     //
     //    static
     
-    @IBOutlet weak var search: UISearchBar!
+    // MARK: - VARS
     
-    @IBAction func inviteButton(_ sender: Any) {
-        guard let location = currentLocation else {
-            return print("location not found, check permissions from the user")
-        }
-        
-        let long = location.coordinate.longitude
-        let lat = location.coordinate.latitude
-        
-        
-        //
-        //        let storyboard = UIStoryboard(name: "Users", bundle: Bundle.main)
-        //        let mapView = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
-        //        self.present(mapView, animated: true, completion: nil)
-        
-        var selectedFriends: [User] = []
-        
-        if let indexPathsForSelectedFriends = friendsTableView.indexPathsForSelectedRows {
-            
-            for anIndexPath in indexPathsForSelectedFriends {
-                let friend = listOfFriends[anIndexPath.row]
-                selectedFriends.append(friend)
-            }
-        }
-        
-        //create a post from the information, like invited friends and location
-        PostService.create(name: User.current.username!, long:long , lat: lat, invitedUsers: selectedFriends) { (success) in
-            if success {
-                self.performSegue(withIdentifier: "toChecklist", sender: selectedFriends)
-            } else {
-                //TODO: Use UIAlertController to send an alert to the user that something went wrong
-            }
-        }
-    }
+    //COPY ME
+    lazy var inviteListener = InviteListener(delegate: self)
+    
+    var locManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    
     var listOfFollowers = [User]()
     var listOfFollowees = [User]()
     var listOfFriends = [User]()
@@ -83,72 +50,64 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var ref2: DatabaseReference!
     var post: Post!
     
+    // MARK: - RETURN VALUES
     
+    // MARK: - METHODS
     
-    @IBOutlet weak var friendsTableView: UITableView!
-    
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //begin listening for invites
-        _ = inviteListener
-        
-        locManager.requestWhenInUseAuthorization()
-        
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
-            currentLocation = locManager.location
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "toChecklist":
+                guard let vc = segue.destination as? CheckListViewController else {
+                    return
+                }
+                guard let payload = sender as? (post: Post, users: [User]) else {
+                    fatalError("sender is not an array of users")
+                }
+                
+                vc.post = payload.post
+                vc.listOfSelectedFriends = payload.users
+            default: break
+            }
         }
+    }
+    
+    
+    func swipeClose() {
         
-        menuVc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        if AppDelegate.menuBool {
+            // openMenu ()
+        } else {
+            closeMenu ()
+        }
+    }
+    
+    
+    func openMenu () {
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
-        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
-        
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
-        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
-        
-        self.view.addGestureRecognizer(rightSwipe)
-        self.view.addGestureRecognizer(leftSwipe)
-        
-        //        friendsTableView.allowsMultipleSelection = true
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        friendsTableView.delegate = self
-        friendsTableView.dataSource = self
-        //        setUpSearchBar()
-        friendsTableView.allowsMultipleSelection = true
-        setUpSearchBar()
+        UIView.animate(withDuration: 0.3) { ()->Void in
+            
+            self.menuVc.view.frame = CGRect(x: 0, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+            self.menuVc.view.backgroundColor = UIColor.black
+            self.addChildViewController(self.menuVc)
+            self.view.addSubview(self.menuVc.view)
+            AppDelegate.menuBool = false
+        }
         
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func closeMenu ()
         
-        //        fetchFollowers { success in
-        //            self.fetchFollowees { success in
-        //                self.findFriends()
-        //            }
-        //        }
-        
-        fetchFollowees { success in
-            self.fetchFollowers { success in
-                self.findFriends()
-            }
+    {
+        UIView.animate(withDuration: 0.3, animations: { ()->Void in
+            self.menuVc.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        }) { (finished) in
+            
+            self.menuVc.view.removeFromSuperview()
         }
         
+        AppDelegate.menuBool = true
     }
     
     private func setUpSearchBar(){
@@ -266,6 +225,141 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.friendsTableView.reloadData()
     }
     
+    public func showMessage(messageToDisplay: String)
+    {
+        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        { (action: UIAlertAction!) in
+            
+            print("OK button tapped")
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController,animated: true, completion: nil)
+    }
+    
+    @objc func respondToGesture(gesture: UISwipeGestureRecognizer)
+    {
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.right:
+            print("Right Swipe")
+            openMenu()
+            
+        case UISwipeGestureRecognizerDirection.left:
+            print("Left Swipe")
+            swipeClose()
+            
+        default:
+            break
+        }
+    }
+    
+    
+    @IBAction func menuAction(_ sender: Any) {
+        
+        if AppDelegate.menuBool {
+            openMenu ()
+        } else {
+            closeMenu ()
+        }
+        
+        
+    }
+    
+    // MARK: - IBACTIONS
+    
+    @IBOutlet weak var search: UISearchBar!
+    
+    @IBAction func inviteButton(_ sender: Any) {
+        guard let location = currentLocation else {
+            return print("location not found, check permissions from the user")
+        }
+        
+        let long = location.coordinate.longitude
+        let lat = location.coordinate.latitude
+        
+        
+        //
+        //        let storyboard = UIStoryboard(name: "Users", bundle: Bundle.main)
+        //        let mapView = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
+        //        self.present(mapView, animated: true, completion: nil)
+        
+        var selectedFriends: [User] = []
+        
+        if let indexPathsForSelectedFriends = friendsTableView.indexPathsForSelectedRows {
+            
+            for anIndexPath in indexPathsForSelectedFriends {
+                let friend = listOfFriends[anIndexPath.row]
+                selectedFriends.append(friend)
+            }
+        }
+        
+        //create a post from the information, like invited friends and location
+        PostService.create(name: User.current.username!, long:long , lat: lat, invitedUsers: selectedFriends) { (post) in
+            if let post = post {
+                self.performSegue(withIdentifier: "toChecklist", sender: (post, selectedFriends))
+            } else {
+                let errorAlert = UIAlertController(error: nil)
+                self.present(errorAlert, animated: true)
+            }
+        }
+    }
+    
+    @IBOutlet weak var friendsTableView: UITableView!
+    
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //begin listening for invites
+        _ = inviteListener
+        
+        locManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            currentLocation = locManager.location
+        }
+        
+        menuVc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
+        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
+        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
+        
+        self.view.addGestureRecognizer(rightSwipe)
+        self.view.addGestureRecognizer(leftSwipe)
+        
+        //        friendsTableView.allowsMultipleSelection = true
+        
+        friendsTableView.delegate = self
+        friendsTableView.dataSource = self
+        //        setUpSearchBar()
+        friendsTableView.allowsMultipleSelection = true
+        setUpSearchBar()
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //        fetchFollowers { success in
+        //            self.fetchFollowees { success in
+        //                self.findFriends()
+        //            }
+        //        }
+        
+        fetchFollowees { success in
+            self.fetchFollowers { success in
+                self.findFriends()
+            }
+        }
+        
+    }
+    
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -341,94 +435,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // Do any additional setup after loading the view, typically from a nib.
     
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let CheckListViewController = segue.destination as? CheckListViewController {
-            guard let invitedFriends = sender as? [User] else {
-                fatalError("sender is not an array of users")
-            }
-            CheckListViewController.listOfSelectedFriends = invitedFriends
-            
-        }
-    }
-    
-    public func showMessage(messageToDisplay: String)
-    {
-        let alertController = UIAlertController(title: "Alert Title", message: messageToDisplay, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default)
-        { (action: UIAlertAction!) in
-            
-            print("OK button tapped")
-        }
-        alertController.addAction(OKAction)
-        self.present(alertController,animated: true, completion: nil)
-    }
-    
-    @objc func respondToGesture(gesture: UISwipeGestureRecognizer)
-    {
-        switch gesture.direction {
-        case UISwipeGestureRecognizerDirection.right:
-            print("Right Swipe")
-            openMenu()
-            
-        case UISwipeGestureRecognizerDirection.left:
-            print("Left Swipe")
-            swipeClose()
-            
-        default:
-            break
-        }
-    }
-    
-    
-    @IBAction func menuAction(_ sender: Any) {
-        
-        if AppDelegate.menuBool {
-            openMenu ()
-        } else {
-            closeMenu ()
-        }
-        
-        
-    }
-    
-    func swipeClose() {
-        
-        if AppDelegate.menuBool {
-            // openMenu ()
-        } else {
-            closeMenu ()
-        }
-    }
-    
-    
-    func openMenu () {
-        
-        UIView.animate(withDuration: 0.3) { ()->Void in
-            
-            self.menuVc.view.frame = CGRect(x: 0, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-            self.menuVc.view.backgroundColor = UIColor.black
-            self.addChildViewController(self.menuVc)
-            self.view.addSubview(self.menuVc.view)
-            AppDelegate.menuBool = false
-        }
-        
-        
-    }
-    
-    func closeMenu ()
-        
-    {
-        UIView.animate(withDuration: 0.3, animations: { ()->Void in
-            self.menuVc.view.frame = CGRect(x: -UIScreen.main.bounds.size.width, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        }) { (finished) in
-            
-            self.menuVc.view.removeFromSuperview()
-        }
-        
-        AppDelegate.menuBool = true
-    }
     
     
 }

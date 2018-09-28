@@ -20,6 +20,17 @@ struct Post {
         case awaitingResponse = 0
         case acceptedInvite
         case declinedInvite
+        
+        var title: String {
+            switch self {
+            case .awaitingResponse:
+                return "Awaiting Response"
+            case .acceptedInvite:
+                return "Accepted"
+            case .declinedInvite:
+                return "Declined"
+            }
+        }
     }
     
     var dictValue: [String: Any] {
