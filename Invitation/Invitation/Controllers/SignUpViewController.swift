@@ -14,6 +14,8 @@ import FirebaseAuth.FIRUser
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
     
+    private let profileImage = PhotoStack()
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -109,46 +111,60 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
             return
         }
         
-        
-        Auth.auth().createUser(withEmail:userEmail, password: password) { (user, error) in
+        profileImage.presentActionSheet(from: self) { (image) in
             
-            
-            if let error = error
-            {
-                print(error.localizedDescription)
-                self.showMessage(messageToDisplay: error.localizedDescription)
-                return
-            }
-            if let user = user {
+            Auth.auth().createUser(withEmail:userEmail, password: password) { (user, error) in
                 
-                var databaseReferance: DatabaseReference!
-                databaseReferance = Database.database().reference()
-                let userDetails: [String:String] = ["FirstName":firstName, "LastName":lastName, "Username": username]
-                
-                
-                
-                
-                databaseReferance.child("users").child(user.user.uid).setValue(["userDetails": userDetails])
-                
-                
-                
-                
-                user.user.sendEmailVerification(completion:nil)
-                self.showMessage(messageToDisplay: "We have sent you an email message. Please check your email and follow the link to verify")
-                
-                let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-                let  appDelegate = UIApplication.shared.delegate
-                appDelegate?.window??.rootViewController = signInPage
-                
-                
-                
-                
-                
+                if let error = error
+                {
+                    print(error.localizedDescription)
+                    self.showMessage(messageToDisplay: error.localizedDescription)
+                    return
+                }
+                if let firUser = user {
+                    
+                    let userRef = StorageService.newUserProfileReference(withUser: firUser.user.uid)
+                    StorageService.uploadImage(image, at: userRef, completion: { (downloadUrl) in
+                        guard let imageUrl = downloadUrl else {
+                            let errorAlert = UIAlertController(error: nil)
+                            self.present(errorAlert, animated: true)
+                            
+                            return
+                        }
+                        
+                        let databaseReferance = Database.database().reference()
+                            .child("users")
+                            .child(firUser.user.uid)
+                        
+                        let userDetails: [String:String] = [
+                            "FirstName": firstName,
+                            "LastName": lastName,
+                            "Username": username,
+                            "ImageUrl": imageUrl.absoluteString
+                        ]
+                        databaseReferance.setValue(["userDetails": userDetails]) { error, _ in
+                            if let error = error {
+                                return assertionFailure(error.localizedDescription)
+                            }
+                            
+                            firUser.user.sendEmailVerification(completion: { (error) in
+                                if let error = error {
+                                    let errorAlert = UIAlertController(error: error.localizedDescription)
+                                    self.present(errorAlert, animated: true)
+                                    
+                                    return
+                                }
+                                
+                                self.showMessage(messageToDisplay: "We have sent you an email message. Please check your email and follow the link to verify")
+                                let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                                let  appDelegate = UIApplication.shared.delegate
+                                appDelegate?.window??.rootViewController = signInPage
+                            })
+                        }
+                    })
+                }
             }
         }
-        
-        
-        
     }
     
     

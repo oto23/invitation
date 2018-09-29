@@ -11,6 +11,10 @@ import UIKit
 import FirebaseStorage
 
 struct StorageService {
+    static func newUserProfileReference(withUser uid: String) -> StorageReference {
+        return Storage.storage().reference().child("profile-images/\(uid)/profile-image.jpg")
+    }
+    
     public static func uploadImage(
         _ image: UIImage,
         at reference: StorageReference,

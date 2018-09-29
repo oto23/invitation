@@ -29,6 +29,7 @@ class User: Codable, Hashable {
     var firstName: String?
     var lastName: String?
     var username: String?
+    var imageUrl: URL?
     var isFollowed = false
     
     
@@ -37,11 +38,14 @@ class User: Codable, Hashable {
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
             let userDetails = dict["userDetails"] as? [String : Any],
-            let username = userDetails["Username"] as? String
+            let username = userDetails["Username"] as? String,
+            let imageUrlString = userDetails["ImageUrl"] as? String,
+            let imageUrl = URL(string: imageUrlString)
             else { return nil }
         
         self.uid = snapshot.key
         self.username = username
+        self.imageUrl = imageUrl
     }
     
     //    init(authData:Firebase.User){
