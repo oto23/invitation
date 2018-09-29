@@ -13,6 +13,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
 import MapKit
+import Kingfisher
 
 
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
@@ -384,6 +385,12 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
         cell.backgroundColor = UIColor.darkGray
+        
+        if let profileImage = user.imageUrl {
+            cell.imageView?.kf.setImage(with: profileImage)
+        } else {
+            cell.imageView?.image = nil
+        }
         
         return (cell)
         
