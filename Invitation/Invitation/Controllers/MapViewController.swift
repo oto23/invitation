@@ -86,7 +86,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingLocation()
         sendersNameLabel.text = post.author.username
         invitedFriendsString = post.invitedUserUids
-//        print("aaaaaaaaa\(invitedFriendsString)")
+        
+        //update the invite location title label
+        let location = LocationStack()
+        location.place(for: (post.long, post.lat)) { (locationTitle) in
+            if let title = locationTitle {
+                self.keyLabel.text = title
+            } else {
+                self.keyLabel.text = ""
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
