@@ -87,10 +87,12 @@ class UsersTableViewController: UIViewController, UITableViewDataSource, UITable
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell", for: indexPath) as! FindFriendsCell
         cell.delegate = self
-        cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
+        cell.labelUsername.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
         cell.backgroundColor = UIColor.darkGray
         let user = currentUserList[indexPath.row]
-        cell.textLabel?.text = user.username
+        cell.labelUsername.text = user.username
+        cell.labelSubtitle.text = ""
+        cell.configure(image: user.imageUrl)
         //        if tableView == UsersTable{
         //            cell.textLabel?.text = currentUserList[indexPath.row]
         //        }else{

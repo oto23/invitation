@@ -53,6 +53,43 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // MARK: - RETURN VALUES
     
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if tableView == friendsTableView{
+            return listOfFriends.count
+        }else{
+            return tempList.count
+        }
+        
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as! FriendTableViewCell
+        
+        let user = listOfFriends[indexPath.row]
+        listOfFriendsString.append(user.username!)
+        
+        if tableView == friendsTableView {
+            
+            //friends table view
+            cell.labelUsername.text = listOfFriendsString[indexPath.row]
+        } else {
+            
+            //search friends table view
+            cell.labelUsername.text = tempList[indexPath.row]
+        }
+        
+        cell.configure(image: user.imageUrl)
+        
+        cell.labelSubtitle.text = ""
+        
+        cell.accessoryType = cell.isSelected ? .checkmark : .none
+        
+        return cell
+        
+    }
+    
+    
     // MARK: - METHODS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -254,6 +291,32 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        
+        cell.accessoryType = .checkmark
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        
+        cell.accessoryType = .none
+    }
+    
+    //    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        let indexPath = tableView.indexPathForSelectedRow
+    //        let currentCell = tableView.cellForRow(at: indexPath!)
+    //        selectedArray.append((currentCell?.textLabel?.text)!)
+    //        print(currentCell?.textLabel!.text as Any)
+    //    }
+    
+    // MARK: - IBACTIONS
+    
+    @IBOutlet weak var search: UISearchBar!
     
     @IBAction func menuAction(_ sender: Any) {
         
@@ -265,10 +328,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
     }
-    
-    // MARK: - IBACTIONS
-    
-    @IBOutlet weak var search: UISearchBar!
     
     @IBAction func inviteButton(_ sender: Any) {
         guard let location = currentLocation else {
@@ -333,12 +392,15 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.view.addGestureRecognizer(rightSwipe)
         self.view.addGestureRecognizer(leftSwipe)
         
-        //        friendsTableView.allowsMultipleSelection = true
-        
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
-        //        setUpSearchBar()
         friendsTableView.allowsMultipleSelection = true
+        
+        //register the friend cell
+        friendsTableView.register(
+            FriendTableViewCell.cellNib,
+            forCellReuseIdentifier: FriendTableViewCell.identifier
+        )
         setUpSearchBar()
         
         
@@ -358,50 +420,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.findFriends()
             }
         }
-        
-    }
-    
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if tableView == friendsTableView{
-            return listOfFriends.count
-        }else{
-            return tempList.count
-        }
-        
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)// as! UITableViewCell
-        
-        let user = listOfFriends[indexPath.row]
-        //        let user2 = tempList[indexPath.row]
-        listOfFriendsString.append(user.username!)
-        if tableView == friendsTableView{
-            cell.textLabel?.text = listOfFriendsString[indexPath.row]
-        }else{
-            cell.textLabel?.text = tempList[indexPath.row]
-        }
-        cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
-        cell.backgroundColor = UIColor.darkGray
-        
-        if let profileImage = user.imageUrl {
-            cell.imageView?.kf.setImage(with: profileImage)
-        } else {
-            cell.imageView?.image = nil
-        }
-        
-        return (cell)
-        
-    }
-    
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
-        let currentCell = tableView.cellForRow(at: indexPath!)
-        selectedArray.append((currentCell?.textLabel?.text)!)
-        print(currentCell?.textLabel!.text as Any)
-        
         
     }
     
@@ -425,17 +443,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     var menuVc : MenuViewController!
-    
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    ////        print(listOfFriends[indexPath.row])
-    //
-    //        // 1. preparing the data to send
-    ////        reciever.append(listOfFriends[indexPath.row])
-    //
-    //        // 2. change the ui of the cell
-    //        let cell = self.friendsTableView.cellForRow(at: indexPath)
-    //        cell?.accessoryType = .checkmark
-    //    }
     
     
     

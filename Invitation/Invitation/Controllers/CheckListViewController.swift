@@ -32,20 +32,21 @@ class CheckListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as! FriendTableViewCell
         let user = listOfSelectedFriends[indexPath.row]
-        cell.textLabel?.text = user.username
+        
+        //username
+        cell.labelUsername.text = user.username
 
+        //status and background color
         if let userStats = listOfFriendStatus[user.uid!] {
-            cell.detailTextLabel?.text = userStats.title
+            cell.labelSubtitle.text = userStats.title
+            cell.backgroundColor = userStats.color.withAlphaComponent(0.15)
         }
-
-        //        let label = cell.viewWithTag(1000) as! UILabel
-        //        label.text = "Name and last name"
-        //
-        //        let secondlabel = cell.viewWithTag(100) as! UILabel
-        //        secondlabel.text = "request sent"
-        //
+        
+        //image
+        cell.configure(image: user.imageUrl)
+        
         return cell
     }
 
@@ -65,6 +66,12 @@ class CheckListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //register the friend cell
+        tableView.register(
+            FriendTableViewCell.cellNib,
+            forCellReuseIdentifier: FriendTableViewCell.identifier
+        )
 
         PostService.observeFriendStatuses(for: self.post) { (newStatuses) in
             guard let newStatuses = newStatuses else {
