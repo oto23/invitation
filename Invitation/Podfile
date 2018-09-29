@@ -2,23 +2,24 @@
 platform :ios, '9.0'
 
 target 'Invitation' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
 
-  # Pods for Invitation
+    # Pods for Invitation
 
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'FirebaseUI/Auth'
-  pod 'Firebase/Database'
-  pod 'Firebase/Storage'
-  pod 'FirebaseUI/Facebook'
-   pod 'FBSDKCoreKit'
-   pod 'FBSDKLoginKit'
-  # pod 'FacebookCore'
-#  pod 'FacebookLogin'
-  # pod 'FacebookShare'
-#  pod 'IQKeyboardManager'
-#  pod 'Bolts', '~> 1.9'
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'FirebaseUI/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+    pod 'FirebaseUI/Facebook'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'Kingfisher'
+    # pod 'FacebookCore'
+    #  pod 'FacebookLogin'
+    # pod 'FacebookShare'
+    #  pod 'IQKeyboardManager'
+    #  pod 'Bolts', '~> 1.9'
 
 end

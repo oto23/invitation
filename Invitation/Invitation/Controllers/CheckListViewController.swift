@@ -10,42 +10,69 @@ import Foundation
 import UIKit
 
 class CheckListViewController: UITableViewController {
-    
-    @IBAction func check(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Users", bundle: nil)
-        let userLists = storyboard.instantiateViewController(withIdentifier:"UsersTableViewController") as! UsersTableViewController
-        self.present(userLists, animated: true, completion: nil)
-        
-        
-        
-    }
-    
-    @IBAction func displayButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
-        let mapView = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
-        self.present(mapView, animated: true, completion: nil)
-        
-        
+
+    // MARK: - VARS
+
+    var post: Post!
+
+    var listOfSelectedFriends = [User]() {
+        didSet {
+            listOfFriendStatus = listOfSelectedFriends.reduce(into: [String: Post.InvitedUserStatus](), { (dict, aUser) in
+                dict[aUser.uid!] = Post.InvitedUserStatus.awaitingResponse
+            })
         }
-        
-        
-    
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
     }
-    
+
+    var listOfFriendStatus: [String: Post.InvitedUserStatus] = [:]
+
+    // MARK: - RETURN VALUES
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listOfSelectedFriends.count
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath)
-        
-        let label = cell.viewWithTag(1000) as! UILabel
-        label.text = "Name and last name"
-        
-        let secondlabel = cell.viewWithTag(100) as! UILabel
-        secondlabel.text = "request sent"
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let user = listOfSelectedFriends[indexPath.row]
+        cell.textLabel?.text = user.username
+
+        if let userStats = listOfFriendStatus[user.uid!] {
+            cell.detailTextLabel?.text = userStats.title
+        }
+
+        //        let label = cell.viewWithTag(1000) as! UILabel
+        //        label.text = "Name and last name"
+        //
+        //        let secondlabel = cell.viewWithTag(100) as! UILabel
+        //        secondlabel.text = "request sent"
+        //
         return cell
     }
-    
-    
+
+    // MARK: - METHODS
+
+    // MARK: - IBACTIONS
+
+    @IBAction func displayButton(_ sender: Any) {
+        //        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
+        //        let mapView = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
+        //        self.present(mapView, animated: true, completion: nil)
+        //
+        print(listOfSelectedFriends)
+    }
+
+    // MARK: - LIFE CYCLE
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        PostService.observeFriendStatuses(for: self.post) { (newStatuses) in
+            guard let newStatuses = newStatuses else {
+                return
+            }
+
+            self.listOfFriendStatus = newStatuses
+            self.tableView.reloadData()
+        }
+    }
 }
