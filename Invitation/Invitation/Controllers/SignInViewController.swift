@@ -33,7 +33,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //TODO: nick-use this for the gradient
+        self.view.applyGradient()
         
         loginWithFbButton.delegate = self
         loginWithFbButton.readPermissions = ["email"]
