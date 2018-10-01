@@ -196,6 +196,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFi
                     userDetails["FirstName"] = userNameDetails[0]
                     userDetails["LastName"] = userNameDetails[1]
                     userDetails["Username"] = userNameDetails[0]
+                    userDetails["ImageUrl"] = user.photoURL?.absoluteString
                 }
             }
             var databaseReference: DatabaseReference!
