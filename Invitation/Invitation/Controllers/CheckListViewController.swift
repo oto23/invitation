@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CheckListViewController: UITableViewController {
+class CheckListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - VARS
 
@@ -27,31 +27,34 @@ class CheckListViewController: UITableViewController {
 
     // MARK: - RETURN VALUES
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfSelectedFriends.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as! FriendTableViewCell
         let user = listOfSelectedFriends[indexPath.row]
-        cell.textLabel?.text = user.username
+        
+        //username
+        cell.labelUsername.text = user.username
 
+        //status and background color
         if let userStats = listOfFriendStatus[user.uid!] {
-            cell.detailTextLabel?.text = userStats.title
+            cell.labelSubtitle.text = userStats.title
+            cell.backgroundColor = userStats.color.withAlphaComponent(0.15)
         }
-
-        //        let label = cell.viewWithTag(1000) as! UILabel
-        //        label.text = "Name and last name"
-        //
-        //        let secondlabel = cell.viewWithTag(100) as! UILabel
-        //        secondlabel.text = "request sent"
-        //
+        
+        //image
+        cell.configure(image: user.imageUrl)
+        
         return cell
     }
 
     // MARK: - METHODS
 
     // MARK: - IBACTIONS
+    
+    @IBOutlet weak var tableView: UITableView!
 
     @IBAction func displayButton(_ sender: Any) {
         //        let storyboard = UIStoryboard(name: "MapLocation", bundle: Bundle.main)
@@ -65,6 +68,14 @@ class CheckListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.applyGradient()
+        
+        //register the friend cell
+        tableView.register(
+            FriendTableViewCell.cellNib,
+            forCellReuseIdentifier: FriendTableViewCell.identifier
+        )
 
         PostService.observeFriendStatuses(for: self.post) { (newStatuses) in
             guard let newStatuses = newStatuses else {

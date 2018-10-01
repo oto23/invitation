@@ -31,6 +31,17 @@ struct Post {
                 return "Declined"
             }
         }
+        
+        var color: UIColor {
+            switch self {
+            case .awaitingResponse:
+                return .clear
+            case .acceptedInvite:
+                return .green
+            case .declinedInvite:
+                return .red
+            }
+        }
     }
     
     var dictValue: [String: Any] {

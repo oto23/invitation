@@ -33,7 +33,6 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //TODO: nick-use this for the gradient
         self.view.applyGradient()
 
         loginWithFbButton.delegate = self
@@ -196,6 +195,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFi
                     userDetails["FirstName"] = userNameDetails[0]
                     userDetails["LastName"] = userNameDetails[1]
                     userDetails["Username"] = userNameDetails[0]
+                    userDetails["ImageUrl"] = user.photoURL?.absoluteString
                 }
             }
             var databaseReference: DatabaseReference!
