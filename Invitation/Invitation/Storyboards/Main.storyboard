@@ -83,7 +83,7 @@
                         <outlet property="friendsTableView" destination="33O-aC-X7e" id="psW-mR-T46"/>
                         <outlet property="search" destination="Xya-VB-eSt" id="bTC-B9-ivC"/>
                         <outlet property="searchDisplayController" destination="Z88-ig-I61" id="tgi-Fl-ZNf"/>
-                        <segue destination="atx-LG-EC1" kind="show" identifier="toChecklist" id="Ohp-qG-Mgj"/>
+                        <segue destination="2ja-rD-UA4" kind="show" identifier="toChecklist" id="l4b-uy-NPX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFb-os-PLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,23 +157,38 @@
             <point key="canvasLocation" x="2632.8000000000002" y="-197.45127436281859"/>
         </scene>
         <!--Check List View Controller-->
-        <scene sceneID="Lah-vu-hYh">
+        <scene sceneID="tuT-Bv-82J">
             <objects>
-                <tableViewController storyboardIdentifier="CheckListViewController" id="atx-LG-EC1" customClass="CheckListViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="erJ-vQ-3Qc">
+                <viewController id="2ja-rD-UA4" customClass="CheckListViewController" customModule="Invitation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aeg-h2-pCZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xKy-1t-cK1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2ja-rD-UA4" id="iur-f3-DQ6"/>
+                                    <outlet property="delegate" destination="2ja-rD-UA4" id="UGL-Im-X1p"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="separatorColor" red="0.36862745099999999" green="0.62745098040000002" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="atx-LG-EC1" id="9Sd-of-g1n"/>
-                            <outlet property="delegate" destination="atx-LG-EC1" id="fQa-en-2xn"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bEk-sX-2Fc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="xKy-1t-cK1" firstAttribute="leading" secondItem="Tuf-C6-QlV" secondAttribute="leading" id="HXy-bJ-b9N"/>
+                            <constraint firstItem="Tuf-C6-QlV" firstAttribute="bottom" secondItem="xKy-1t-cK1" secondAttribute="bottom" id="qpV-rg-Jbx"/>
+                            <constraint firstItem="Tuf-C6-QlV" firstAttribute="trailing" secondItem="xKy-1t-cK1" secondAttribute="trailing" id="vMq-EU-KJf"/>
+                            <constraint firstItem="xKy-1t-cK1" firstAttribute="top" secondItem="Tuf-C6-QlV" secondAttribute="top" id="yOV-b9-DsJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tuf-C6-QlV"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xKy-1t-cK1" id="MrH-8X-j55"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aT4-8e-nWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832.8" y="-197.45127436281859"/>
+            <point key="canvasLocation" x="1818" y="-197"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UfF-sE-0yg">
