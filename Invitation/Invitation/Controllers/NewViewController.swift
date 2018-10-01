@@ -371,6 +371,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.applyGradient()
+        
         //begin listening for invites
         _ = inviteListener
         

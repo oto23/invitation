@@ -37,10 +37,9 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
-
+        self.view.applyGradient()
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         firstNameTextField.resignFirstResponder()
         lastNameTextField.resignFirstResponder()

@@ -67,6 +67,9 @@ class CheckListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: apply gradient to this view
+        //self.view.applyGradient()
+        
         //register the friend cell
         tableView.register(
             FriendTableViewCell.cellNib,
