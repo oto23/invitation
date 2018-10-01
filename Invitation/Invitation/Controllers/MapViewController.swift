@@ -87,7 +87,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        sendersNameLabel.text = post.author.username
+        sendersNameLabel.text = "\(post.author.username!) invites you to"
         invitedFriendsString = post.invitedUserUids
 
         //update the invite location title label

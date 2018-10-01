@@ -48,8 +48,9 @@ class FriendTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.labelUsername.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
-        self.backgroundColor = UIColor.darkGray
+        self.labelUsername.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        //        self.backgroundColor = UIColor.darkGray
     }
     
 }
+
