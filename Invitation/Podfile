@@ -8,6 +8,7 @@ target 'Invitation' do
     # Pods for Invitation
 
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     pod 'Firebase/Auth'
     pod 'FirebaseUI/Auth'
     pod 'Firebase/Database'

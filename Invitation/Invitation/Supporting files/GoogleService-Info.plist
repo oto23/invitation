@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>687563339951-h908rkj15a4092p1eif4pgn2qovmhqvp.apps.googleusercontent.com</string>
+	<string>687563339951-vmt7fsrc7cjm2i71hh9h1fttfe6v71ms.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.687563339951-h908rkj15a4092p1eif4pgn2qovmhqvp</string>
+	<string>com.googleusercontent.apps.687563339951-vmt7fsrc7cjm2i71hh9h1fttfe6v71ms</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDc20zIZfpHm4BLNkkqaBw3sxI0cEL7tYM</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.my-company.Invitation2</string>
+	<string>com.my-company.InvitationRoGo</string>
 	<key>PROJECT_ID</key>
 	<string>invitation-8a1fd</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:687563339951:ios:84b1cacbd9703506</string>
+	<string>1:687563339951:ios:9441f54db04f68a4</string>
 	<key>DATABASE_URL</key>
 	<string>https://invitation-8a1fd.firebaseio.com</string>
 </dict>

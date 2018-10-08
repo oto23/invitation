@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import UserNotifications
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
+import FirebaseMessaging
+import FirebaseInstanceID
 
 
 @UIApplicationMain
@@ -18,9 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        
+        
         FirebaseApp.configure()
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -64,8 +70,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = nextView
             }
         }
-
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            print("granted:\(granted)")
+            guard granted else { return }
+            self.getNotificationSettings()
+        }
+         
+        
+        UIApplication.shared.registerForRemoteNotifications()
         return true
+    }
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async(execute: UIApplication.shared.registerForRemoteNotifications)
+        }
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -95,6 +115,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
+   
 
 }
 
