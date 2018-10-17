@@ -30,10 +30,10 @@ class MyLocationViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.06, 0.06)
+        let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        let region:MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
         map.setRegion(region, animated: true)
         
         self.map.showsUserLocation = true

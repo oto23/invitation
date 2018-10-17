@@ -34,10 +34,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(post.lat, post.long)
 
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        let region:MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
         map.setRegion(region, animated: true)
 
         self.map.showsUserLocation = true

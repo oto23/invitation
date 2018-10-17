@@ -16,6 +16,7 @@ import MapKit
 import Kingfisher
 
 
+
 class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     //    continue
@@ -50,7 +51,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var ref: DatabaseReference!
     var ref2: DatabaseReference!
     var post: Post!
-    
+    var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+
     // MARK: - RETURN VALUES
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,7 +129,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             
             self.menuVc.view.frame = CGRect(x: 0, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
             self.menuVc.view.backgroundColor = UIColor.black
-            self.addChildViewController(self.menuVc)
+            self.addChild(self.menuVc)
             self.view.addSubview(self.menuVc.view)
             AppDelegate.menuBool = false
         }
@@ -278,11 +280,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @objc func respondToGesture(gesture: UISwipeGestureRecognizer)
     {
         switch gesture.direction {
-        case UISwipeGestureRecognizerDirection.right:
+        case UISwipeGestureRecognizer.Direction.right:
             print("Right Swipe")
             openMenu()
             
-        case UISwipeGestureRecognizerDirection.left:
+        case UISwipeGestureRecognizer.Direction.left:
             print("Left Swipe")
             swipeClose()
             
@@ -386,10 +388,10 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         menuVc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
-        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+        rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture))
-        leftSwipe.direction = UISwipeGestureRecognizerDirection.left
+        leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         
         self.view.addGestureRecognizer(rightSwipe)
         self.view.addGestureRecognizer(leftSwipe)
@@ -404,7 +406,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             forCellReuseIdentifier: FriendTableViewCell.identifier
         )
         setUpSearchBar()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reinstateBackgroundTask), name: UIApplication.didBecomeActiveNotification, object: nil)
         
     }
     
@@ -447,7 +449,23 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var menuVc : MenuViewController!
     
     
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+        assert(backgroundTask != .invalid)
+    }
     
+    func endBackgroundTask() {
+        print("Background task ended.")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = .invalid
+    }
+    @objc func reinstateBackgroundTask() {
+        if backgroundTask == .invalid {
+            registerBackgroundTask()
+        }
+    }
     
     // Do any additional setup after loading the view, typically from a nib.
     

@@ -58,7 +58,7 @@ class PhotoStack: NSObject {
     }
     
     private func presentImagePickerController(
-        with sourceType: UIImagePickerControllerSourceType,
+        with sourceType: UIImagePickerController.SourceType,
         from viewController: UIViewController) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = sourceType
@@ -69,11 +69,11 @@ class PhotoStack: NSObject {
 }
 
 extension PhotoStack: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String: Any]) {
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            completionHandler?(selectedImage)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
         picker.dismiss(animated: true)
