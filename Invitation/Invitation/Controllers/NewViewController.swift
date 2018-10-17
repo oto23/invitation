@@ -195,6 +195,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     
                     print("Followees: \(self.listOfFollowees)")
                     
+                    
                 })
                 
             }
@@ -407,7 +408,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         )
         setUpSearchBar()
         NotificationCenter.default.addObserver(self, selector: #selector(reinstateBackgroundTask), name: UIApplication.didBecomeActiveNotification, object: nil)
-        
+        if inviteListener != nil{
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -485,9 +488,9 @@ extension NewViewController: InviteListenerDelegate {
             else {
                 fatalError("storybaord not set up correctly with view controlle classes")
         }
-        
         mapViewController.post = post
         self.present(navController, animated: true)
+        
     }
 }
 

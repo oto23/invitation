@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 protocol InviteListenerDelegate: class {
     func inviteListner(_ listener: InviteListener, userDidRecieveInviteFor post: Post)
@@ -27,9 +28,19 @@ class InviteListener: NSObject {
     @objc private func recieveInvite(_ notification: Notification) {
         guard let postFromNotifcation = notification.object as? Post else {
             fatalError("notifaciton did not send a post object")
+            
         }
-        
         delegate?.inviteListner(self, userDidRecieveInviteFor: postFromNotifcation)
+        let content = UNMutableNotificationContent()
+        content.title = "title"
+        content.body = "body"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
 
