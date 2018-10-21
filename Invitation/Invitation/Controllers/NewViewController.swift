@@ -57,11 +57,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if tableView == friendsTableView{
+        
             return listOfFriends.count
-        }else{
-            return tempList.count
-        }
+        
         
     }
     

@@ -32,8 +32,8 @@ class InviteListener: NSObject {
         }
         delegate?.inviteListner(self, userDidRecieveInviteFor: postFromNotifcation)
         let content = UNMutableNotificationContent()
-        content.title = "title"
-        content.body = "body"
+        content.title = "Invitation"
+        content.body = "You recived an invitation"
         content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)

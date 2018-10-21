@@ -86,7 +86,7 @@ class InvitedFriendsViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let user = invitedFriends[indexPath.row]
         cell.textLabel?.text = user.username
-//        cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
+        cell.textLabel?.textColor = #colorLiteral(red: 0.2745098039, green: 0.7803921569, blue: 0.02352941176, alpha: 1)
 //        cell.backgroundColor = UIColor.darkGray
         return cell
     }

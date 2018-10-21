@@ -50,8 +50,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var sendersNameLabel: UILabel!
     @IBOutlet weak var keyLabel: UILabel!
 
+    @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
+        PostService.decline(post: self.post) { (isSuccessful) in
+            if isSuccessful {
+                self.presentingViewController?.dismiss(animated: true)
+            } else {
+                let alertError = UIAlertController(error: nil)
+                self.present(alertError, animated: true)
+            }
+        }
+        
+    }
     @IBAction func goBack(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
     }
 
     @IBAction func joinButtonTapped(_ sender: UIButton) {
