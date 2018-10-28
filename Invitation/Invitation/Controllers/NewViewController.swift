@@ -72,7 +72,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if tableView == friendsTableView {
             
             //friends table view
-            cell.labelUsername.text = listOfFriendsString[indexPath.row]
+            cell.labelUsername.text = listOfFriends[indexPath.row].username
         } else {
             
             //search friends table view

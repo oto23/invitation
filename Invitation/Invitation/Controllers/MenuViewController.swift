@@ -15,7 +15,7 @@ import Firebase
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleArrAY = ["Search Friends", "Personal Info", "My Location", "Log out" ]
+    let titleArrAY = ["","Search Friends", "Personal Info", "My Location", "Log out" ]
     
     
     
@@ -53,21 +53,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            print("")
+        case 1:
             let storyboard1 = UIStoryboard(name: "Users", bundle: nil)
             let initVC = storyboard1.instantiateInitialViewController()
             self.present(initVC!, animated: true)
             
-        case 1:
+        case 2:
             let storyboard1 = UIStoryboard(name: "Login", bundle: nil)
             let initVC = storyboard1.instantiateViewController(withIdentifier: "MainPageViewController") as! MainPageViewController
             self.present(initVC, animated: true)
             
-        case 2 :
+        case 3 :
             let storyboard1 = UIStoryboard(name: "myLocation", bundle: nil)
             let initVC = storyboard1.instantiateInitialViewController()
             self.present(initVC!, animated: true)
             
-        case 3 :
+        case 4 :
             
             
             do{
