@@ -29,8 +29,10 @@ class MyLocationViewController: UIViewController, CLLocationManagerDelegate
     let manager = CLLocationManager()
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        manager.delegate = nil
         let location = locations[0]
-        let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)
+        let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
         let region:MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
